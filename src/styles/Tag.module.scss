@@ -1,0 +1,30 @@
+.tag {
+  padding: 0.5rem 1rem;
+
+  background: linear-gradient(#0d1117, #0d1117) padding-box,
+    linear-gradient(to right, #3e4755, #303742e3) border-box;
+  border-radius: 3rem;
+  border: 1px solid transparent;
+
+  font-size: 0.795rem;
+  font-weight: 500;
+  color: #fff;
+
+  cursor: pointer;
+
+  @media (max-width: 875px) {
+    font-size: 0.655rem;
+  }
+
+  @media (max-width: 374px) {
+    padding: 0.35rem 0.8rem;
+
+    font-size: 0.605rem;
+  }
+
+  transition: 0.25s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

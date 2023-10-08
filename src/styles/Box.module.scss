@@ -1,0 +1,14 @@
+.section {
+  width: 100%;
+  height: 100%;
+
+  padding: 0.85rem 1.2rem;
+
+  background: rgb(22, 27, 34);
+  border-radius: 0.875rem;
+  border: 0.8px solid #ffffff16;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.85rem;
+}

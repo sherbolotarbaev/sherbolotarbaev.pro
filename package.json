@@ -1,28 +1,29 @@
 {
-  "name": "project",
+  "name": "portfolio",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "axios": "^1.3.5",
-    "react": "^18.2.0",
-    "react-auth-kit": "^2.12.2",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.43.9",
-    "react-router-dom": "^6.10.0",
-    "react-simple-typewriter": "^5.0.1",
-    "react-toastify": "^9.1.2",
-    "sass": "^1.60.0"
+    "@svgr/webpack": "^8.1.0",
+    "cookies-next": "^4.0.0",
+    "next": "13.5.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.47.0",
+    "sass": "^1.69.0",
+    "sonner": "^1.0.3"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react-swc": "^3.0.0",
-    "vite": "^4.2.0"
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "13.5.4",
+    "typescript": "^5"
   }
 }

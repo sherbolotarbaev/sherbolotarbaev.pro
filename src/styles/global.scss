@@ -1,0 +1,37 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  text-decoration: none;
+}
+
+html,
+body {
+  width: 100vw;
+  min-height: 100vh;
+  min-width: 350px;
+
+  overflow-x: hidden;
+}
+
+body {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #0d1117;
+
+  background-image: linear-gradient(#ffffff0a 1px, transparent 1px),
+    linear-gradient(to right, #ffffff0a 1px, #0d1117 1px);
+  background-size: 60px 60px;
+
+  color: #ffffff;
+
+  &.modal_open {
+    overflow: hidden;
+  }
+}

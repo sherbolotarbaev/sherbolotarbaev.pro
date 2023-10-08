@@ -1,0 +1,86 @@
+.button,
+.button_load {
+  width: 100%;
+  min-width: 150px;
+
+  padding: 0.8rem;
+
+  background: #5340ff;
+  border: 0;
+  border-radius: 0.875rem;
+
+  cursor: pointer;
+
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+
+  transition: 0.25s;
+
+  &:hover {
+    background: #513ef7;
+  }
+
+  &:active {
+    background: #4d3ce8;
+  }
+
+  &.disabled {
+    background: #9b90ffbb;
+
+    cursor: not-allowed;
+
+    &:hover,
+    &:active {
+      background: #9b90ffbb;
+    }
+  }
+
+  @media (max-width: 985px) {
+    cursor: default;
+  }
+
+  &.white {
+    background: #ffffff;
+    color: #1e1e1d;
+
+    &:hover {
+      background: #f2f2f2;
+    }
+
+    &:active {
+      background: #d3d3d3;
+    }
+  }
+
+  .load {
+    font-size: 1rem;
+
+    animation: rotateAnimation 0.9s infinite linear;
+
+    @keyframes rotateAnimation {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
+.button_load {
+  background: #9b90ffbb;
+
+  cursor: not-allowed;
+
+  &:hover,
+  &:active {
+    background: #9b90ffbb;
+  }
+}
