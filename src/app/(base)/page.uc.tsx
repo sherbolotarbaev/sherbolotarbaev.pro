@@ -10,7 +10,6 @@ import {
   TelegramSvg,
 } from "@/assets/svg";
 import styles from "@/styles/Home.module.scss";
-import Button from "@/components/UI/Button";
 
 type IconType = {
   name: string;
