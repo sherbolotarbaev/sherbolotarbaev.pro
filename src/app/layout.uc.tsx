@@ -16,7 +16,7 @@ export default function RootLayoutClient({ children }: Props) {
       <main
         style={{
           width: "100%",
-          minHeight: "100dvh",
+          minHeight: "100vh",
           flex: "1 1 auto",
         }}>
         {children}
