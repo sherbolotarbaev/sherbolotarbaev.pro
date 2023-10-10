@@ -60,7 +60,7 @@ export default function ProjectsClient() {
         "Prisma",
       ],
       url_github: "https://github.com/arbaevsherbolot/family-project",
-      url: "https://github.com/arbaevsherbolot/telegram-bot",
+      url: "https://arbaevs.vercel.app",
     },
     {
       name: "ChatGPT - Telegram",
