@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { getCookie } from "cookies-next";
+import axios from "axios";
+import { getCookie, setCookie } from "cookies-next";
 import {
   errorNotification,
   successNotification,
@@ -33,10 +34,26 @@ export default function Form() {
     setLoading(true);
 
     try {
-      console.log(formData);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/messages`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            baseUrl: `${process.env.NEXT_PUBLIC_API}`,
+          },
+        }
+      );
 
-      successNotification("Form submitted successfully");
-      router.push("/");
+      if (response.data) {
+        const { name, email } = response.data;
+
+        setCookie("name", name);
+        setCookie("email", email);
+
+        successNotification("Form submitted successfully");
+        router.push("/");
+      } else errorNotification("The server is temporarily down");
     } catch (e) {
       //@ts-ignore
       errorNotification("Something went wrong");
