@@ -13,6 +13,10 @@ body {
   width: 100vw;
   min-height: 100vh;
   min-width: 350px;
+
+  &.modal_open {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 body {
@@ -26,8 +30,4 @@ body {
   background-size: 60px 60px;
 
   color: #ffffff;
-
-  &.modal_open {
-    -webkit-overflow-scrolling: touch;
-  }
 }
