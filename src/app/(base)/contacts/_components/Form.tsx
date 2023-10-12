@@ -40,7 +40,6 @@ export default function Form() {
         {
           headers: {
             "Content-Type": "application/json",
-            baseUrl: `${process.env.NEXT_PUBLIC_API_URL}`,
           },
         }
       );
