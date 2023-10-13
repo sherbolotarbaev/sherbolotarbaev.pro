@@ -36,7 +36,7 @@ export default function Form() {
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/messages`,
-        formData,
+        { ...formData },
         {
           headers: {
             "Content-Type": "application/json",
@@ -66,9 +66,9 @@ export default function Form() {
     const cookieEmail = getCookie("email");
     const cookieName = getCookie("name");
 
-    if (cookieEmail) {
-      setValue("email", `${cookieEmail}`);
-      setValue("name", `${cookieName}`);
+    if (cookieName || cookieEmail) {
+      setValue("email", cookieEmail || "");
+      setValue("name", cookieName || "");
     }
   }, [setValue]);
 
@@ -133,6 +133,7 @@ export default function Form() {
                     : `${styles.input} ${styles.textarea}`
                 }
                 {...register("message", {
+                  required: "Message is required",
                   minLength: {
                     value: 5,
                     message: "Message must be at least 5 characters long",
