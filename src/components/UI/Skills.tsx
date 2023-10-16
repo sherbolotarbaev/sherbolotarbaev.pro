@@ -1,5 +1,6 @@
 "use client";
 
+import { Edu_TAS_Beginner } from "next/font/google";
 import Button from "./Button";
 import Tag from "./Tag";
 import styles from "@/styles/Skills.module.scss";
@@ -7,6 +8,8 @@ import styles from "@/styles/Skills.module.scss";
 type SkillType = {
   name: string;
 };
+
+const font = Edu_TAS_Beginner({ subsets: ["latin"] });
 
 export default function Skills() {
   const skills: SkillType[] = [
@@ -102,7 +105,9 @@ export default function Skills() {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.title}>My Skills:</div>
+        <div className={styles.title} style={font.style}>
+          My Skills:
+        </div>
 
         <div className={styles.skills}>
           {skills.map((skill, idx) => (

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Skills from "@/components/UI/Skills";
+import { Edu_TAS_Beginner, Mukta } from "next/font/google";
 import logo from "@/assets/image/emoji.jpeg";
 import {
   GitHubSvg,
@@ -16,6 +17,9 @@ type IconType = {
   icon: React.ReactElement;
   url: string;
 };
+
+const font = Mukta({ subsets: ["latin-ext"], weight: "400" });
+const font2 = Edu_TAS_Beginner({ subsets: ["latin"] });
 
 export default function HomeClient() {
   const icons: IconType[] = [
@@ -77,9 +81,11 @@ export default function HomeClient() {
             alt="Sherbolot Arbaev - Emoji"
           />
 
-          <h2 className={styles.title}>About Me</h2>
+          <h2 className={styles.title} style={font2.style}>
+            About Me
+          </h2>
 
-          <div className={styles.text}>
+          <div className={styles.text} style={font.style}>
             Greetings! I'm <span>Sherbolot</span> (Sher), a Full Stack Software
             Engineer deeply passionate about crafting cutting-edge web
             applications with the latest technologies. My intrigue extends to
@@ -87,14 +93,14 @@ export default function HomeClient() {
             projects, adding a layer of innovation to my work.
           </div>
 
-          <div className={styles.text}>
+          <div className={styles.text} style={font.style}>
             My journey in software development is a thrilling one, as I derive
             immense satisfaction from the development process itself. My
             ultimate goal is to contribute to the creation of future
             technologies that empower and elevate humanity.
           </div>
 
-          <div className={styles.text}>
+          <div className={styles.text} style={font.style}>
             Presently, I am honored to be a valuable member of the exceptionally
             talented team at <span>WEDEVX</span> Ed-Tech. In this role, I
             harness my skills and extensive experience to engineer
