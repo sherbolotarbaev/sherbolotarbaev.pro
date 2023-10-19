@@ -20,7 +20,7 @@ export default function RootLayoutClient({ children }: Props) {
           flex: "1 1 auto",
         }}>
         {children}
-        <Toaster richColors />
+        <Toaster theme="light" />
       </main>
 
       <Footer />
