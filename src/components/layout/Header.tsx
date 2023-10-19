@@ -7,10 +7,16 @@ import { ArrowSvg, GitHubSvg } from "@/assets/svg";
 import Modal from "../UI/Modal";
 import Button from "../UI/Button";
 import styles from "@/styles/Header.module.scss";
+import Dropdown from "../UI/Dropdown";
 
 type LinkType = {
   path: string;
   name: string;
+};
+
+type ListItem = {
+  name: string;
+  path: string;
 };
 
 export default function Header() {
@@ -58,6 +64,25 @@ export default function Header() {
     },
   ];
 
+  const menuList: ListItem[] = [
+    {
+      name: "All Projects",
+      path: "/projects",
+    },
+    {
+      name: "Front-End",
+      path: "/projects/front-end",
+    },
+    {
+      name: "Back-End",
+      path: "/projects/back-end",
+    },
+    {
+      name: "Full-Stack",
+      path: "/projects/full-stack",
+    },
+  ];
+
   return (
     <>
       <div className={styles.navbar}>
@@ -66,9 +91,9 @@ export default function Header() {
         </Link>
 
         <div className={styles.links}>
-          {links.map((link, i) => (
+          {links.map((link, idx) => (
             <Link
-              key={i}
+              key={idx}
               href={link.path}
               className={
                 pathname === link.path
@@ -80,6 +105,8 @@ export default function Header() {
           ))}
 
           <div className={styles.buttons}>
+            {/* <Dropdown menuList={menuList} title="Projects" /> */}
+
             <Button load={false} type="button" onClick={handleOpenModal}>
               Resume
             </Button>

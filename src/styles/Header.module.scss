@@ -31,6 +31,8 @@
     gap: 0.55rem;
 
     .link {
+      cursor: pointer;
+
       padding: 0.65rem 1.85rem;
 
       border: 1px solid transparent;
@@ -80,8 +82,8 @@
 
       .menu_icon {
         position: relative;
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
         cursor: default;
 
         background: rgb(22, 27, 34);
@@ -120,7 +122,7 @@
           right: 0;
           left: 0;
           bottom: 0;
-          width: 18px;
+          width: 20px;
           height: 12px;
         }
 
@@ -160,7 +162,7 @@
         &.active:hover span:last-of-type,
         &:hover .button.active + div span:first-of-type,
         &:hover .button.active + div span:last-of-type {
-          width: 18px;
+          width: 20px;
         }
       }
 
@@ -176,7 +178,8 @@
         opacity: 0;
         visibility: hidden;
 
-        transform: scale(0.95);
+        transform: scale(0.85, 0.85);
+        transform-origin: top right;
 
         display: flex;
         flex-direction: column;
@@ -193,7 +196,7 @@
           opacity: 1;
           visibility: visible;
 
-          transform: scale(1);
+          transform: scale(1, 1);
         }
 
         .links {
@@ -214,7 +217,7 @@
             align-items: center;
             gap: 0.5rem;
 
-            border-radius: 0.875rem;
+            border-radius: 0.575rem;
             border: 0.8px solid transparent;
 
             cursor: default;
