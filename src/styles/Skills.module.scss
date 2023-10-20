@@ -21,6 +21,14 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 0.65rem;
+
+    .icon {
+      padding: 0.25rem;
+
+      border-radius: 0.25rem;
+
+      font-size: 1.55rem;
+    }
   }
 
   .button_wrapper {

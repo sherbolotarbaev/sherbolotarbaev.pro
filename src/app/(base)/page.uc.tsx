@@ -51,7 +51,7 @@ export default function HomeClient() {
         <div className={styles.hero}>
           <div className={styles.text}>
             <div className={styles.title}>
-              Hi, my name is <br /> <span>Sherbolot Arbaev</span> 👋🏻
+              Hi, I'm <span>Sherbolot</span> 👋🏻 <br /> Let's Create Together
             </div>
 
             <p className={styles.desc}>

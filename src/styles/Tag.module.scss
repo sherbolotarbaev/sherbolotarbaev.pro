@@ -1,6 +1,10 @@
 .tag {
   padding: 0.5rem 1rem;
 
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+
   background: linear-gradient(#0d1117, #0d1117) padding-box,
     linear-gradient(to right, #3e4755, #303742e3) border-box;
   border-radius: 3rem;
