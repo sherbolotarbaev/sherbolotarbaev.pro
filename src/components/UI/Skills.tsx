@@ -105,7 +105,9 @@ export default function Skills() {
     },
     {
       name: "Next.js",
-      icon: <NextjsSvg className={styles.icon} />,
+      icon: (
+        <NextjsSvg className={styles.icon} style={{ background: "white" }} />
+      ),
     },
     {
       name: "Redux",
