@@ -3,6 +3,7 @@
 import Tag from "@/components/UI/Tag";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
+import VoiceAppProject from "@/assets/image/VoiceApp.png";
 import SoftSkillsAIProject from "@/assets/image/SoftSkillsAI.png";
 import FamilyGalleryProject from "@/assets/image/FamilyGallery.png";
 import ChatGptProject from "@/assets/image/ChatGPT-Telegram-Project.jpg";
@@ -26,6 +27,23 @@ type ProjectType = {
 
 export default function ProjectsClient() {
   const projects: ProjectType[] = [
+    {
+      name: "Voice App with AI",
+      description:
+        "Voice App - innovative app enables voice recording and seamless interaction with artificial intelligence",
+      cover: VoiceAppProject,
+      tags: [
+        "TypeScript",
+        "Next.js",
+        "React",
+        "SCSS",
+        "Nest.js",
+        "Whisper AI",
+        "Open AI",
+      ],
+      url_github: "https://github.com/arbaevsherbolot/voice-app",
+      url: "https://voice-app-sher.vercel.app/",
+    },
     {
       name: "Soft Skills AI",
       description:
