@@ -55,7 +55,8 @@ export default function HomeClient() {
             </div>
 
             <p className={styles.desc}>
-              Software Engineer | Full Stack Developer
+              Software Engineer | Full Stack Developer | Middle Back-End
+              Developer at WEDEVX
             </p>
 
             <div className={styles.icons}>

@@ -39,7 +39,7 @@
 
       .title {
         font-size: 5.875rem;
-        font-weight: 600;
+        font-weight: 700;
         color: #ffffff;
 
         span {
@@ -170,8 +170,8 @@
     gap: 1.875rem;
 
     .logo {
-      width: 145px;
-      height: 145px;
+      width: 140px;
+      height: 140px;
 
       border-radius: 50%;
     }
@@ -182,25 +182,28 @@
 
       font-size: 1.875rem;
       font-weight: 500;
-      color: #ffffff;
+      color: #fff;
     }
 
     .text {
+      width: 100%;
+      max-width: calc(100% - 30px);
+
       line-height: 1.5;
 
-      font-size: 1.55rem;
-      font-weight: 400;
-      // color: #e0e6ec;
-      color: rgba(235, 245, 255, 0.887);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #ffffffaf;
 
       @media (max-width: 875px) {
         font-size: 1.25rem;
       }
 
       span {
-        background: -webkit-linear-gradient(-45deg, #b1baff, #6274ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        // background: -webkit-linear-gradient(-45deg, #b1baff, #6274ff);
+        // -webkit-background-clip: text;
+        // -webkit-text-fill-color: transparent;
+        color: #fff;
       }
     }
 
