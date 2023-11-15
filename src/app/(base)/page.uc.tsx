@@ -26,22 +26,22 @@ export default function HomeClient() {
     {
       name: "GitHub",
       icon: <GitHubSvg className={styles.icon} />,
-      url: "https://github.com/arbaevsherbolot",
+      url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/github`,
     },
     {
       name: "Instagram",
       icon: <InstagramSvg className={styles.icon} />,
-      url: "https://www.instagram.com/sherbolotarbaev/",
+      url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/instagram`,
     },
     {
       name: "Linkedin",
       icon: <LinkedinSvg className={styles.icon} />,
-      url: "https://www.linkedin.com/in/sherbolotarbaev/",
+      url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/linkedin`,
     },
     {
       name: "Telegram",
       icon: <TelegramSvg className={styles.icon} />,
-      url: "https://telegram.me/sherbolotarbaev",
+      url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/telegram`,
     },
   ];
 

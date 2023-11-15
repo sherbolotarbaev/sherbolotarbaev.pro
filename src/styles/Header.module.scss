@@ -18,11 +18,9 @@
   -webkit-backdrop-filter: blur(8px);
 
   .logo {
-    padding: 0.65rem;
-
-    font-size: 1rem;
-    font-weight: 500;
-    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .links {
@@ -171,7 +169,7 @@
         max-width: 256px;
 
         position: absolute;
-        top: 63px;
+        top: 65px;
         right: 8%;
         z-index: 20;
 

@@ -150,7 +150,7 @@ export default function Form() {
               )}
             </div>
 
-            <Button type="submit" load={loading}>
+            <Button type="submit" style="white" load={loading}>
               Send
             </Button>
           </div>

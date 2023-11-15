@@ -42,7 +42,7 @@ export default function ProjectsClient() {
         "Open AI",
       ],
       url_github: "https://github.com/arbaevsherbolot/voice-app",
-      url: "https://voice-app-sher.vercel.app/",
+      url: "https://jarvisgpt-v1.vercel.app/",
     },
     {
       name: "Soft Skills AI",

@@ -6,8 +6,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { ArrowSvg, GitHubSvg } from "@/assets/svg";
 import Modal from "../UI/Modal";
 import Button from "../UI/Button";
-import styles from "@/styles/Header.module.scss";
 import Dropdown from "../UI/Dropdown";
+import Image from "next/image";
+import logo from "@/assets/image/logo.png";
+import styles from "@/styles/Header.module.scss";
 
 type LinkType = {
   path: string;
@@ -87,7 +89,12 @@ export default function Header() {
     <>
       <div className={styles.navbar}>
         <Link href="/" className={styles.logo}>
-          Sher
+          <Image
+            src={logo}
+            alt="Sherbolot Arbaev - Logo"
+            width={45}
+            height={45}
+          />
         </Link>
 
         <div className={styles.links}>
@@ -107,9 +114,9 @@ export default function Header() {
           <div className={styles.buttons}>
             {/* <Dropdown menuList={menuList} title="Projects" /> */}
 
-            <Button load={false} type="button" onClick={handleOpenModal}>
+            <div className={styles.link} onClick={handleOpenModal}>
               Resume
-            </Button>
+            </div>
 
             <Button
               load={false}
