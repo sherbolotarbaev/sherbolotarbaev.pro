@@ -68,7 +68,7 @@
       .desc {
         font-size: 1.2rem;
         font-weight: 400;
-        color: rgba(235, 245, 255, 0.5);
+        color: rgb(191 199 210 / 0.8);
 
         @media (max-width: 675px) {
           font-size: 0.875rem;
@@ -193,16 +193,13 @@
 
       font-size: 1.2rem;
       font-weight: 500;
-      color: #ffffffaf;
+      color: rgb(191 199 210 / 0.8);
 
       @media (max-width: 875px) {
         font-size: 1.25rem;
       }
 
       span {
-        // background: -webkit-linear-gradient(-45deg, #b1baff, #6274ff);
-        // -webkit-background-clip: text;
-        // -webkit-text-fill-color: transparent;
         color: #fff;
       }
     }

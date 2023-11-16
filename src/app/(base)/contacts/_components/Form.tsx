@@ -86,7 +86,7 @@ export default function Form() {
                 className={
                   loading ? `${styles.input} ${styles.load}` : styles.input
                 }
-                placeholder="Name*"
+                placeholder="Name"
                 {...register("name", {
                   required: "Name is required",
                   pattern: {
@@ -108,12 +108,12 @@ export default function Form() {
                 className={
                   loading ? `${styles.input} ${styles.load}` : styles.input
                 }
-                placeholder="Email*"
+                placeholder="Email adress"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Incorrect Email",
+                    message: "Invalid Email",
                   },
                 })}
               />
@@ -150,7 +150,7 @@ export default function Form() {
               )}
             </div>
 
-            <Button type="submit" style="white" load={loading}>
+            <Button type="submit" load={loading}>
               Send
             </Button>
           </div>

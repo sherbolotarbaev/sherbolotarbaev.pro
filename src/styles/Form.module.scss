@@ -59,9 +59,9 @@
 
           outline: 3.2px solid transparent;
 
-          background: #0d1117;
-          border: 0.8px solid #dbdbde40;
-          border-radius: 0.625rem;
+          background: rgb(22 30 41 / 1);
+          border-radius: 0.875rem;
+          border: 0.8px solid rgb(46 60 81 / 1);
 
           font-size: 0.875rem;
           font-weight: 500;
@@ -70,16 +70,16 @@
           transition: 0.25s;
 
           &:hover {
-            border-color: #dbdbde7a;
+            border-color: rgb(112, 130, 157);
           }
 
           &::placeholder {
-            color: rgba(235, 245, 255, 0.342);
+            color: rgb(46 60 81 / 1);
           }
 
           &:focus {
             &::placeholder {
-              color: rgba(235, 245, 255, 0.135);
+              color: rgb(112, 130, 157);
             }
           }
 
@@ -111,9 +111,11 @@
         }
 
         .error {
+          padding: 0 0.25em;
+
           font-size: 0.8rem;
           font-weight: 400;
-          color: hsl(0, 100%, 65%);
+          color: hsl(0, 100%, 69%);
         }
       }
     }

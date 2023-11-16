@@ -12,8 +12,8 @@
   align-items: center;
   justify-content: space-between;
 
-  background: #0d1117c4;
-  border-bottom: 0.8px solid #ffffff16;
+  background: rgb(16 21 29 / 1);
+  border-bottom: 0.8px solid rgb(46 60 81 / 1);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
@@ -43,15 +43,15 @@
       transition: 0.25s;
 
       &:hover {
-        border-color: #ffffff16;
+        border-color: rgb(46 60 81 / 1);
       }
 
       &:active {
-        background: #ffffff08;
+        background: rgba(46, 60, 81, 0.378);
       }
 
       &.active {
-        border-color: #ffffff2c;
+        border-color: rgb(46 60 81 / 1);
       }
     }
 
@@ -182,8 +182,9 @@
         display: flex;
         flex-direction: column;
 
-        background: rgb(22, 27, 34);
-        border: 1px solid #ffffff16;
+        // background: rgb(22, 27, 34);
+        background: rgb(22 30 41 / 1);
+        border: 1px solid rgb(46 60 81 / 1);
         border-radius: 0.75rem;
         -webkit-box-shadow: 0px 3px 5px rgb(0 0 0 / 4%);
         box-shadow: 0px 3px 5px rgb(0 0 0 / 4%);
@@ -215,28 +216,32 @@
             align-items: center;
             gap: 0.5rem;
 
+            background: rgb(16 21 29 / 1);
             border-radius: 0.575rem;
-            border: 0.8px solid transparent;
+            border: 0.8px solid rgb(46 60 81 / 1);
 
             cursor: default;
             text-decoration: none;
 
             font-size: 0.875rem;
             font-weight: 400;
-            color: #ffffff;
+            color: rgb(191 199 210 / 0.6);
 
             transition: 0.3s;
 
             &:hover {
-              border-color: #ffffff16;
+              color: #fff;
             }
 
             &:active {
-              background: #ffffff08;
+              background: rgba(168, 127, 251, 0.37);
+              border-color: rgb(168 127 251 / 1);
             }
 
             &.active {
-              border-color: #ffffff2c;
+              background: rgba(168, 127, 251, 0.103);
+              border-color: rgb(168 127 251 / 1);
+              color: #fff;
             }
 
             .icon {

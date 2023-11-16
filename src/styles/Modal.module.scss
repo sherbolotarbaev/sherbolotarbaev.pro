@@ -46,17 +46,15 @@
     flex-direction: column;
     gap: 0.325rem;
 
-    background: rgb(22, 27, 34);
+    background: rgb(22 30 41 / 1);
     border-radius: 0.875rem;
-    border: 0.8px solid #ffffff16;
+    border: 0.8px solid rgb(46 60 81 / 1);
 
     transform: translateX(600px);
 
     @media (min-width: 985px) {
       transform: scale(0.65);
     }
-
-    transition: 0.3s;
 
     @media (max-width: 985px) {
       width: 100%;
@@ -66,6 +64,8 @@
       border-radius: 0;
       border: 0;
     }
+
+    transition: 0.3s;
 
     .head {
       width: 100%;
@@ -81,21 +81,17 @@
 
         font-size: 2.25rem;
 
-        background: rgb(27, 33, 41);
+        background: rgba(46, 60, 81, 0.291);
         border-radius: 50%;
 
         transition: 0.2s;
 
         &:hover {
-          background: rgb(32, 39, 48);
+          background: rgba(46, 60, 81, 0.642);
         }
 
         &:active {
-          background: rgb(35, 43, 53);
-        }
-
-        &.active {
-          background: rgb(26, 31, 38);
+          background: rgb(46 60 81 / 1);
         }
 
         @media (max-width: 985px) {
