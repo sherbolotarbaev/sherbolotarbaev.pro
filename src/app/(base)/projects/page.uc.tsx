@@ -28,9 +28,9 @@ type ProjectType = {
 export default function ProjectsClient() {
   const projects: ProjectType[] = [
     {
-      name: "Voice App with AI",
+      name: "Jarvis GPT AI",
       description:
-        "Voice App - innovative app enables voice recording and seamless interaction with artificial intelligence",
+        "Jarvis GPT - innovative app enables voice recording and seamless interaction with artificial intelligence",
       cover: VoiceAppProject,
       tags: [
         "TypeScript",
