@@ -8,6 +8,7 @@ export async function middleware(request: NextRequest) {
   const responseCookies = response.cookies;
   const requestCookies = request.cookies;
   const os = request.headers.get("sec-ch-ua-platform");
+  const xff = `${request.headers.get("x-forwarded-for")?.split(",")[0]}`;
 
   const socialMedia = [
     {
@@ -37,6 +38,7 @@ export async function middleware(request: NextRequest) {
 
   if (!requestCookies.get("os")) {
     responseCookies.set("os", `${os}`);
+    requestCookies.set("xff", `${xff}`);
   }
 
   return response;

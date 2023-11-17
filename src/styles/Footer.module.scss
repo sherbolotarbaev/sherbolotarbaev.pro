@@ -1,13 +1,26 @@
 .footer {
   width: 100%;
 
-  padding: 1.85rem;
+  padding: 2rem 8%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgb(16 21 29 / 1);
+  border-radius: 3.575rem 3.575rem 0 0;
+  border-top: 0.8px solid rgb(46 60 81 / 1);
+  box-shadow: 0 -10px 20px rgba(168, 127, 251, 0.103);
+
+  @media (max-width: 795px) {
+    border-radius: 2.575rem 2.575rem 0 0;
+  }
 
   .title {
-    text-align: center;
+    // text-align: center;
 
     font-size: 1rem;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.662);
+    color: #fff;
   }
 }

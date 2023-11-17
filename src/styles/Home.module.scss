@@ -87,8 +87,9 @@
           align-items: center;
           justify-content: center;
 
-          background: #393d4a3c;
+          background: rgb(16 21 29 / 1);
           border-radius: 0.575rem;
+          border: 0.8px solid rgb(46 60 81 / 1);
 
           cursor: pointer;
 
@@ -180,9 +181,13 @@
       text-align: center;
       text-decoration: underline;
 
-      font-size: 1.875rem;
+      font-size: 2.075rem;
       font-weight: 500;
       color: #fff;
+
+      @media (max-width: 875px) {
+        font-size: 1.875rem;
+      }
     }
 
     .text {
@@ -191,7 +196,7 @@
 
       line-height: 1.5;
 
-      font-size: 1.2rem;
+      font-size: 1.65rem;
       font-weight: 500;
       color: rgb(191 199 210 / 0.8);
 

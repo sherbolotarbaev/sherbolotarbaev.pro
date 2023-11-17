@@ -9,9 +9,13 @@
     text-align: center;
     text-decoration: underline;
 
-    font-size: 1.875rem;
+    font-size: 2.075rem;
     font-weight: 500;
-    color: #ffffff;
+    color: #fff;
+
+    @media (max-width: 875px) {
+      font-size: 1.875rem;
+    }
   }
 
   .skills {
