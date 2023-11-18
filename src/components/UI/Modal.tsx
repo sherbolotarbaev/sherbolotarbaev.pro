@@ -5,11 +5,12 @@ import { CloseSvg } from "@/assets/svg";
 import styles from "@/styles/Modal.module.scss";
 
 interface props {
+  title?: string;
   children: React.ReactNode;
   open: boolean;
 }
 
-export default function Modal({ children, open }: props) {
+export default function Modal({ title, children, open }: props) {
   const [isClose, setIsClose] = useState<boolean>(true);
   const close = isClose ? open : !open;
 
@@ -41,6 +42,8 @@ export default function Modal({ children, open }: props) {
         onClick={() => setIsClose(!isClose)}>
         <div className={styles.box} onClick={(e) => e.stopPropagation()}>
           <div className={styles.head}>
+            {title && <h3 className={styles.title}>{title}</h3>}
+
             <CloseSvg
               className={styles.close}
               onClick={() => setIsClose(!isClose)}

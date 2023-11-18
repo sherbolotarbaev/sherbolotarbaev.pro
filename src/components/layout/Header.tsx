@@ -203,7 +203,7 @@ export default function Header() {
         </div>
       </div>
 
-      <Modal open={isOpenModal}>
+      <Modal open={isOpenModal} title="Sherbolot Arbaev - Resume">
         <Image
           src={cv}
           alt="Sherbolot Arbaev - Resume"
