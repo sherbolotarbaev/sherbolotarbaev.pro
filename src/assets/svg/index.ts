@@ -31,3 +31,5 @@ export { default as AwsSvg } from "./aws.svg";
 export { default as VercelSvg } from "./vercel.svg";
 export { default as NetlifySvg } from "./netlify.svg";
 export { default as HerokuSvg } from "./heroku.svg";
+export { default as FramerMotionSvg } from "./framer-motion.svg";
+export { default as ThreeJSSvg } from "./threejs.svg";

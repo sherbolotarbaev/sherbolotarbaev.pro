@@ -1,27 +1,31 @@
 .tag {
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
 
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.55rem;
 
   background: linear-gradient(#0d1117, #0d1117) padding-box,
     linear-gradient(to right, #3e4755, #303742e3) border-box;
   border-radius: 3rem;
   border: 1px solid transparent;
 
-  font-size: 0.795rem;
+  font-size: 0.895rem;
   font-weight: 500;
   color: #fff;
 
   cursor: pointer;
 
   @media (max-width: 875px) {
+    gap: 0.25rem;
+
+    padding: 0.5rem 0.8rem;
+
     font-size: 0.655rem;
   }
 
   @media (max-width: 374px) {
-    padding: 0.35rem 0.8rem;
+    padding: 0.35rem 0.6rem;
 
     font-size: 0.605rem;
   }

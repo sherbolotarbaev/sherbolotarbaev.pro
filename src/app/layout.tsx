@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { siteConfig } from "../../config/site";
 import { Inter } from "next/font/google";
 import RootLayoutClient from "./layout.uc";
+import StarsCanvas from "@/components/UI/Star";
 import "@/styles/global.scss";
 
 interface Props {
@@ -8,8 +10,11 @@ interface Props {
 }
 
 export const metadata: Metadata = {
-  title: "Sherbolot Arbaev",
-  description: "Sherbolot Arbaev - Software Engineer | Full Stack Developer",
+  title: {
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
 };
 
 const font = Inter({ subsets: ["latin"] });
@@ -19,6 +24,7 @@ export default async function RootLayout({ children }: Props) {
     <html lang="en">
       <body className={font.className}>
         <RootLayoutClient>{children}</RootLayoutClient>
+        <StarsCanvas />
       </body>
     </html>
   );

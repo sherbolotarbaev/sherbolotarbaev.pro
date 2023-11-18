@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Skills from "@/components/UI/Skills";
+import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 import { Edu_TAS_Beginner, Mukta } from "next/font/google";
 import logo from "@/assets/image/emoji.jpeg";
 import {
@@ -22,6 +23,11 @@ const font = Mukta({ subsets: ["latin-ext"], weight: "400" });
 const font2 = Edu_TAS_Beginner({ subsets: ["latin"] });
 
 export default function HomeClient() {
+  const Skills = dynamic(() => import("@/components/UI/Skills"), {
+    ssr: false,
+    loading: () => <p>Loading...</p>,
+  });
+
   const icons: IconType[] = [
     {
       name: "GitHub",
@@ -45,35 +51,71 @@ export default function HomeClient() {
     },
   ];
 
+  const heroVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const iconVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   return (
     <>
       <div className={styles.page_wrapper}>
-        <div className={styles.hero}>
-          <div className={styles.text}>
-            <div className={styles.title}>
-              Hi, I'm <span>Sherbolot</span> 👋🏻 <br /> Let's Create Together
+        <motion.div
+          className={styles.hero}
+          variants={heroVariants}
+          initial="hidden"
+          animate="visible">
+          <div className={styles.hero}>
+            <div className={styles.text}>
+              <motion.div
+                className={styles.title}
+                variants={titleVariants}
+                initial="hidden"
+                animate="visible">
+                Hi, I'm <span>Sherbolot</span> 👋🏻 <br /> Let's Create Together
+              </motion.div>
+
+              <p className={styles.desc}>
+                Software Engineer | Full Stack Developer | Middle Back-End
+                Developer at WEDEVX
+              </p>
+
+              <motion.div className={styles.icons}>
+                {icons.map((icon, idx) => (
+                  <motion.a
+                    key={idx}
+                    href={icon.url}
+                    target="_blank"
+                    className={styles.icon_container}
+                    variants={iconVariants}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: idx * 0.2 }}>
+                    {icon.icon}
+                  </motion.a>
+                ))}
+              </motion.div>
             </div>
 
-            <p className={styles.desc}>
-              Software Engineer | Full Stack Developer | Middle Back-End
-              Developer at WEDEVX
-            </p>
-
-            <div className={styles.icons}>
-              {icons.map((icon, idx) => (
-                <a
-                  key={idx}
-                  href={icon.url}
-                  target="_blank"
-                  className={styles.icon_container}>
-                  {icon.icon}
-                </a>
-              ))}
-            </div>
+            <div className={styles.large_title}>Portfolio</div>
           </div>
-
-          <div className={styles.large_title}>Portfolio</div>
-        </div>
+        </motion.div>
 
         <div className={styles.content}>
           <Image

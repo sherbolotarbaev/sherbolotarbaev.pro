@@ -9,6 +9,7 @@ import Button from "../UI/Button";
 import Dropdown from "../UI/Dropdown";
 import Image from "next/image";
 import logo from "@/assets/image/logo.png";
+import cv from "@/assets/image/Sherbolot Arbaev - Resume.png";
 import styles from "@/styles/Header.module.scss";
 
 type LinkType = {
@@ -18,7 +19,7 @@ type LinkType = {
 
 type ListItem = {
   name: string;
-  path: string;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 };
 
 export default function Header() {
@@ -29,6 +30,13 @@ export default function Header() {
 
   const handleOpenModal = () => {
     setIsOpenModal(!isOpenModal);
+  };
+
+  const handleOpenCV = () => {
+    window?.open(
+      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/Sherbolot Arbaev - Resume.pdf`,
+      "_target"
+    );
   };
 
   const handleOpenBurgerMenu = () => {
@@ -68,20 +76,12 @@ export default function Header() {
 
   const menuList: ListItem[] = [
     {
-      name: "All Projects",
-      path: "/projects",
+      name: "Quick View",
+      onClick: handleOpenModal,
     },
     {
-      name: "Front-End",
-      path: "/projects/front-end",
-    },
-    {
-      name: "Back-End",
-      path: "/projects/back-end",
-    },
-    {
-      name: "Full-Stack",
-      path: "/projects/full-stack",
+      name: "Download",
+      onClick: handleOpenCV,
     },
   ];
 
@@ -112,11 +112,7 @@ export default function Header() {
           ))}
 
           <div className={styles.buttons}>
-            {/* <Dropdown menuList={menuList} title="Projects" /> */}
-
-            <div className={styles.link} onClick={handleOpenModal}>
-              Resume
-            </div>
+            <Dropdown menuList={menuList} title="Resume" />
 
             <Button
               load={false}
@@ -174,8 +170,20 @@ export default function Header() {
               ))}
 
               <div className={styles.buttons}>
-                <Button load={false} type="button" onClick={handleOpenModal}>
-                  Resume
+                <Button
+                  load={false}
+                  type="button"
+                  style="item"
+                  onClick={handleOpenModal}>
+                  Quick View CV
+                </Button>
+
+                <Button
+                  load={false}
+                  style="item"
+                  type="button"
+                  onClick={handleOpenCV}>
+                  Download CV
                 </Button>
 
                 <Button
@@ -195,7 +203,19 @@ export default function Header() {
         </div>
       </div>
 
-      <Modal open={isOpenModal}>CV in the process of changing...</Modal>
+      <Modal open={isOpenModal}>
+        <Image
+          src={cv}
+          alt="Sherbolot Arbaev - Resume"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+          width={700}
+          height={850}
+        />
+      </Modal>
     </>
   );
 }

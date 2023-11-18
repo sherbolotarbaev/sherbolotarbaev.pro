@@ -179,29 +179,35 @@
 
     .title {
       text-align: center;
-      text-decoration: underline;
 
-      font-size: 2.075rem;
+      font-size: 3.075rem;
       font-weight: 500;
       color: #fff;
 
       @media (max-width: 875px) {
+        font-size: 2.075rem;
+      }
+
+      @media (max-width: 475px) {
         font-size: 1.875rem;
       }
     }
 
     .text {
       width: 100%;
-      max-width: calc(100% - 30px);
 
       line-height: 1.5;
 
-      font-size: 1.65rem;
+      font-size: 3.05rem;
       font-weight: 500;
       color: rgb(191 199 210 / 0.8);
 
       @media (max-width: 875px) {
-        font-size: 1.25rem;
+        font-size: 2rem;
+      }
+
+      @media (max-width: 475px) {
+        font-size: 1.475rem;
       }
 
       span {

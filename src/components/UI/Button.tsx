@@ -21,6 +21,7 @@ interface Props {
 
 type TStyles = {
   white: string;
+  item: string;
 };
 
 type TTypes = {

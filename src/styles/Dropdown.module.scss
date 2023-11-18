@@ -6,21 +6,21 @@
 
   padding: 0.65rem 1.85rem;
 
+  border: 1px solid transparent;
   border-radius: 0.875rem;
-  border: 0.8px solid transparent;
 
-  transition: 0.3s;
+  transition: 0.25s;
 
   &:hover {
-    border-color: #ffffff16;
+    border-color: rgb(46 60 81 / 1);
   }
 
   &:active {
-    background: #ffffff08;
+    background: rgba(46, 60, 81, 0.378);
   }
 
   &.active {
-    border-color: #ffffff2c;
+    border-color: rgb(46 60 81 / 1);
   }
 
   .title {
@@ -54,9 +54,11 @@
     transform: translateX(-50%);
     z-index: 1;
 
-    background: rgb(27, 31, 35);
-    border: 0.8px solid #dbdbde40;
-    border-radius: 0.875rem;
+    background: rgb(22 30 41 / 1);
+    border: 1px solid rgb(46 60 81 / 1);
+    border-radius: 0.75rem;
+    -webkit-box-shadow: 0px 3px 5px rgb(0 0 0 / 4%);
+    box-shadow: 0px 3px 5px rgb(0 0 0 / 4%);
 
     overflow: hidden;
 
@@ -79,7 +81,7 @@
         flex-direction: column;
         gap: 0.035rem;
 
-        background: #dbdbde22;
+        background: rgb(46 60 81 / 1);
 
         .item {
           width: 100%;
@@ -90,7 +92,7 @@
           flex-direction: column;
           gap: 0.2rem;
 
-          background: rgb(20, 23, 26);
+          background: rgb(22 30 41 / 1);
 
           text-decoration: none;
           line-height: 1.5;
@@ -104,7 +106,7 @@
           transition: 0.25s;
 
           &:hover {
-            background: rgb(24, 27, 31);
+            background: rgb(16 21 29 / 1);
           }
 
           &:active {

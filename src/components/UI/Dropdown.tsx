@@ -1,12 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { ArrowSvg } from "@/assets/svg";
 import styles from "@/styles/Dropdown.module.scss";
 
 type ListItem = {
   name: string;
-  path: string;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 };
 
 interface Props {
@@ -26,9 +25,12 @@ export default function Dropdown({ menuList, title }: Props) {
           <div className={styles.menu}>
             <div className={styles.list}>
               {menuList.map((item, idx) => (
-                <Link key={idx} className={styles.item} href={item.path}>
+                <div
+                  key={idx}
+                  className={styles.item}
+                  onClick={(event) => item.onClick && item.onClick(event)}>
                   {item.name}
-                </Link>
+                </div>
               ))}
             </div>
           </div>

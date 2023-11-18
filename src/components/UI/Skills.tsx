@@ -9,6 +9,7 @@ import {
   CssSvg,
   DockerSvg,
   FastifySvg,
+  FramerMotionSvg,
   GitSvg,
   HerokuSvg,
   HtmlSvg,
@@ -27,6 +28,7 @@ import {
   SassSvg,
   SupabaseSvg,
   TailwindSvg,
+  ThreeJSSvg,
   TypescriptSvg,
   VercelSvg,
 } from "@/assets/svg";
@@ -156,6 +158,14 @@ export default function Skills() {
     {
       name: "Heroku",
       icon: <HerokuSvg className={styles.icon} />,
+    },
+    {
+      name: "Framer Motion",
+      icon: <FramerMotionSvg />,
+    },
+    {
+      name: "Three.js",
+      icon: <ThreeJSSvg />,
     },
   ];
 

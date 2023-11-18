@@ -182,7 +182,6 @@
         display: flex;
         flex-direction: column;
 
-        // background: rgb(22, 27, 34);
         background: rgb(22 30 41 / 1);
         border: 1px solid rgb(46 60 81 / 1);
         border-radius: 0.75rem;
@@ -230,6 +229,7 @@
             transition: 0.3s;
 
             &:hover {
+              background: rgb(23, 29, 40);
               color: #fff;
             }
 

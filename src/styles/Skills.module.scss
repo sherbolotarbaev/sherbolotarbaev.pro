@@ -7,13 +7,16 @@
 
   .title {
     text-align: center;
-    text-decoration: underline;
 
-    font-size: 2.075rem;
+    font-size: 3.075rem;
     font-weight: 500;
     color: #fff;
 
     @media (max-width: 875px) {
+      font-size: 2.075rem;
+    }
+
+    @media (max-width: 475px) {
       font-size: 1.875rem;
     }
   }
@@ -26,12 +29,20 @@
     align-items: center;
     gap: 0.65rem;
 
+    @media (max-width: 875px) {
+      gap: 0.45rem;
+    }
+
     .icon {
       padding: 0.25rem;
 
       border-radius: 0.25rem;
 
-      font-size: 1.55rem;
+      font-size: 1.6rem;
+
+      @media (max-width: 875px) {
+        font-size: 1.475rem;
+      }
     }
   }
 
