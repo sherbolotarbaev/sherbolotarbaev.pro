@@ -1,7 +1,5 @@
 "use client";
 
-import { Edu_TAS_Beginner } from "next/font/google";
-import Button from "./Button";
 import Tag from "./Tag";
 import {
   AwsSvg,
@@ -38,8 +36,6 @@ type SkillType = {
   name: string;
   icon: React.ReactElement;
 };
-
-const font = Edu_TAS_Beginner({ subsets: ["latin"] });
 
 export default function Skills() {
   const skills: SkillType[] = [
@@ -172,9 +168,7 @@ export default function Skills() {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.title} style={font.style}>
-          My Skills:
-        </div>
+        <div className={styles.title}>Tech Skills:</div>
 
         <div className={styles.skills}>
           {skills.map((skill, idx) => (
@@ -182,16 +176,6 @@ export default function Skills() {
               {skill.icon} {skill.name}
             </Tag>
           ))}
-        </div>
-
-        <div className={styles.button_wrapper}>
-          <Button
-            load={false}
-            type="button"
-            style="white"
-            redirect={{ url: "/contacts" }}>
-            Contact Me
-          </Button>
         </div>
       </div>
     </>

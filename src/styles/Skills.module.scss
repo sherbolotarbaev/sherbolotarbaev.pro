@@ -6,11 +6,13 @@
   gap: 1.875rem;
 
   .title {
-    text-align: center;
-
-    font-size: 3.075rem;
+    font-size: 2.175rem;
     font-weight: 500;
     color: #fff;
+
+    @media (max-width: 1025px) {
+      text-align: center;
+    }
 
     @media (max-width: 875px) {
       font-size: 2.075rem;
@@ -38,15 +40,11 @@
 
       border-radius: 0.25rem;
 
-      font-size: 1.6rem;
+      font-size: 1.5rem;
 
       @media (max-width: 875px) {
         font-size: 1.475rem;
       }
     }
-  }
-
-  .button_wrapper {
-    max-width: 120px;
   }
 }

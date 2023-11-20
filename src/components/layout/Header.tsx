@@ -92,9 +92,11 @@ export default function Header() {
           <Image
             src={logo}
             alt="Sherbolot Arbaev - Logo"
-            width={45}
-            height={45}
+            width={35}
+            height={35}
           />
+
+          <span>Sherbolot Arbaev</span>
         </Link>
 
         <div className={styles.links}>

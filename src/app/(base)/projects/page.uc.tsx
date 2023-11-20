@@ -2,6 +2,8 @@
 
 import Tag from "@/components/UI/Tag";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { Suspense } from "react";
 import type { StaticImageData } from "next/image";
 import VoiceAppProject from "@/assets/image/VoiceApp.png";
 import SoftSkillsAIProject from "@/assets/image/SoftSkillsAI.png";
@@ -158,53 +160,71 @@ export default function ProjectsClient() {
     },
   ];
 
+  const heroVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <div className={styles.page_wrapper}>
-      <div className={styles.hero}>
+      <motion.div
+        className={styles.hero}
+        variants={heroVariants}
+        initial="hidden"
+        animate="visible">
         <div className={styles.title}>Projects 🚀</div>
 
         <div className={styles.large_title}>Projects</div>
-      </div>
+      </motion.div>
 
       <div className={styles.content}>
         <div className={styles.projects}>
           {projects.map((project, idx) => (
-            <div key={idx} className={styles.project_container}>
-              <div className={styles.icons}>
-                <a
-                  className={styles.icon_container}
-                  href={project.url_github}
-                  target="_blank">
-                  <GitHubSvg className={styles.icon} />
-                </a>
+            <Suspense fallback={<>Loading...</>} key={idx}>
+              <div className={styles.project_container}>
+                <div className={styles.icons}>
+                  <a
+                    className={styles.icon_container}
+                    href={project.url_github}
+                    target="_blank">
+                    <GitHubSvg className={styles.icon} />
+                  </a>
 
-                <a
-                  className={styles.icon_container}
-                  href={project.url}
-                  target="_blank">
-                  <LinkSvg className={styles.icon} />
-                </a>
-              </div>
-
-              <Image
-                className={styles.cover}
-                src={project.cover}
-                alt={project.name}
-              />
-
-              <div className={styles.info}>
-                <div className={styles.text}>
-                  <h3 className={styles.title}>{project.name}</h3>
-
-                  <p className={styles.desc}>{project.description}</p>
+                  <a
+                    className={styles.icon_container}
+                    href={project.url}
+                    target="_blank">
+                    <LinkSvg className={styles.icon} />
+                  </a>
                 </div>
-                <div className={styles.tags}>
-                  {project.tags?.map((tag, idx) => (
-                    <Tag key={idx}>{tag}</Tag>
-                  ))}
+
+                <Image
+                  className={styles.cover}
+                  src={project.cover}
+                  alt={project.name}
+                />
+
+                <div className={styles.info}>
+                  <div className={styles.text}>
+                    <h3 className={styles.title}>{project.name}</h3>
+
+                    <p className={styles.desc}>{project.description}</p>
+                  </div>
+                  <div className={styles.tags}>
+                    {project.tags?.map((tag, idx) => (
+                      <Tag key={idx}>{tag}</Tag>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Suspense>
           ))}
         </div>
       </div>

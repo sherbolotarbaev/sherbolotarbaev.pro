@@ -91,7 +91,6 @@
 
     .projects {
       display: flex;
-      // align-items: center;
       justify-content: center;
       flex-wrap: wrap;
       gap: 2.875rem;
@@ -100,8 +99,8 @@
 
       .project_container {
         width: 100%;
-        height: 380px;
-        max-width: 550px;
+        height: 480px;
+        max-width: 950px;
 
         overflow: hidden;
 
@@ -115,6 +114,11 @@
         border-radius: 1.4rem;
 
         transition: 0.25s;
+
+        @media (max-width: 875px) {
+          height: 380px;
+          max-width: 660px;
+        }
 
         @media (max-width: 675px) {
           &:after {
@@ -145,7 +149,7 @@
               top: 0;
               z-index: 5;
 
-              background: linear-gradient(#0d111728, #0d1117);
+              background: linear-gradient(#0d1117c3, #0d1117);
             }
 
             .info,
@@ -253,7 +257,7 @@
             .desc {
               font-size: 0.875rem;
               font-weight: 400;
-              color: rgba(235, 245, 255, 0.5);
+              color: rgb(191 199 210 / 0.8);
 
               @media (max-width: 875px) {
                 font-size: 0.765rem;

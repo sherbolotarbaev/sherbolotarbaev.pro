@@ -1,5 +1,5 @@
 .tag {
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 0.8rem;
 
   display: flex;
   align-items: center;
@@ -10,16 +10,14 @@
   border-radius: 3rem;
   border: 1px solid transparent;
 
-  font-size: 0.895rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: #fff;
 
   cursor: pointer;
 
   @media (max-width: 875px) {
-    gap: 0.25rem;
-
-    padding: 0.5rem 0.8rem;
+    gap: 0.35rem;
 
     font-size: 0.655rem;
   }
