@@ -1,6 +1,8 @@
 "use client";
 
+import React, { useEffect, useRef, useState } from "react";
 import Tag from "./Tag";
+import { motion } from "framer-motion";
 import {
   AwsSvg,
   ChakrauiSvg,
@@ -38,6 +40,9 @@ type SkillType = {
 };
 
 export default function Skills() {
+  const skillsRef = useRef<HTMLDivElement | null>(null);
+  const [showSkills, setShowSkills] = useState<boolean>(false);
+
   const skills: SkillType[] = [
     {
       name: "JavaScript",
@@ -165,18 +170,51 @@ export default function Skills() {
     },
   ];
 
+  const skillsVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const skillsSection = skillsRef.current;
+
+      if (skillsSection) {
+        const skillsSectionRect = skillsSection.getBoundingClientRect();
+        const topVisible = skillsSectionRect.top >= 0;
+        const bottomVisible = skillsSectionRect.bottom <= window.innerHeight;
+        const isVisible = topVisible && bottomVisible;
+
+        setShowSkills(isVisible);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} id="skills" ref={skillsRef}>
         <div className={styles.title}>Tech Skills:</div>
 
-        <div className={styles.skills}>
+        <motion.div className={styles.skills}>
           {skills.map((skill, idx) => (
-            <Tag key={idx}>
-              {skill.icon} {skill.name}
-            </Tag>
+            <motion.div
+              key={idx}
+              variants={skillsVariants}
+              initial="hidden"
+              animate={showSkills ? "visible" : "hidden"}
+              transition={{ delay: idx * 0.1 }}>
+              <Tag>
+                {skill.icon} {skill.name}
+              </Tag>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </>
   );

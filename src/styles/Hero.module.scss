@@ -1,0 +1,160 @@
+.hero {
+  width: 100%;
+  min-height: 580px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  @media (max-width: 675px) {
+    min-height: 400px;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    line-height: 1.5;
+
+    .title {
+      font-size: 5.875rem;
+      font-weight: 700;
+      color: #ffffff;
+
+      span {
+        background: -webkit-linear-gradient(-45deg, #a259ff, #ae88fe);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      @media (max-width: 1205px) {
+        font-size: 4.875rem;
+      }
+
+      @media (max-width: 875px) {
+        font-size: 3.075rem;
+      }
+
+      @media (max-width: 675px) {
+        font-size: 2.945rem;
+      }
+
+      @media (max-width: 515px) {
+        font-size: 2.105rem;
+      }
+    }
+
+    .desc {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: rgb(191 199 210 / 0.8);
+
+      @media (max-width: 675px) {
+        font-size: 0.875rem;
+      }
+    }
+
+    .buttons_wrapper {
+      max-width: 600px;
+
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+
+      @media (max-width: 515px) {
+        max-width: 100%;
+
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .icons {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+
+        .icon_container {
+          padding: 0.35rem;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          background: rgb(16 21 29 / 1);
+          border-radius: 0.575rem;
+          border: 0.8px solid rgb(46 60 81 / 1);
+
+          cursor: pointer;
+
+          @media (max-width: 675px) {
+            cursor: default;
+          }
+
+          transition: 0.25s;
+
+          &:hover {
+            background: #393d4ae5;
+          }
+
+          &:active {
+            background: #404452e5;
+          }
+        }
+
+        .icon {
+          cursor: pointer;
+
+          font-size: 1.8rem;
+
+          @media (max-width: 675px) {
+            cursor: default;
+
+            font-size: 1.55rem;
+          }
+        }
+      }
+    }
+  }
+
+  .large_title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+
+    font-size: 320px;
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 0.8px #ffffff18;
+
+    @media (max-width: 1365px) {
+      font-size: 285px;
+    }
+
+    @media (max-width: 1205px) {
+      font-size: 205px;
+    }
+
+    @media (max-width: 875px) {
+      top: 40%;
+
+      font-size: 165px;
+    }
+
+    @media (max-width: 675px) {
+      font-size: 125px;
+    }
+
+    @media (max-width: 515px) {
+      font-size: 105px;
+    }
+
+    @media (max-width: 425px) {
+      font-size: 90px;
+    }
+  }
+}

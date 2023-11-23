@@ -65,6 +65,14 @@ export default function Header() {
 
   const links: LinkType[] = [
     {
+      path: "/#about",
+      name: "About",
+    },
+    {
+      path: "/#skills",
+      name: "Skills",
+    },
+    {
       path: "/contacts",
       name: "Contacts",
     },
@@ -113,9 +121,9 @@ export default function Header() {
             </Link>
           ))}
 
-          <div className={styles.buttons}>
-            <Dropdown menuList={menuList} title="Resume" />
+          <Dropdown menuList={menuList} title="Resume" />
 
+          <div className={styles.buttons}>
             <Button
               load={false}
               type="button"
