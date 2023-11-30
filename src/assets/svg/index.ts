@@ -33,3 +33,4 @@ export { default as NetlifySvg } from "./netlify.svg";
 export { default as HerokuSvg } from "./heroku.svg";
 export { default as FramerMotionSvg } from "./framer-motion.svg";
 export { default as ThreeJSSvg } from "./threejs.svg";
+export { default as UserSvg } from "./user.svg";
