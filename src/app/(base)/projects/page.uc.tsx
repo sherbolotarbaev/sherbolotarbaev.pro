@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Suspense } from "react";
 import type { StaticImageData } from "next/image";
-import VoiceAppProject from "@/assets/image/VoiceApp.png";
+import JarvisGPTProject from "@/assets/image/JARVIS_GPT.png";
 import SoftSkillsAIProject from "@/assets/image/SoftSkillsAI.png";
 import FamilyGalleryProject from "@/assets/image/FamilyGallery.png";
 import ChatGptProject from "@/assets/image/ChatGPT-Telegram-Project.jpg";
@@ -30,10 +30,10 @@ type ProjectType = {
 export default function ProjectsClient() {
   const projects: ProjectType[] = [
     {
-      name: "Jarvis GPT AI",
+      name: "Jarvis GPT",
       description:
         "Jarvis GPT - innovative app enables voice recording and seamless interaction with artificial intelligence",
-      cover: VoiceAppProject,
+      cover: JarvisGPTProject,
       tags: [
         "TypeScript",
         "Next.js",
