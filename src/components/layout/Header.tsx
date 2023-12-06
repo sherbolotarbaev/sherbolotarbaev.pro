@@ -42,7 +42,7 @@ export default function Header() {
 
   const handleOpenCV = () => {
     window?.open(
-      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/Sherbolot Arbaev - Resume.pdf`,
+      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/Sherbolot_Arbaev.pdf`,
       "_target"
     );
   };
