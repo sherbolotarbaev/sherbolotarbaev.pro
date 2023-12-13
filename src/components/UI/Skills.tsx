@@ -185,7 +185,9 @@ export default function Skills() {
         const bottomVisible = skillsSectionRect.bottom <= window.innerHeight;
         const isVisible = topVisible && bottomVisible;
 
-        setShowSkills(isVisible);
+        if (isVisible) {
+          setShowSkills(true);
+        }
       }
     };
 

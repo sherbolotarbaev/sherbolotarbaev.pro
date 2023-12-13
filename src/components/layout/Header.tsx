@@ -3,8 +3,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import * as API from "@/../api";
-import { ArrowSvg, GitHubSvg, UserSvg } from "@/assets/svg";
+import { ArrowSvg, GitHubSvg } from "@/assets/svg";
 import Modal from "../UI/Modal";
 import Button from "../UI/Button";
 import Dropdown from "../UI/Dropdown";
@@ -29,15 +28,8 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
-  const [followers, setFollowers] = useState<number>(0);
-
   const handleOpenModal = () => {
     setIsOpenModal(!isOpenModal);
-  };
-
-  const getFollowers = async () => {
-    const data = await API.github.getMe();
-    setFollowers(data.followers);
   };
 
   const handleOpenCV = () => {
@@ -70,10 +62,6 @@ export default function Header() {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, [isOpen]);
-
-  useEffect(() => {
-    getFollowers();
-  }, []);
 
   const links: LinkType[] = [
     {
@@ -147,14 +135,6 @@ export default function Header() {
               <GitHubSvg style={{ fill: "#1e1e1d", fontSize: "1.2rem" }} />
               GitHub
             </Button>
-
-            <span>
-              <UserSvg
-                style={{ fill: "rgb(191 199 210 / 0.8)", fontSize: "1.1rem" }}
-              />
-
-              {followers}
-            </span>
           </div>
         </div>
 
