@@ -1,28 +1,49 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Hero from "@/components/UI/Hero";
-import styles from "@/styles/Home.module.scss";
+import styles from "@/components/styles/page.module.scss";
 
-const About = dynamic(() => import("@/components/UI/About"), {
+const Hero = dynamic(() => import("@/components/ui/hero"), {
   ssr: false,
-  loading: () => <span className={styles.span}>Loading...</span>,
+  loading: () => <div className={styles.load} />,
 });
 
-const Skills = dynamic(() => import("@/components/UI/Skills"), {
+const Skills = dynamic(() => import("@/components/ui/skills"), {
   ssr: false,
-  loading: () => <span className={styles.span}>Loading...</span>,
+  loading: () => <div className={styles.load} />,
+});
+
+const About = dynamic(() => import("@/components/ui/about"), {
+  ssr: false,
+  loading: () => <div className={styles.load} />,
+});
+
+const Experience = dynamic(() => import("@/components/ui/experience"), {
+  ssr: false,
+  loading: () => <div className={styles.load} />,
 });
 
 export default function HomeClient() {
   return (
     <>
+      <div className="space"></div>
+
       <div className={styles.page_wrapper}>
-        <Hero />
+        <div className={styles.content} style={{ minHeight: "60vh" }}>
+          <Hero />
+        </div>
 
-        <About />
+        <div className={styles.content} style={{ minHeight: "20vh" }}>
+          <Skills />
+        </div>
 
-        <Skills />
+        <div className={styles.content} style={{ minHeight: "40vh" }}>
+          <About />
+        </div>
+
+        <div className={styles.content} style={{ minHeight: "60vh" }}>
+          <Experience />
+        </div>
       </div>
     </>
   );

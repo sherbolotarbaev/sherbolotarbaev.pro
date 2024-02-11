@@ -1,8 +1,8 @@
 "use client";
 
+import NavBar from "@/components/ui/navbar";
+import Footer from "@/components/ui/footer";
 import { Toaster } from "sonner";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 
 interface Props {
   children: React.ReactNode;
@@ -11,15 +11,15 @@ interface Props {
 export default function RootLayoutClient({ children }: Props) {
   return (
     <>
-      <Header />
+      <NavBar />
 
       <main
         style={{
           width: "100%",
-          minHeight: "100vh",
           flex: "1 1 auto",
         }}>
         {children}
+
         <Toaster theme="light" />
       </main>
 

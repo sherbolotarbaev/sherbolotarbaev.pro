@@ -1,0 +1,32 @@
+{
+  "loginForm": {
+    "button": "Log In",
+    "link": "Forgot password?"
+  },
+
+  "forgotPasswordForm": {
+    "text": {
+      "title": "Forgot Password",
+      "info": "Enter the email address you used when you joined and we will send you a link to reset your password."
+    },
+    "button": "Send reset link",
+    "link": "Log in ?"
+  },
+
+  "resetPasswordForm": {
+    "text": {
+      "title": "Reset Password"
+    },
+    "button": "Reset",
+    "link": "Send link again?"
+  },
+
+  "verificationForm": {
+    "text": {
+      "title": "Email verification",
+      "info": "We just sent you a verification code. <br /> Please check your inbox."
+    },
+    "button": "Continue",
+    "link": "Log in ?"
+  }
+}

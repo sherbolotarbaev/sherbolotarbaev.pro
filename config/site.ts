@@ -1,4 +1,5 @@
 export const siteConfig = {
   name: "Sherbolot Arbaev",
-  description: "Sherbolot Arbaev - Software Engineer | Full Stack Developer",
+  description: "Software Development Engineer | Full Stack Developer",
+  url: "https://next-sher.vercel.app",
 };

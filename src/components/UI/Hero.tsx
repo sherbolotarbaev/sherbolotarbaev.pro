@@ -1,131 +1,89 @@
 "use client";
 
+import Image from "next/image";
+import { Prompt } from "next/font/google";
 import { motion } from "framer-motion";
-import Button from "@/components/UI/Button";
-import {
-  GitHubSvg,
-  InstagramSvg,
-  LinkedinSvg,
-  TelegramSvg,
-} from "@/assets/svg";
-import styles from "@/styles/Hero.module.scss";
+import Button from "./button";
+import logo from "@/../public/emoji.png";
+import text from "@/lib/data/hero.json";
+import { LinkExternalSvg } from "@/lib/assets/svg";
+import styles from "../styles/hero.module.scss";
 
-type IconType = {
-  name: string;
-  icon: React.ReactElement;
-  url: string;
+const heroAnimation = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
 };
 
+const titleAnimation = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const font = Prompt({ subsets: ["latin"], weight: "600" });
+const font2 = Prompt({ subsets: ["latin"], weight: "300" });
+
 export default function Hero() {
-  const handleOpenCV = () => {
-    window?.open(
-      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/Sherbolot Arbaev - Resume.pdf`,
-      "_target"
-    );
-  };
-
-  const icons: IconType[] = [
-    {
-      name: "GitHub",
-      icon: <GitHubSvg className={styles.icon} />,
-      url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/github`,
-    },
-    {
-      name: "Instagram",
-      icon: <InstagramSvg className={styles.icon} />,
-      url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/instagram`,
-    },
-    {
-      name: "Linkedin",
-      icon: <LinkedinSvg className={styles.icon} />,
-      url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/linkedin`,
-    },
-    {
-      name: "Telegram",
-      icon: <TelegramSvg className={styles.icon} />,
-      url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/telegram`,
-    },
-  ];
-
-  const heroVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  const iconVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 },
-  };
-
   return (
     <motion.div
       className={styles.hero}
-      variants={heroVariants}
+      variants={heroAnimation}
       initial="hidden"
       animate="visible">
-      <div className={styles.hero}>
+      <div className={styles.content}>
         <div className={styles.text}>
           <motion.div
             className={styles.title}
-            variants={titleVariants}
+            variants={titleAnimation}
             initial="hidden"
+            style={font.style}
             animate="visible">
-            Hi, I'm <span>Sherbolot</span> 👋🏻 <br /> Let's Create Together
+            <span>{text.title}</span> 👋
           </motion.div>
 
-          <p className={styles.desc}>
-            Software Engineer | Full Stack Developer | Middle Back-End Developer
-            at WEDEVX
+          <p className={styles.desc} style={font2.style}>
+            {text.description}
           </p>
-
-          <div className={styles.buttons_wrapper}>
-            <Button
-              load={false}
-              type="button"
-              style="white"
-              onClick={handleOpenCV}>
-              Download CV
-            </Button>
-
-            <Button
-              load={false}
-              type="button"
-              style="item"
-              redirect={{ url: "/contacts" }}>
-              Contact Me
-            </Button>
-
-            <motion.div className={styles.icons}>
-              {icons.map((icon, idx) => (
-                <motion.a
-                  key={idx}
-                  href={icon.url}
-                  target="_blank"
-                  className={styles.icon_container}
-                  variants={iconVariants}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: idx * 0.2 }}>
-                  {icon.icon}
-                </motion.a>
-              ))}
-            </motion.div>
-          </div>
         </div>
 
-        <div className={styles.large_title}>Portfolio</div>
+        <div className={styles.logo}>
+          <Image
+            className={styles.img}
+            src={logo}
+            alt="Sherbolot Arbaev"
+            width={150}
+            height={150}
+          />
+        </div>
+      </div>
+
+      <div className={styles.buttons}>
+        <Button
+          load={false}
+          type="button"
+          redirect="/contact"
+          style="dark"
+          adaptive>
+          Get In Touch
+        </Button>
+
+        <Button
+          load={false}
+          type="button"
+          open="/Sherbolot-Arbaev-CV.pdf"
+          icon={{
+            svg: <LinkExternalSvg />,
+            position: "right",
+          }}
+          adaptive>
+          Download CV
+        </Button>
       </div>
     </motion.div>
   );

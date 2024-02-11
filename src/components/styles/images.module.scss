@@ -1,0 +1,38 @@
+.wrapper {
+  width: 100%;
+
+  max-width: 400px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    border-radius: 0.875rem;
+
+    .images {
+      width: 100%;
+
+      .image {
+        width: 100%;
+        height: 500px;
+
+        .img {
+          width: 100%;
+          height: 100%;
+
+          display: block;
+
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}

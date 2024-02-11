@@ -1,0 +1,205 @@
+@mixin backlight($x, $y, $spread, $size, $colorA, $colorB, $duration) {
+  &:after {
+    position: absolute;
+    content: "";
+    top: $y;
+    left: $x;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: scale($size);
+    -webkit-filter: blur($spread);
+    -moz-filter: blur($spread);
+    -ms-filter: blur($spread);
+    filter: blur($spread);
+    background: linear-gradient(270deg, $colorA, $colorB);
+    background-size: 200% 200%;
+    border-radius: 50%;
+    animation: animateGlow $duration ease infinite;
+
+    @keyframes animateGlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  }
+}
+
+.hero {
+  width: 100%;
+  height: 100%;
+
+  max-width: 1000px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.55rem;
+
+  @media (max-width: 675px) {
+    padding: 0 1.15rem;
+  }
+
+  .content {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.875rem;
+
+    @media (max-width: 1205px) {
+      flex-direction: column-reverse;
+    }
+
+    .logo {
+      width: 230px;
+      height: 230px;
+
+      background: var(--bg-main);
+      border-radius: 50%;
+
+      position: relative;
+
+      @include backlight(0, 0, 15px, 1.05, #f200ff, #4800ff, 5s);
+
+      @media (max-width: 1205px) {
+        width: 200px;
+        height: 200px;
+      }
+
+      @media (max-width: 875px) {
+        width: 180px;
+        height: 180px;
+      }
+
+      @media (max-width: 675px) {
+        width: 150px;
+        height: 150px;
+      }
+
+      @media (max-width: 555px) {
+        width: 130px;
+        height: 130px;
+      }
+
+      .img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        border-radius: 50%;
+      }
+    }
+
+    .text {
+      width: 100%;
+
+      max-width: 700px;
+
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      line-height: 1.5;
+
+      @media (max-width: 1205px) {
+        max-width: 100%;
+
+        align-items: center;
+      }
+
+      .title {
+        font-size: 2.785rem;
+        font-weight: 600;
+
+        span {
+          background: var(--text-gradient);
+          -webkit-background-clip: text;
+          text-fill-color: transparent;
+          -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 1205px) {
+          font-size: 2.675rem;
+        }
+
+        @media (max-width: 875px) {
+          font-size: 2.475rem;
+        }
+
+        @media (max-width: 675px) {
+          font-size: 2.245rem;
+        }
+
+        @media (max-width: 555px) {
+          text-align: center;
+
+          font-size: 2.205rem;
+        }
+
+        @media (max-width: 475px) {
+          font-size: 1.905rem;
+        }
+      }
+
+      .desc {
+        font-size: 1.1rem;
+        font-weight: 300;
+        color: var(--accent-5);
+
+        @media (max-width: 1205px) {
+          width: 100%;
+
+          max-width: 700px;
+
+          text-align: center;
+
+          font-size: 1.085rem;
+        }
+
+        @media (max-width: 875px) {
+          max-width: 600px;
+
+          font-size: 0.945rem;
+        }
+
+        @media (max-width: 675px) {
+          max-width: 400px;
+
+          font-size: 0.875rem;
+        }
+
+        @media (max-width: 368px) {
+          font-size: 0.795rem;
+        }
+      }
+    }
+  }
+
+  .buttons {
+    width: 100%;
+
+    max-width: 350px;
+
+    margin-right: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+
+    @media (max-width: 1205px) {
+      margin-right: 0;
+    }
+  }
+}

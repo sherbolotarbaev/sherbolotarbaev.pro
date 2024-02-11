@@ -1,47 +1,56 @@
 "use client";
 
-import Image from "next/image";
-import { Edu_TAS_Beginner } from "next/font/google";
-import logo from "@/assets/image/photo-sher.jpeg";
-import styles from "@/styles/About.module.scss";
+import React from "react";
+import { Prompt } from "next/font/google";
+import { useVisible } from "@/lib/hooks/useVisible";
+import { motion } from "framer-motion";
+import text from "@/lib/data/about.json";
+import styles from "../styles/about.module.scss";
 
-const font = Edu_TAS_Beginner({ subsets: ["latin"] });
+const textAnimation = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const font = Prompt({ subsets: ["latin"], weight: "600" });
+const font2 = Prompt({ subsets: ["latin"], weight: "300" });
 
 export default function About() {
+  const aboutRef = React.useRef<HTMLDivElement | null>(null);
+
+  const { show } = useVisible({ ref: aboutRef });
+
   return (
-    <div className={styles.about} id="about">
-      <Image
-        className={styles.logo}
-        src={logo}
-        alt="Sherbolot Arbaev - Emoji"
-      />
+    <>
+      <motion.div
+        className={styles.about}
+        ref={aboutRef}
+        initial="hidden"
+        animate={show ? "visible" : "hidden"}
+        variants={textAnimation}>
+        <div className={styles.text}>
+          <h2 className={styles.title} style={font.style}>
+            {text.title}
+          </h2>
 
-      <div className={styles.text_wrapper}>
-        <h2 className={styles.title}>Here's my story.</h2>
-
-        <div className={styles.text} style={font.style}>
-          Greetings! I'm <span>Sherbolot</span> (Sher), a
-          <span> Full Stack Software Engineer </span>deeply passionate about
-          crafting cutting-edge web applications with the latest technologies.
-          My intrigue extends to integrating artificial intelligence (AI)
-          seamlessly into my projects, adding a layer of innovation to my work
+          {text.descriptions.map((desc, idx) => (
+            <motion.p
+              key={idx}
+              className={styles.desc}
+              style={font2.style}
+              variants={textAnimation}
+              dangerouslySetInnerHTML={{ __html: desc }}
+            />
+          ))}
         </div>
-
-        <div className={styles.text} style={font.style}>
-          My journey in <span>software development</span> is a thrilling one, as
-          I derive immense satisfaction from the development process itself. My
-          ultimate goal is to contribute to the creation of
-          <span> future technologies </span>that empower and elevate humanity
-        </div>
-
-        <div className={styles.text} style={font.style}>
-          Presently, I am honored to be a valuable member of the exceptionally
-          talented team at <span>WEDEVX</span> Ed-Tech. In this role, I harness
-          my skills and extensive experience to engineer groundbreaking
-          solutions that empower the realms of
-          <span> education </span>and<span> technology</span>
-        </div>
-      </div>
-    </div>
+      </motion.div>
+    </>
   );
 }

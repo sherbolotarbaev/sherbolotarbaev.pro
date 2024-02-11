@@ -1,223 +1,192 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import Tag from "./Tag";
+import React from "react";
+import { Prompt } from "next/font/google";
+import { useVisible } from "@/lib/hooks/useVisible";
 import { motion } from "framer-motion";
+import text from "@/lib/data/skills.json";
 import {
   AwsSvg,
-  ChakrauiSvg,
-  CssSvg,
+  ChakraUISvg,
+  CodeSvg,
   DockerSvg,
+  ExpressSvg,
   FastifySvg,
   FramerMotionSvg,
   GitSvg,
-  HerokuSvg,
-  HtmlSvg,
-  JavascriptSvg,
-  MaterialuiSvg,
-  MongodbSvg,
-  MysqlSvg,
-  NestjsSvg,
-  NetlifySvg,
-  NextjsSvg,
-  NodejsSvg,
-  PostgresqlSvg,
+  JavaScriptSvg,
+  MaterialUISvg,
+  MongoDBSvg,
+  MySQLSvg,
+  NestJsSvg,
+  NextJsSvg,
+  NodeJsSvg,
+  PostgreSQLSvg,
   PrismaSvg,
   ReactSvg,
   ReduxSvg,
   SassSvg,
   SupabaseSvg,
   TailwindSvg,
-  ThreeJSSvg,
-  TypescriptSvg,
-  VercelSvg,
-} from "@/assets/svg";
-import styles from "@/styles/Skills.module.scss";
+  ThreeJsSvg,
+  TypeScriptSvg,
+} from "../../lib/assets/svg";
+import styles from "../styles/skills.module.scss";
 
-type SkillType = {
+type Skill = {
   name: string;
   icon: React.ReactElement;
 };
 
+const skills: Skill[] = [
+  {
+    name: "JavaScript",
+    icon: <JavaScriptSvg className={styles.icon} />,
+  },
+  {
+    name: "TypeScript",
+    icon: <TypeScriptSvg className={styles.icon} />,
+  },
+  {
+    name: "Node.js",
+    icon: <NodeJsSvg className={styles.icon} />,
+  },
+  {
+    name: "Express.js",
+    icon: <ExpressSvg className={styles.icon} />,
+  },
+  {
+    name: "Fastify.js",
+    icon: <FastifySvg className={styles.icon} />,
+  },
+  {
+    name: "Nest.js",
+    icon: <NestJsSvg className={styles.icon} />,
+  },
+  {
+    name: "Next.js",
+    icon: <NextJsSvg className={styles.icon} />,
+  },
+  {
+    name: "React",
+    icon: <ReactSvg className={styles.icon} />,
+  },
+  {
+    name: "Redux",
+    icon: <ReduxSvg className={styles.icon} />,
+  },
+  {
+    name: "Three.js",
+    icon: <ThreeJsSvg className={styles.icon} />,
+  },
+  {
+    name: "Sass",
+    icon: <SassSvg className={styles.icon} />,
+  },
+  {
+    name: "Tailwind",
+    icon: <TailwindSvg className={styles.icon} />,
+  },
+  {
+    name: "Chakra UI",
+    icon: <ChakraUISvg className={styles.icon} />,
+  },
+  {
+    name: "Material UI",
+    icon: <MaterialUISvg className={styles.icon} />,
+  },
+  {
+    name: "Framer Motion",
+    icon: <FramerMotionSvg className={styles.icon} />,
+  },
+  {
+    name: "Prisma",
+    icon: <PrismaSvg className={styles.icon} />,
+  },
+  {
+    name: "PostgreSQL",
+    icon: <PostgreSQLSvg className={styles.icon} />,
+  },
+  {
+    name: "MySQL",
+    icon: <MySQLSvg className={styles.icon} />,
+  },
+  {
+    name: "Mongo DB",
+    icon: <MongoDBSvg className={styles.icon} />,
+  },
+  {
+    name: "Git",
+    icon: <GitSvg className={styles.icon} />,
+  },
+  {
+    name: "Docker",
+    icon: <DockerSvg className={styles.icon} />,
+  },
+  {
+    name: "AWS",
+    icon: <AwsSvg className={styles.icon} />,
+  },
+  {
+    name: "Supabase",
+    icon: <SupabaseSvg className={styles.icon} />,
+  },
+];
+
+const iconsAnimation = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { opacity: 1, x: 0 },
+};
+
+const skillsAnimation = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const font = Prompt({ subsets: ["latin"], weight: "600" });
+const font2 = Prompt({ subsets: ["latin"], weight: "300" });
+
 export default function Skills() {
-  const skillsRef = useRef<HTMLDivElement | null>(null);
-  const [showSkills, setShowSkills] = useState<boolean>(false);
+  const skillsRef = React.useRef<HTMLDivElement | null>(null);
 
-  const skills: SkillType[] = [
-    {
-      name: "JavaScript",
-      icon: <JavascriptSvg className={styles.icon} />,
-    },
-    {
-      name: "TypeScript",
-      icon: <TypescriptSvg className={styles.icon} />,
-    },
-    {
-      name: "Node.js",
-      icon: (
-        <NodejsSvg className={styles.icon} style={{ background: "white" }} />
-      ),
-    },
-    {
-      name: "Nest.js",
-      icon: <NestjsSvg className={styles.icon} />,
-    },
-    {
-      name: "Express",
-      icon: <JavascriptSvg className={styles.icon} />,
-    },
-    {
-      name: "Fastify",
-      icon: (
-        <FastifySvg className={styles.icon} style={{ background: "white" }} />
-      ),
-    },
-    {
-      name: "MySQL",
-      icon: (
-        <MysqlSvg className={styles.icon} style={{ background: "white" }} />
-      ),
-    },
-    {
-      name: "PostgreSQL",
-      icon: <PostgresqlSvg className={styles.icon} />,
-    },
-    {
-      name: "MongoDB",
-      icon: <MongodbSvg className={styles.icon} />,
-    },
-    {
-      name: "Supabase",
-      icon: <SupabaseSvg className={styles.icon} />,
-    },
-    {
-      name: "Prisma ORM",
-      icon: <PrismaSvg className={styles.icon} />,
-    },
-    {
-      name: "Git",
-      icon: <GitSvg className={styles.icon} />,
-    },
-    {
-      name: "Docker",
-      icon: <DockerSvg className={styles.icon} />,
-    },
-    {
-      name: "React",
-      icon: <ReactSvg className={styles.icon} />,
-    },
-    {
-      name: "Next.js",
-      icon: (
-        <NextjsSvg className={styles.icon} style={{ background: "white" }} />
-      ),
-    },
-    {
-      name: "Redux",
-      icon: <ReduxSvg className={styles.icon} />,
-    },
-    {
-      name: "HTML",
-      icon: <HtmlSvg className={styles.icon} />,
-    },
-    {
-      name: "CSS",
-      icon: <CssSvg className={styles.icon} />,
-    },
-    {
-      name: "Sass",
-      icon: <SassSvg className={styles.icon} />,
-    },
-    {
-      name: "Tailwind CSS",
-      icon: <TailwindSvg className={styles.icon} />,
-    },
-    {
-      name: "Material UI",
-      icon: <MaterialuiSvg className={styles.icon} />,
-    },
-    {
-      name: "Chakra UI",
-      icon: (
-        <ChakrauiSvg className={styles.icon} style={{ background: "white" }} />
-      ),
-    },
-    {
-      name: "AWS",
-      icon: <AwsSvg className={styles.icon} style={{ background: "white" }} />,
-    },
-    {
-      name: "Vercel",
-      icon: (
-        <VercelSvg className={styles.icon} style={{ background: "white" }} />
-      ),
-    },
-    {
-      name: "Netlify",
-      icon: <NetlifySvg className={styles.icon} />,
-    },
-    {
-      name: "Heroku",
-      icon: <HerokuSvg className={styles.icon} />,
-    },
-    {
-      name: "Framer Motion",
-      icon: <FramerMotionSvg />,
-    },
-    {
-      name: "Three.js",
-      icon: <ThreeJSSvg />,
-    },
-  ];
-
-  const skillsVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 },
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const skillsSection = skillsRef.current;
-
-      if (skillsSection) {
-        const skillsSectionRect = skillsSection.getBoundingClientRect();
-        const topVisible = skillsSectionRect.top >= 0;
-        const bottomVisible = skillsSectionRect.bottom <= window.innerHeight;
-        const isVisible = topVisible && bottomVisible;
-
-        if (isVisible) {
-          setShowSkills(true);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const { show } = useVisible({ ref: skillsRef });
 
   return (
     <>
-      <div className={styles.container} id="skills" ref={skillsRef}>
-        <div className={styles.title}>Tech Skills:</div>
+      <motion.div
+        className={styles.skills}
+        ref={skillsRef}
+        animate={show ? "visible" : "hidden"}
+        variants={skillsAnimation}>
+        <h2 className={styles.title} style={font.style}>
+          <CodeSvg /> {text.title}
+        </h2>
 
-        <motion.div className={styles.skills}>
+        <div className={styles.icons}>
           {skills.map((skill, idx) => (
             <motion.div
               key={idx}
-              variants={skillsVariants}
+              className={styles.icon_wrapper}
+              variants={iconsAnimation}
               initial="hidden"
-              animate={showSkills ? "visible" : "hidden"}
+              animate={show ? "visible" : "hidden"}
               transition={{ delay: idx * 0.1 }}>
-              <Tag>
-                {skill.icon} {skill.name}
-              </Tag>
+              {skill.icon}
+
+              <span className={styles.name} style={font2.style}>
+                {skill.name}
+              </span>
             </motion.div>
           ))}
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </>
   );
 }

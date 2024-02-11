@@ -1,30 +1,37 @@
 "use client";
 
+import React from "react";
 import { useRouter } from "next/navigation";
-import { LoadSvg } from "@/assets/svg";
-import styles from "@/styles/Button.module.scss";
-
-type Redirect = {
-  url: string;
-  newTab?: boolean;
-};
+import { LoadSvg } from "../../lib/assets/svg";
+import styles from "../styles/button.module.scss";
 
 interface Props {
   children: React.ReactNode;
-  style?: keyof TStyles;
+  style?: keyof Styles;
+  icon?: {
+    svg: React.ReactElement;
+    position: keyof Position;
+  };
   disabled?: boolean;
-  type: keyof TTypes;
-  load: boolean;
+  width?: number;
+  type: keyof Types;
+  load: boolean | string;
   onClick?: () => void;
-  redirect?: Redirect;
+  redirect?: string;
+  open?: string;
+  adaptive?: boolean;
 }
 
-type TStyles = {
-  white: string;
-  item: string;
+type Position = {
+  right: string;
+  left: string;
 };
 
-type TTypes = {
+type Styles = {
+  dark: string;
+};
+
+type Types = {
   button: string;
   submit: string;
 };
@@ -32,52 +39,88 @@ type TTypes = {
 export default function Button({
   children,
   style,
+  icon,
   disabled,
+  width,
   type,
   load,
   onClick,
   redirect,
+  open,
+  adaptive,
 }: Props) {
   const router = useRouter();
 
-  const redirectToPage = (redirect: Redirect) => {
-    if (redirect.newTab) {
-      window.open(redirect.url, "_blank");
-    } else router.push(redirect.url);
+  const redirectToPage = (path: string) => {
+    router.push(path);
   };
 
+  const openTab = (path: string) => {
+    window.open(path, "_blank");
+  };
+
+  const renderButtonContent = () => {
+    if (load === true) {
+      return <LoadSvg className={styles.load} style={{ fill: "#1e1e1e69" }} />;
+    }
+
+    if (typeof load === "string") {
+      return (
+        <>
+          <LoadSvg className={styles.load} style={{ fill: "#1e1e1e69" }} />
+          {load}
+        </>
+      );
+    }
+
+    return (
+      <>
+        {icon &&
+          icon.position === "left" &&
+          React.cloneElement(icon.svg, {
+            className: styles.icon,
+            style: disabled ? { fill: "#1e1e1e69" } : undefined,
+          })}
+        {children}
+        {icon &&
+          icon.position === "right" &&
+          React.cloneElement(icon.svg, {
+            className: styles.icon,
+            style: disabled ? { fill: "#1e1e1e69" } : undefined,
+          })}
+      </>
+    );
+  };
+
+  const buttonClassName = [
+    style && styles[style],
+    disabled && styles.disabled,
+    adaptive && styles.adaptive,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <>
-      {!load ? (
-        <button
-          type={type}
-          disabled={disabled}
-          onClick={
-            onClick ? onClick : () => redirect && redirectToPage(redirect)
-          }
-          className={
-            style
-              ? disabled
-                ? `${styles.button} ${styles[style]} ${styles.disabled}`
-                : `${styles.button} ${styles[style]}`
-              : disabled
-              ? `${styles.button} ${styles.disabled}`
-              : styles.button
-          }>
-          {children}
-        </button>
-      ) : (
-        <button
-          type="submit"
-          disabled={true}
-          className={
-            style
-              ? `${styles.button_load} ${styles[style]}`
-              : styles.button_load
-          }>
-          {<LoadSvg className={styles.load} />}
-        </button>
-      )}
-    </>
+    <button
+      type={type}
+      disabled={load === true ? true : disabled}
+      style={width ? { maxWidth: width } : undefined}
+      onClick={
+        onClick
+          ? onClick
+          : () =>
+              redirect
+                ? redirectToPage(redirect)
+                : open
+                ? openTab(open)
+                : undefined
+      }
+      className={
+        load
+          ? `${styles.button_load} ${buttonClassName}`
+          : `${styles.button} ${buttonClassName}`
+      }>
+      {renderButtonContent()}
+    </button>
   );
 }

@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState, useRef, Suspense } from "react";
+import React from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 // @ts-ignore
 import * as random from "maath/random/dist/maath-random.esm";
-import styles from "@/styles/Star.module.scss";
+import styles from "../styles/star.module.scss";
 
 const StarBackground = (props: any) => {
-  const ref: any = useRef();
-  const [sphere] = useState(() =>
+  const ref: any = React.useRef<any>();
+  const [sphere] = React.useState(() =>
     random.inSphere(new Float32Array(5000), { radius: 1.2 })
   );
 
@@ -36,9 +36,9 @@ const StarBackground = (props: any) => {
 const StarsCanvas = () => (
   <div className={styles.wrapper}>
     <Canvas camera={{ position: [0, 0, 1] }}>
-      <Suspense fallback={null}>
+      <React.Suspense fallback={null}>
         <StarBackground />
-      </Suspense>
+      </React.Suspense>
     </Canvas>
   </div>
 );
