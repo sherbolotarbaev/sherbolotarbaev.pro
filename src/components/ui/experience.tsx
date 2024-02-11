@@ -43,7 +43,7 @@ const jobs: Job[] = [
   },
   {
     name: "WEDEVX",
-    date: "Jun 2023 - Present",
+    date: "2023 - Present",
     role: "Software Development Engineer",
     description:
       "Presently, I am honored to be a valuable <span>member</span> of the <span>exceptionally talented</span> team at <span>WEDEVX Ed-Tech</span>. In this role, I harness my skills and extensive experience to engineer groundbreaking solutions that empower the realms of <span> education </span>and<span> technology</span>",
