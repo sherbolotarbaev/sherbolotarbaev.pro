@@ -6,7 +6,9 @@ import styles from "@/components/styles/redirect.module.scss";
 
 export default function RedirectClient() {
   React.useEffect(() => {
-    window?.location?.assign(window?.location?.href?.split("to=")?.[1] || "/");
+    window?.location?.assign(
+      encodeURIComponent(window?.location?.href?.split("to=")?.[1] || "/")
+    );
   }, []);
 
   return (
