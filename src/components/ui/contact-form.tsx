@@ -3,7 +3,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import * as API from "@/../api";
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import { SubmitHandler, useForm } from "react-hook-form";
 import {
   errorNotification,
@@ -47,6 +47,7 @@ export default function ContactForm() {
       const { success } = await API.contact.sendMessage(formData);
 
       if (success) {
+        setCookie("email", formData.email);
         successNotification("Successfully sent!");
         router.push("/");
       }
