@@ -24,24 +24,24 @@ export const UserProvider = ({ children }: Props) => {
     isLoading: true,
   });
 
-  React.useEffect(() => {
-    const initializeUser = async () => {
-      try {
-        const data: User = await API.auth.getMe();
-        setUserState({
-          me: data,
-          isLoading: false,
-        });
-      } catch (e: any) {
-        setUserState({
-          me: null,
-          isLoading: false,
-        });
-      }
-    };
+  // React.useEffect(() => {
+  //   const initializeUser = async () => {
+  //     try {
+  //       const data: User = await API.auth.getMe();
+  //       setUserState({
+  //         me: data,
+  //         isLoading: false,
+  //       });
+  //     } catch (e: any) {
+  //       setUserState({
+  //         me: null,
+  //         isLoading: false,
+  //       });
+  //     }
+  //   };
 
-    initializeUser();
-  }, []);
+  //   initializeUser();
+  // }, []);
 
   const value = React.useMemo(() => userState, [userState]);
 

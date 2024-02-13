@@ -80,11 +80,11 @@ export default function Experience() {
   return (
     <>
       <motion.div
+        className={styles.experience}
+        ref={jobsRef}
         initial="hidden"
         animate={show ? "visible" : "hidden"}
-        className={styles.experience}
-        variants={textAnimation}
-        ref={jobsRef}>
+        variants={textAnimation}>
         <div className={styles.text}>
           <h2 className={styles.title} style={font.style}>
             {text.title}

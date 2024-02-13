@@ -23,6 +23,11 @@ const Experience = dynamic(() => import("@/components/ui/experience"), {
   loading: () => <div className={styles.load} />,
 });
 
+const Video = dynamic(() => import("@/components/ui/video"), {
+  ssr: false,
+  loading: () => <div className={styles.load} />,
+});
+
 export default function HomeClient() {
   return (
     <>
@@ -43,6 +48,10 @@ export default function HomeClient() {
 
         <div className={styles.content} style={{ minHeight: "60vh" }}>
           <Experience />
+        </div>
+
+        <div className={styles.content} style={{ minHeight: "60vh" }}>
+          <Video url="https://www.youtube.com/watch?v=TBP1CwQX4sg" />
         </div>
       </div>
     </>

@@ -1,0 +1,16 @@
+.video_wrapper {
+  width: 100%;
+
+  max-width: 1000px;
+
+  padding: 0 1.15rem;
+
+  .video {
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 0.875rem;
+    border: 1px solid var(--br-color);
+  }
+}

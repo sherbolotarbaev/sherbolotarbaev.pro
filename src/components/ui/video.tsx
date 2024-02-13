@@ -2,6 +2,7 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
+import styles from "../styles/video.module.scss";
 
 const Player = dynamic(() => import("react-player/youtube"), { ssr: false });
 
@@ -11,24 +12,18 @@ interface Props {
 
 export default function Video({ url }: Props) {
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100vh",
-        maxWidth: "865px",
-        maxHeight: "485px",
-        margin: "0 0.55rem",
-      }}>
-      <Player
-        url={url}
-        controls={true}
-        width="100%"
-        height="100%"
-        style={{ overflow: "hidden" }}
-        config={{
-          playerVars: { showinfo: 1 },
-        }}
-      />
+    <div className={styles.video_wrapper}>
+      <div className={styles.video}>
+        <Player
+          url={url}
+          controls={true}
+          width="100%"
+          height="100%"
+          style={{
+            aspectRatio: 16 / 9,
+          }}
+        />
+      </div>
     </div>
   );
 }
