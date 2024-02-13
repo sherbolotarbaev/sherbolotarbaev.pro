@@ -35,7 +35,7 @@ export function useLogIn(): LogInHook {
       setCookie("token", token);
       successNotification(message);
 
-      router.push(`/redirect?to=${next}`);
+      router.push(`/redirect?to=${encodeURIComponent(next)}`);
     } catch (e: any) {
       errorNotification(e.msg || "Something went wrong");
       console.error(e);
