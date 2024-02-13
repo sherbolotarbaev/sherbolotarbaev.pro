@@ -48,9 +48,7 @@ export default function HomeClient() {
 
         <div className={styles.content} style={{ minHeight: "60vh" }}>
           <Experience />
-        </div>
 
-        <div className={styles.content} style={{ minHeight: "60vh" }}>
           <Video url="https://www.youtube.com/watch?v=TBP1CwQX4sg" />
         </div>
       </div>
