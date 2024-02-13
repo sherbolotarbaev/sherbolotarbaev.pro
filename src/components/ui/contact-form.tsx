@@ -2,8 +2,13 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import * as API from "@/../api";
 import { getCookie } from "cookies-next";
 import { SubmitHandler, useForm } from "react-hook-form";
+import {
+  errorNotification,
+  successNotification,
+} from "@/lib/utils/notification";
 import Button from "./button";
 import { CloseSvg, ErrorSvg } from "@/lib/assets/svg";
 import styles from "../styles/form.module.scss";
@@ -36,7 +41,21 @@ export default function ContactForm() {
   };
 
   const handleContact: SubmitHandler<FormData> = async (formData) => {
-    console.log(formData);
+    setIsLoading(true);
+
+    try {
+      const { success } = await API.contact.sendMessage(formData);
+
+      if (success) {
+        successNotification("Successfully sent!");
+        router.push("/");
+      }
+    } catch (e: any) {
+      errorNotification(e.msg || "Something went wrong");
+      console.error(e);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   React.useEffect(() => {
