@@ -20,6 +20,7 @@ interface Props {
   redirect?: string;
   open?: string;
   adaptive?: boolean;
+  animation?: boolean;
 }
 
 type Position = {
@@ -48,6 +49,7 @@ export default function Button({
   redirect,
   open,
   adaptive,
+  animation,
 }: Props) {
   const router = useRouter();
 
@@ -79,14 +81,12 @@ export default function Button({
           icon.position === "left" &&
           React.cloneElement(icon.svg, {
             className: styles.icon,
-            style: disabled ? { fill: "#1e1e1e69" } : undefined,
           })}
         {children}
         {icon &&
           icon.position === "right" &&
           React.cloneElement(icon.svg, {
             className: styles.icon,
-            style: disabled ? { fill: "#1e1e1e69" } : undefined,
           })}
       </>
     );
@@ -96,6 +96,7 @@ export default function Button({
     style && styles[style],
     disabled && styles.disabled,
     adaptive && styles.adaptive,
+    animation && styles.animated,
   ]
     .filter(Boolean)
     .join(" ");

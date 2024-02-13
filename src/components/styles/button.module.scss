@@ -88,6 +88,12 @@
     }
   }
 
+  &.animated {
+    &:hover {
+      gap: 0.5rem;
+    }
+  }
+
   &.dark {
     background: transparent;
 

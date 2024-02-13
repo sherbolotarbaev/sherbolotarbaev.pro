@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Button from "./button";
 import logo from "@/../public/emoji.png";
 import text from "@/lib/data/hero.json";
-import { LinkExternalSvg } from "@/lib/assets/svg";
+import { ArrowSvg, LinkExternalSvg } from "@/lib/assets/svg";
 import styles from "../styles/hero.module.scss";
 
 const heroAnimation = {
@@ -69,7 +69,20 @@ export default function Hero() {
           type="button"
           redirect="/contact"
           style="dark"
-          adaptive>
+          adaptive
+          animation
+          icon={{
+            svg: (
+              <ArrowSvg
+                style={{
+                  fontSize: "1.25rem",
+                  fill: "#fff",
+                  transform: "rotate(-90deg)",
+                }}
+              />
+            ),
+            position: "right",
+          }}>
           Get In Touch
         </Button>
 
@@ -77,11 +90,12 @@ export default function Hero() {
           load={false}
           type="button"
           open="/Sherbolot-Arbaev-CV.pdf"
+          adaptive
+          animation
           icon={{
             svg: <LinkExternalSvg />,
             position: "right",
-          }}
-          adaptive>
+          }}>
           Download CV
         </Button>
       </div>

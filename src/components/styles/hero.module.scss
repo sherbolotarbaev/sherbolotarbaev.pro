@@ -62,8 +62,8 @@
     }
 
     .logo {
-      width: 230px;
-      height: 230px;
+      width: 200px;
+      height: 200px;
 
       background: var(--bg-main);
       border-radius: 50%;
@@ -73,23 +73,23 @@
       @include backlight(0, 0, 15px, 1.05, #f200ff, #4800ff, 5s);
 
       @media (max-width: 1205px) {
-        width: 200px;
-        height: 200px;
-      }
-
-      @media (max-width: 875px) {
         width: 180px;
         height: 180px;
       }
 
-      @media (max-width: 675px) {
+      @media (max-width: 875px) {
         width: 150px;
         height: 150px;
       }
 
-      @media (max-width: 555px) {
+      @media (max-width: 675px) {
         width: 130px;
         height: 130px;
+      }
+
+      @media (max-width: 555px) {
+        width: 100px;
+        height: 100px;
       }
 
       .img {
