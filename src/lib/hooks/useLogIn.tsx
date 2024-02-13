@@ -22,7 +22,7 @@ interface LogInHook {
 export function useLogIn(): LogInHook {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const next = searchParams.get("next") ?? "/";
+  const next = decodeURIComponent(searchParams.get("next") ?? "/");
 
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
@@ -35,7 +35,7 @@ export function useLogIn(): LogInHook {
       setCookie("token", token);
       successNotification(message);
 
-      router.push(`/redirect?to=${decodeURIComponent(next)}`);
+      router.push(`/redirect?to=${next}`);
     } catch (e: any) {
       errorNotification(e.msg || "Something went wrong");
       console.error(e);

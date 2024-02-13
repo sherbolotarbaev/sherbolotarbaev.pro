@@ -27,7 +27,7 @@ export async function middleware(request: NextRequest) {
   const searchParams = new URLSearchParams(url.searchParams);
   const responseCookies = response.cookies;
   const requestCookies = request.cookies;
-  const next = searchParams.get("next") || "/";
+  const next = decodeURIComponent(searchParams.get("next") ?? "/");
   const token = requestCookies.get("token");
   const xff = `${request.headers.get("x-forwarded-for")?.split(",")[0]}`;
 
@@ -82,10 +82,7 @@ export async function middleware(request: NextRequest) {
       pathname.startsWith("/password/forgot") ||
       pathname.startsWith("/password/reset"))
   ) {
-    const redirectUrl = new URL(
-      `/redirect?to=${decodeURIComponent(next)}`,
-      url
-    );
+    const redirectUrl = new URL(`/redirect?to=${next}`, url);
     return NextResponse.redirect(redirectUrl);
   }
 

@@ -7,7 +7,7 @@ import styles from "@/components/styles/redirect.module.scss";
 export default function RedirectClient() {
   React.useEffect(() => {
     window?.location?.assign(
-      encodeURIComponent(window?.location?.href?.split("to=")?.[1] || "/")
+      decodeURIComponent(window?.location?.href?.split("to=")?.[1] || "/")
     );
   }, []);
 
