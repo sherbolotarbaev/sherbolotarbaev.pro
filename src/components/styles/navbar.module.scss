@@ -135,18 +135,14 @@
     }
 
     .icon {
-      cursor: pointer;
+      cursor: default;
 
       font-size: 1.85rem;
 
       transition: 0.25s;
 
       &:active {
-        transform: scale(0.85);
-      }
-
-      @media (max-width: 675px) {
-        cursor: default;
+        transform: scale(0.8);
       }
     }
 
