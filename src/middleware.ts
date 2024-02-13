@@ -105,7 +105,11 @@ export async function middleware(request: NextRequest) {
     socialMedia.find((s) => s.name === pathname.replace("/", "")) || null;
 
   if (isSocialMedia) {
-    return NextResponse.redirect(isSocialMedia.url);
+    const redirectUrl = new URL(
+      `/redirect?to=${decodeURIComponent(isSocialMedia.url)}`,
+      url
+    );
+    return NextResponse.redirect(redirectUrl);
   }
 
   return response;
