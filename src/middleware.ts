@@ -83,7 +83,7 @@ export async function middleware(request: NextRequest) {
       pathname.startsWith("/password/reset"))
   ) {
     const redirectUrl = new URL(
-      `/redirect?to=${encodeURIComponent(next)}`,
+      `/redirect?to=${decodeURIComponent(next)}`,
       url
     );
     return NextResponse.redirect(redirectUrl);
