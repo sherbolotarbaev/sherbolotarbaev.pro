@@ -7,13 +7,17 @@ import styles from "@/components/styles/contact.module.scss";
 export default function ContactClient() {
   return (
     <>
+      <div className="space"></div>
+
       <div className={styles.page_wrapper}>
+        <div className={styles.banner} />
+
         <div className={styles.content}>
           <ContactForm />
-
-          {/* <StarsCanvas /> */}
         </div>
       </div>
+
+      <StarsCanvas />
     </>
   );
 }

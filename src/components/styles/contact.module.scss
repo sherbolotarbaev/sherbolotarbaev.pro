@@ -1,24 +1,36 @@
 .page_wrapper {
   width: 100%;
-  height: 100%;
+  height: 90%;
 
   max-width: 1200px;
 
   margin: 0 auto;
-  padding: 0.85rem;
+  padding: 0 0.85rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.85rem;
 
+  .banner {
+    width: 100%;
+    height: 100%;
+
+    background: url("https://mir-s3-cdn-cf.behance.net/project_modules/fs/b0432f90703361.5e1e4511a2eb1.gif")
+      center/cover no-repeat;
+    border-radius: 0.875rem;
+
+    @media (max-width: 885px) {
+      display: none;
+    }
+  }
+
   .content {
     width: 100%;
+    height: 100%;
 
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border-radius: 0.875rem;
   }
 }

@@ -62,6 +62,14 @@ const font = Lexend({ subsets: ["latin"] });
 export default async function RootLayout({ children }: Props) {
   return (
     <html lang="en">
+      <head>
+        <meta charSet="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+      </head>
+
       <body className={font.className}>
         <UserProvider>
           <RootLayoutClient>{children}</RootLayoutClient>
