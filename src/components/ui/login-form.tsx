@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useSearchParams } from "next/navigation";
 import { siteConfig } from "@/../config/site";
 
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -21,7 +22,10 @@ type FormData = {
 };
 
 export default function LoginForm() {
-  const { logIn, isLoading } = useLogIn();
+  const searchParams = useSearchParams();
+  const next = decodeURIComponent(searchParams.get("next") ?? "/");
+
+  const { logIn, isLoading } = useLogIn(next);
 
   const {
     register,
@@ -163,7 +167,13 @@ export default function LoginForm() {
               {text.loginForm.button}
             </Button>
 
-            <Link className={styles.link} href="/password/forgot">
+            <Link
+              className={styles.link}
+              href={
+                next === "/"
+                  ? "/password/forgot"
+                  : `/password/forgot?next=${next}`
+              }>
               {text.loginForm.link}
             </Link>
           </div>

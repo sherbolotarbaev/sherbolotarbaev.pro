@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import * as API from "@/../api";
 import {
   errorNotification,
@@ -19,10 +19,8 @@ interface LogInHook {
   isLoading: boolean;
 }
 
-export function useLogIn(): LogInHook {
+export function useLogIn(next: string): LogInHook {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const next = decodeURIComponent(searchParams.get("next") ?? "/");
 
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import * as API from "@/../api";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -23,6 +23,8 @@ type FormData = {
 
 export default function ForgotForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const next = decodeURIComponent(searchParams.get("next") ?? "/");
 
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
@@ -47,7 +49,7 @@ export default function ForgotForm() {
       const message = await API.auth.forgotPassword(formData);
 
       successNotification(message);
-      router.push("/login");
+      router.push(next === "/" ? "/login" : `/login?next=${next}`);
     } catch (e: any) {
       errorNotification(e.msg || "Something went wrong");
       console.error(e);
@@ -126,7 +128,9 @@ export default function ForgotForm() {
               {text.forgotPasswordForm.button}
             </Button>
 
-            <Link className={styles.link} href="/login">
+            <Link
+              className={styles.link}
+              href={next === "/" ? "/login" : `/login?next=${next}`}>
               {text.forgotPasswordForm.link}
             </Link>
           </div>
