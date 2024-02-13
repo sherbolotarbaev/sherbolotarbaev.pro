@@ -38,6 +38,9 @@ dependencies:
   jotai:
     specifier: ^2.6.1
     version: 2.6.1(@types/react@18.0.0)(react@18.0.0)
+  maath-random.esm:
+    specifier: link:maath/random/dist/maath-random.esm
+    version: link:maath/random/dist/maath-random.esm
   next:
     specifier: 13.5.4
     version: 13.5.4(@babel/core@7.23.9)(react-dom@18.0.0)(react@18.0.0)(sass@1.69.5)

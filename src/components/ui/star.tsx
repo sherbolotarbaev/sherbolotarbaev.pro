@@ -16,6 +16,12 @@ const StarBackground = (props: any) => {
   useFrame((state, delta) => {
     ref.current.rotation.x -= delta / 10;
     ref.current.rotation.y -= delta / 15;
+
+    const positions = ref.current.geometry.attributes.position.array;
+    for (let i = 0; i < positions.length; i += 3) {
+      positions[i + 2] += (Math.random() - 0.5) * 0.0005;
+    }
+    ref.current.geometry.attributes.position.needsUpdate = true;
   });
 
   return (
@@ -33,14 +39,14 @@ const StarBackground = (props: any) => {
   );
 };
 
-const StarsCanvas = () => (
-  <div className={styles.wrapper}>
-    <Canvas camera={{ position: [0, 0, 1] }}>
-      <React.Suspense fallback={null}>
-        <StarBackground />
-      </React.Suspense>
-    </Canvas>
-  </div>
-);
-
-export default StarsCanvas;
+export default function Star() {
+  return (
+    <div className={styles.wrapper}>
+      <Canvas camera={{ position: [0, 0, 1] }}>
+        <React.Suspense fallback={null}>
+          <StarBackground />
+        </React.Suspense>
+      </Canvas>
+    </div>
+  );
+}

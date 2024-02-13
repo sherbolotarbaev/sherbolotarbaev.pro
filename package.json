@@ -21,6 +21,7 @@
     "cookies-next": "^4.1.0",
     "framer-motion": "^10.18.0",
     "jotai": "^2.6.1",
+    "maath-random.esm": "link:maath/random/dist/maath-random.esm",
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
