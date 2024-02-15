@@ -4,7 +4,7 @@ import React from "react";
 import * as API from "@/../api";
 
 interface ViewsHook {
-  count: string;
+  views: string;
 }
 
 export function useViews(): ViewsHook {
@@ -26,6 +26,6 @@ export function useViews(): ViewsHook {
   const number = new Number(countViews);
 
   return {
-    count: number.toLocaleString(),
+    views: `${number.toLocaleString()} views`,
   };
 }

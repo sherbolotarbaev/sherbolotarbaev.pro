@@ -30,7 +30,7 @@ const Video = dynamic(() => import("@/components/ui/video"), {
 });
 
 export default function HomeClient() {
-  const { count } = useViews();
+  const { views } = useViews();
 
   return (
     <>
@@ -38,7 +38,7 @@ export default function HomeClient() {
 
       <div className={styles.page_wrapper}>
         <div className={styles.content} style={{ minHeight: "60vh" }}>
-          <span className={styles.span}>views: {count}</span>
+          <span className={styles.span}>{views}</span>
 
           <Hero />
         </div>
