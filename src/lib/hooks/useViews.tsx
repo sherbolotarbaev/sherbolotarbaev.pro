@@ -12,11 +12,17 @@ export function useViews(): ViewsHook {
 
   React.useEffect(() => {
     const fetchViews = async () => {
-      const count = await API.views.getViews();
+      const [count] = await Promise.all([
+        API.views.getViews(),
+        API.views.addViews(),
+      ]);
+
       setViews(count);
     };
 
-    fetchViews();
+    return () => {
+      fetchViews();
+    };
   }, []);
 
   return {

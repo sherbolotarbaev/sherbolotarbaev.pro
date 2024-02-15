@@ -38,7 +38,7 @@ export default function HomeClient() {
 
       <div className={styles.page_wrapper}>
         <div className={styles.content} style={{ minHeight: "60vh" }}>
-          <span className={styles.span}>portfolio views: {count}</span>
+          <span className={styles.span}>views: {count}</span>
 
           <Hero />
         </div>

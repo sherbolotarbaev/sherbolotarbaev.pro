@@ -1,8 +1,6 @@
 import { siteConfig } from "@/../config/site";
 import { UserProvider } from "@/lib/providers/UserProvider";
 
-import * as API from "@/../api";
-
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 
@@ -61,18 +59,7 @@ export const metadata: Metadata = {
 
 const font = Lexend({ subsets: ["latin"] });
 
-const addView = async () => {
-  let view = false;
-
-  if (!view) {
-    await API.views.addViews();
-    view = true;
-  }
-};
-
 export default async function RootLayout({ children }: Props) {
-  addView();
-
   return (
     <html lang="en">
       <head>
