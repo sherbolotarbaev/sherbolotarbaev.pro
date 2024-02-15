@@ -4,11 +4,11 @@ import React from "react";
 import * as API from "@/../api";
 
 interface ViewsHook {
-  count: number;
+  count: string;
 }
 
 export function useViews(): ViewsHook {
-  const [views, setViews] = React.useState<number>(0);
+  const [countViews, setCountViews] = React.useState<number>(0);
 
   React.useEffect(() => {
     const fetchViews = async () => {
@@ -17,13 +17,15 @@ export function useViews(): ViewsHook {
         API.views.addViews(),
       ]);
 
-      setViews(count);
+      setCountViews(count);
     };
 
     fetchViews();
   }, []);
 
+  const number = new Number(countViews);
+
   return {
-    count: views,
+    count: number.toLocaleString(),
   };
 }
