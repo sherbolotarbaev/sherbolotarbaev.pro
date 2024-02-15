@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useViews } from "@/lib/hooks/useViews";
 import styles from "@/components/styles/page.module.scss";
 
 const Hero = dynamic(() => import("@/components/ui/hero"), {
@@ -29,12 +30,16 @@ const Video = dynamic(() => import("@/components/ui/video"), {
 });
 
 export default function HomeClient() {
+  const { count } = useViews();
+
   return (
     <>
       <div className="space"></div>
 
       <div className={styles.page_wrapper}>
         <div className={styles.content} style={{ minHeight: "60vh" }}>
+          <span className={styles.span}>portfolio views: {count}</span>
+
           <Hero />
         </div>
 
