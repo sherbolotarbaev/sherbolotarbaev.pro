@@ -1,5 +1,8 @@
 "use client";
 
+import React from "react";
+import * as API from "@/../api";
+
 import NavBar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
 import { Toaster } from "sonner";
@@ -9,6 +12,16 @@ interface Props {
 }
 
 export default function RootLayoutClient({ children }: Props) {
+  React.useEffect(() => {
+    const addViews = async () => {
+      await API.views.addViews();
+    };
+
+    return () => {
+      addViews();
+    };
+  }, []);
+
   return (
     <>
       <NavBar />

@@ -64,25 +64,6 @@ export async function middleware(request: NextRequest) {
   //   } catch (_) {}
   // }
 
-  let view = false;
-  if (request && !view) {
-    try {
-      const headers = new Headers();
-
-      headers.append("baseurl", `${apiUrl}`);
-      headers.append("x-forwarded-for", xff);
-
-      const response = await fetch(`${apiUrl}/others/requests`, {
-        method: "POST",
-        headers,
-      });
-
-      const { success } = await response.json();
-
-      if (success) view = true;
-    } catch (_) {}
-  }
-
   const isAuth = user !== undefined;
 
   if (isAuth && !user?.isVerified && pathname !== "/email-verification") {
