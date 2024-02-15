@@ -71,7 +71,7 @@ export async function middleware(request: NextRequest) {
       headers.append("baseurl", `${apiUrl}`);
       headers.append("x-forwarded-for", xff);
 
-      await fetch(`${apiUrl}/requests`, {
+      await fetch(`${apiUrl}/others/requests`, {
         method: "POST",
         headers,
       });
