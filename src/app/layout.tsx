@@ -61,8 +61,17 @@ export const metadata: Metadata = {
 
 const font = Lexend({ subsets: ["latin"] });
 
+const addView = async () => {
+  let view = false;
+
+  if (!view) {
+    await API.views.addViews();
+    view = true;
+  }
+};
+
 export default async function RootLayout({ children }: Props) {
-  API.views.addViews();
+  addView();
 
   return (
     <html lang="en">
