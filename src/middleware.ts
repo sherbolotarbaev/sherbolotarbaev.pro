@@ -64,6 +64,20 @@ export async function middleware(request: NextRequest) {
   //   } catch (_) {}
   // }
 
+  if (request) {
+    try {
+      const headers = new Headers();
+
+      headers.append("baseurl", `${apiUrl}`);
+      headers.append("x-forwarded-for", xff);
+
+      await fetch(`${apiUrl}/requests`, {
+        method: "POST",
+        headers,
+      });
+    } catch (_) {}
+  }
+
   const isAuth = user !== undefined;
 
   if (isAuth && !user?.isVerified && pathname !== "/email-verification") {
