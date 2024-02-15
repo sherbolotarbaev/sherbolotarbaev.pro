@@ -64,17 +64,22 @@ export async function middleware(request: NextRequest) {
   //   } catch (_) {}
   // }
 
-  if (request) {
+  let view = false;
+  if (request && !view) {
     try {
       const headers = new Headers();
 
       headers.append("baseurl", `${apiUrl}`);
       headers.append("x-forwarded-for", xff);
 
-      await fetch(`${apiUrl}/others/requests`, {
+      const response = await fetch(`${apiUrl}/others/requests`, {
         method: "POST",
         headers,
       });
+
+      const { success } = await response.json();
+
+      if (success) view = true;
     } catch (_) {}
   }
 
