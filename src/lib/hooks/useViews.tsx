@@ -20,9 +20,7 @@ export function useViews(): ViewsHook {
       setViews(count);
     };
 
-    return () => {
-      fetchViews();
-    };
+    fetchViews();
   }, []);
 
   return {
