@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useViews } from "@/lib/hooks/useViews";
+import { LoadSvg } from "@/lib/assets/svg";
 import styles from "@/components/styles/page.module.scss";
 
 const Hero = dynamic(() => import("@/components/ui/hero"), {
@@ -39,7 +40,14 @@ export default function HomeClient() {
       <div className={styles.page_wrapper}>
         <div className={styles.content} style={{ minHeight: "60vh" }}>
           <span className={styles.span}>
-            {isLoading ? "loading..." : views}
+            {isLoading ? (
+              <LoadSvg
+                className={styles.loading}
+                style={{ fontSize: "0.875rem", fill: "#00ff8c" }}
+              />
+            ) : (
+              views
+            )}
           </span>
 
           <Hero />

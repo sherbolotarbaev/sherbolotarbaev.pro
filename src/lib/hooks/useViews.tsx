@@ -9,13 +9,11 @@ interface ViewsHook {
 }
 
 export function useViews(): ViewsHook {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(true);
   const [countViews, setCountViews] = React.useState<number>(0);
 
   React.useEffect(() => {
     const fetchViews = async () => {
-      setIsLoading(true);
-
       try {
         const count = await API.views.addViews();
 

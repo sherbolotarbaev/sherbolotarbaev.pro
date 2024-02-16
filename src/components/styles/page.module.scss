@@ -19,9 +19,30 @@
     gap: 0.85rem;
 
     .span {
+      display: flex;
+      align-items: center;
+
+      padding: 0.25rem 0.55rem;
+
+      background: #00ff8c4b;
+      border-radius: 0.365rem;
+
       font-size: 0.735rem;
       font-weight: 300;
-      color: var(--accent-4);
+      color: #00ff8c;
+
+      .loading {
+        animation: rotateAnimation 0.9s infinite linear;
+
+        @keyframes rotateAnimation {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      }
     }
 
     .load {
