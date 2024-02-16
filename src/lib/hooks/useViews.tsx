@@ -17,7 +17,7 @@ export function useViews(): ViewsHook {
       setIsLoading(true);
 
       try {
-        const [count] = await API.views.addViews();
+        const count = await API.views.addViews();
 
         setCountViews(count);
       } catch (e: any) {
