@@ -20,10 +20,12 @@
       font-size: 2.785rem;
       font-weight: 600;
 
-      background: var(--text-gradient);
-      -webkit-background-clip: text;
-      text-fill-color: transparent;
-      -webkit-text-fill-color: transparent;
+      span {
+        background: var(--text-gradient);
+        -webkit-background-clip: text;
+        text-fill-color: transparent;
+        -webkit-text-fill-color: transparent;
+      }
 
       @media (max-width: 1205px) {
         font-size: 2.675rem;

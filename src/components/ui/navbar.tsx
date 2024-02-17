@@ -6,16 +6,10 @@ import { siteConfig } from "@/../config/site";
 import { useScrollDirection } from "@/lib/hooks/useScrollDirection";
 
 import NavLinks from "./navlinks";
-import Link from "next/link";
 import Logo from "./logo";
+import SocialMedia from "./social-media";
 import websiteLogo from "@/../public/logo.png";
-import {
-  DotsSvg,
-  GitHubSvg,
-  InstagramSvg,
-  LinkedinSvg,
-  TelegramSvg,
-} from "@/lib/assets/svg";
+import { DotsSvg } from "@/lib/assets/svg";
 import styles from "../styles/navbar.module.scss";
 
 export default function NavBar() {
@@ -69,23 +63,7 @@ export default function NavBar() {
           <NavLinks />
         </div>
 
-        <div className={styles.icons}>
-          <Link href="/github" target="_blank">
-            <GitHubSvg className={styles.icon} />
-          </Link>
-
-          <Link href="/instagram" target="_blank">
-            <InstagramSvg className={styles.icon} />
-          </Link>
-
-          <Link href="/linkedin" target="_blank">
-            <LinkedinSvg className={styles.icon} />
-          </Link>
-
-          <Link href="/telegram" target="_blank">
-            <TelegramSvg className={styles.icon} />
-          </Link>
-        </div>
+        <SocialMedia />
 
         <div className={styles.burger_menu} ref={burgerMenuRef}>
           <DotsSvg
@@ -104,23 +82,7 @@ export default function NavBar() {
 
             <div className={styles.label}>Social media</div>
 
-            <div className={styles.icons}>
-              <Link href="/github" target="_blank">
-                <GitHubSvg className={styles.icon} />
-              </Link>
-
-              <Link href="/instagram" target="_blank">
-                <InstagramSvg className={styles.icon} />
-              </Link>
-
-              <Link href="/linkedin" target="_blank">
-                <LinkedinSvg className={styles.icon} />
-              </Link>
-
-              <Link href="/telegram" target="_blank">
-                <TelegramSvg className={styles.icon} />
-              </Link>
-            </div>
+            <SocialMedia />
           </div>
         </div>
       </div>

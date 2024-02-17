@@ -17,6 +17,10 @@ const socialMedia = [
     name: "telegram",
     url: "https://telegram.me/sherbolotarbaev",
   },
+  {
+    name: "twitter",
+    url: "https://twitter.com/sherbolotarbaev",
+  },
 ];
 
 export async function middleware(request: NextRequest) {

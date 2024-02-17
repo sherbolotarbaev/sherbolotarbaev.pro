@@ -96,7 +96,7 @@ export default function Experience() {
         variants={textAnimation}>
         <div className={styles.text}>
           <h2 className={styles.title} style={font.style}>
-            {text.title}
+            <span>{text.title}</span>
           </h2>
         </div>
 
