@@ -3,6 +3,7 @@
 import React from "react";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { useVisible } from "@/lib/hooks/useVisible";
 
@@ -12,6 +13,11 @@ import { Prompt } from "next/font/google";
 import { LinkSvg, ManchoSvg, WedevxSvg } from "@/lib/assets/svg";
 import styles from "../styles/experience.module.scss";
 
+const Video = dynamic(() => import("@/components/ui/video"), {
+  ssr: false,
+  loading: () => <div className={styles.load} />,
+});
+
 type Job = {
   name: string;
   date: string;
@@ -19,9 +25,20 @@ type Job = {
   description: string;
   logo: React.ReactElement;
   url: string;
+  video?: string;
 };
 
 const jobs: Job[] = [
+  {
+    name: "WEDEVX",
+    date: "2023 - Present",
+    role: "Software Development Engineer",
+    description:
+      "Presently, I am honored to be a valuable <span>member</span> of the <span>exceptionally talented</span> team at <span>WEDEVX Ed-Tech</span>. In this role, I harness my skills and extensive experience to engineer groundbreaking solutions that empower the realms of <span> education </span>and<span> technology</span>",
+    logo: <WedevxSvg className={styles.icon} />,
+    url: "https://www.wedevx.co/",
+    video: "https://www.youtube.com/embed/TBP1CwQX4sg",
+  },
   {
     name: "Mancho Devs",
     date: "2021 - 2023",
@@ -40,15 +57,7 @@ const jobs: Job[] = [
       />
     ),
     url: "https://www.mancho.dev/",
-  },
-  {
-    name: "WEDEVX",
-    date: "2023 - Present",
-    role: "Software Development Engineer",
-    description:
-      "Presently, I am honored to be a valuable <span>member</span> of the <span>exceptionally talented</span> team at <span>WEDEVX Ed-Tech</span>. In this role, I harness my skills and extensive experience to engineer groundbreaking solutions that empower the realms of <span> education </span>and<span> technology</span>",
-    logo: <WedevxSvg className={styles.icon} />,
-    url: "https://www.wedevx.co/",
+    video: "https://www.youtube.com/embed/feo0kAeb_QE",
   },
 ];
 
@@ -97,8 +106,6 @@ export default function Experience() {
               key={idx}
               className={styles.job}
               variants={jobsAnimation}
-              initial="hidden"
-              animate={show ? "visible" : "hidden"}
               style={font2.style}
               transition={{ delay: idx * 0.5 }}>
               <div className={styles.head}>
@@ -119,6 +126,8 @@ export default function Experience() {
               <Link href={job.url} target="_blank" className={styles.link}>
                 <LinkSvg className={styles.icon} /> See more about {job.name}
               </Link>
+
+              {job.video && show && <Video url={job.video} />}
             </motion.div>
           ))}
         </div>

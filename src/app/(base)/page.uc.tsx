@@ -25,11 +25,6 @@ const Experience = dynamic(() => import("@/components/ui/experience"), {
   loading: () => <div className={styles.load} />,
 });
 
-const Video = dynamic(() => import("@/components/ui/video"), {
-  ssr: false,
-  loading: () => <div className={styles.load} />,
-});
-
 export default function HomeClient() {
   const { views, isLoading } = useViews();
 
@@ -63,8 +58,6 @@ export default function HomeClient() {
 
         <div className={styles.content} style={{ minHeight: "60vh" }}>
           <Experience />
-
-          <Video url="https://www.youtube.com/embed/TBP1CwQX4sg" />
         </div>
       </div>
     </>
