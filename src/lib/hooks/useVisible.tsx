@@ -20,11 +20,8 @@ export function useVisible({ ref }: Props): VisibleHook {
       if (section) {
         const sectionRect = section.getBoundingClientRect();
         const topVisible = sectionRect.top >= 0;
-        const leftVisible = sectionRect.left >= 0;
-        const rightVisible = sectionRect.top <= window.innerWidth;
         const bottomVisible = sectionRect.bottom <= window.innerHeight;
-        const isVisible =
-          topVisible && bottomVisible && rightVisible && leftVisible;
+        const isVisible = topVisible && bottomVisible;
 
         if (isVisible) {
           setShow(true);
