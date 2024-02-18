@@ -15,7 +15,7 @@ export function useVisible({ ref }: Props): VisibleHook {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const section = ref.current?.parentElement;
+      const section = ref.current;
 
       if (section) {
         const sectionRect = section.getBoundingClientRect();
