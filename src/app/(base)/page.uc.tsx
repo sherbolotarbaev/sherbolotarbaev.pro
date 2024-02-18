@@ -1,9 +1,12 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { Fira_Code } from "next/font/google";
 import { useViews } from "@/lib/hooks/useViews";
 import { LoadSvg } from "@/lib/assets/svg";
 import styles from "@/components/styles/page.module.scss";
+
+const font = Fira_Code({ subsets: ["latin"] });
 
 const Hero = dynamic(() => import("@/components/ui/hero"), {
   ssr: false,
@@ -34,7 +37,7 @@ export default function HomeClient() {
 
       <div className={styles.page_wrapper}>
         <div className={styles.content} style={{ minHeight: "60vh" }}>
-          <span className={styles.span}>
+          <span className={styles.span} style={font.style}>
             {isLoading ? (
               <LoadSvg
                 className={styles.loading}

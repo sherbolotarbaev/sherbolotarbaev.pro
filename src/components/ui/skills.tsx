@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Prompt } from "next/font/google";
+import { Fira_Code, Prompt } from "next/font/google";
 import { useVisible } from "@/lib/hooks/useVisible";
 import { motion } from "framer-motion";
 import text from "@/lib/data/skills.json";
@@ -151,7 +151,7 @@ const skillsAnimation = {
 };
 
 const font = Prompt({ subsets: ["latin"], weight: "600" });
-const font2 = Prompt({ subsets: ["latin"], weight: "300" });
+const font2 = Fira_Code({ subsets: ["latin"] });
 
 export default function Skills() {
   const skillsRef = React.useRef<HTMLDivElement | null>(null);
