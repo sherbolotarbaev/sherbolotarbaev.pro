@@ -8,6 +8,7 @@ import { useScrollDirection } from "@/lib/hooks/useScrollDirection";
 import NavLinks from "./navlinks";
 import Logo from "./logo";
 import SocialMedia from "./social-media";
+import Button from "./button";
 import websiteLogo from "@/../public/logo.png";
 import { DotsSvg } from "@/lib/assets/svg";
 import styles from "../styles/navbar.module.scss";
@@ -63,7 +64,13 @@ export default function NavBar() {
           <NavLinks />
         </div>
 
-        <SocialMedia />
+        <div className={styles.right}>
+          <SocialMedia />
+
+          <Button style="dark" adaptive open="mailto:sherbolot@wedevx.co">
+            Say Hello 👋
+          </Button>
+        </div>
 
         <div className={styles.burger_menu} ref={burgerMenuRef}>
           <DotsSvg
@@ -83,6 +90,10 @@ export default function NavBar() {
             <div className={styles.label}>Social media</div>
 
             <SocialMedia />
+
+            <Button style="dark" adaptive open="mailto:sherbolot@wedevx.co">
+              Say Hello 👋
+            </Button>
           </div>
         </div>
       </div>

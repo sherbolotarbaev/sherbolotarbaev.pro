@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import {
-  DotsSvg,
   GitHubSvg,
   InstagramSvg,
   LinkedinSvg,

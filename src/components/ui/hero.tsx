@@ -65,8 +65,6 @@ export default function Hero() {
 
       <div className={styles.buttons}>
         <Button
-          load={false}
-          type="button"
           redirect="/contact"
           style="dark"
           adaptive
@@ -87,8 +85,6 @@ export default function Hero() {
         </Button>
 
         <Button
-          load={false}
-          type="button"
           open="/Sherbolot-Arbaev-CV.pdf"
           adaptive
           animation

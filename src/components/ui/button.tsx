@@ -14,8 +14,8 @@ interface Props {
   };
   disabled?: boolean;
   width?: number;
-  type: keyof Types;
-  load: boolean | string;
+  type?: keyof Types;
+  load?: boolean | string;
   onClick?: () => void;
   redirect?: string;
   open?: string;
@@ -43,8 +43,8 @@ export default function Button({
   icon,
   disabled,
   width,
-  type,
-  load,
+  type = "button",
+  load = false,
   onClick,
   redirect,
   open,
