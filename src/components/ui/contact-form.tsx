@@ -183,8 +183,9 @@ export default function ContactForm() {
                   style={{
                     maxWidth: "100%",
                     minWidth: "100%",
-                    maxHeight: "300px",
+                    maxHeight: "365px",
                     minHeight: "100px",
+                    resize: "vertical",
                   }}
                   {...register("message", {
                     required: "Message required",

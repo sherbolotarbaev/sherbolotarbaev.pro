@@ -39,3 +39,4 @@ export { default as CoffeeSvg } from "./coffee.svg";
 export { default as TelegramSvg } from "./telegram.svg";
 export { default as DotsSvg } from "./dots.svg";
 export { default as TwitterSvg } from "./twitter.svg";
+export { default as ChevronSvg } from "./chevron.svg";

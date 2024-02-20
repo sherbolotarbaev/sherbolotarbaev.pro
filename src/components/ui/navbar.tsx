@@ -88,7 +88,7 @@ export default function NavBar() {
             }>
             <div className={styles.label}>Navigation</div>
 
-            <NavLinks />
+            <NavLinks icons />
 
             <div className={styles.label}>Social media</div>
 

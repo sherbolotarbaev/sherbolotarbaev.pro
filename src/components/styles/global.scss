@@ -72,10 +72,18 @@ body {
 
   .space {
     width: 100%;
-    height: 4.15rem;
+    height: 4.6rem;
 
     @media (max-width: 1205px) {
+      height: 4.35rem;
+    }
+
+    @media (max-width: 945px) {
       height: 3.75rem;
+    }
+
+    @media (max-width: 875px) {
+      height: 3.77rem;
     }
 
     @media (max-width: 675px) {
