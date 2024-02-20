@@ -67,7 +67,10 @@ export default function NavBar() {
         <div className={styles.right}>
           <SocialMedia />
 
-          <Button style="dark" adaptive open="mailto:sherbolot@wedevx.co">
+          <Button
+            style="dark"
+            adaptive
+            open="mailto:sherbolotarbaev1@gmail.com">
             Say Hello 👋
           </Button>
         </div>
@@ -91,7 +94,10 @@ export default function NavBar() {
 
             <SocialMedia />
 
-            <Button style="dark" adaptive open="mailto:sherbolot@wedevx.co">
+            <Button
+              style="dark"
+              adaptive
+              open="mailto:sherbolotarbaev1@gmail.com">
               Say Hello 👋
             </Button>
           </div>
