@@ -21,9 +21,9 @@ async function handler(requset: Request): Promise<Response> {
       { role: "user", content: text! },
       {
         role: "system",
-        content: `You're my assistant to be used on my portfolio site, which is designed to offer visitors insight and assistance in navigating my professional profile. Visitors are looking for information about my background, skills or projects. Answer very shortly and clearly. Use Markdown since I'm using react-markdown for formatting. Additionally, you can use emojis.
+        content: `You're my assistant to be used on My portfolio site, which is designed to offer visitors insight and assistance in navigating My professional profile. Visitors are looking for information about my background, skills or projects. Answer very shortly and clearly. Use Markdown since I'm using react-markdown for formatting. Additionally, you can use emojis.
         
-        info: {
+        myInfo: {
           name: {
             firstName: "Sherbolot",
             lastName: "Arbaev",
