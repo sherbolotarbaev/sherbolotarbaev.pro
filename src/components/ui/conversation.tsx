@@ -326,12 +326,12 @@ export default function Conversation() {
             <MickroPhone
               className={styles.icon}
               onClick={startRecording}
-              style={{ fontSize: "1.55rem", fill: "#7F7F7F" }}
+              style={{ fontSize: "1.55rem", fill: "#444" }}
             />
           ) : booleans.isTranscoding ? (
             <LoadSvg
               className={`${styles.icon} ${styles.load}`}
-              style={{ fontSize: "1.55rem", fill: "#7F7F7F" }}
+              style={{ fontSize: "1.55rem", fill: "#444" }}
             />
           ) : (
             <StopSvg
@@ -350,20 +350,20 @@ export default function Conversation() {
               className={`${styles.icon} ${styles.disabled}`}
               style={{
                 fontSize: "1.55rem",
-                fill: "#7F7F7F",
+                fill: "#444",
               }}
             />
           ) : booleans.isLoading ? (
             <LoadSvg
               className={`${styles.icon} ${styles.load}`}
-              style={{ fontSize: "1.55rem", fill: "#7F7F7F" }}
+              style={{ fontSize: "1.55rem", fill: "#444" }}
             />
           ) : (
             <SendSvg
               className={styles.icon}
               style={{
                 fontSize: "1.55rem",
-                fill: "#27ff6f",
+                fill: "#fafafa",
               }}
               onClick={() => newConversation(message)}
             />
