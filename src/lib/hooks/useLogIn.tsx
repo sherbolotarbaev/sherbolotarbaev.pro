@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import * as API from "@/../api";
+import * as API from "@/../_api";
 import {
   errorNotification,
   successNotification,

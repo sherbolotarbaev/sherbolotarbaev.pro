@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import * as API from "@/../api";
+import * as API from "@/../_api";
 
 interface Props {
   children: React.ReactNode;

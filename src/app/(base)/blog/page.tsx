@@ -1,4 +1,4 @@
-import * as API from "@/../api";
+import * as API from "../../../../_api";
 
 import type { Metadata } from "next";
 import BlogClient from "./page.uc";

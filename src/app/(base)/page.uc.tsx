@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import { Fira_Code } from "next/font/google";
 import { useViews } from "@/lib/hooks/useViews";
 import { LoadSvg } from "@/lib/assets/svg";
+import Response from "@/components/ui/response";
+import Conversation from "@/components/ui/conversation";
 import styles from "@/components/styles/page.module.scss";
 
 const font = Fira_Code({ subsets: ["latin"] });
@@ -61,6 +63,12 @@ export default function HomeClient() {
 
         <div className={styles.content} style={{ minHeight: "60vh" }}>
           <Experience />
+        </div>
+
+        <div className={styles.content} style={{ minHeight: "auto" }}>
+          <Response />
+
+          <Conversation />
         </div>
       </div>
     </>

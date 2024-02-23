@@ -3,7 +3,7 @@
 import React from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import * as API from "@/../api";
+import * as API from "@/../_api";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { getCookie } from "cookies-next";
 import {

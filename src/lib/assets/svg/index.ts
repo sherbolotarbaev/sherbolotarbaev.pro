@@ -40,3 +40,7 @@ export { default as TelegramSvg } from "./telegram.svg";
 export { default as DotsSvg } from "./dots.svg";
 export { default as TwitterSvg } from "./twitter.svg";
 export { default as ChevronSvg } from "./chevron.svg";
+export { default as ImageSvg } from "./image.svg";
+export { default as MickroPhone } from "./mickrophone.svg";
+export { default as StopSvg } from "./stop.svg";
+export { default as SendSvg } from "./send.svg";
