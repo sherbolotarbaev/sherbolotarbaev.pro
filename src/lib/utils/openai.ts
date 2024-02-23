@@ -14,7 +14,7 @@ export interface ChatGPTMessage {
 export type ChatGPTModel = "gpt-4" | "gpt-3.5-turbo";
 
 export interface OpenAIStreamPayload {
-  model: string;
+  model: ChatGPTModel;
   messages: ChatGPTMessage[];
   temperature: number;
   max_tokens: number;

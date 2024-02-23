@@ -17,8 +17,6 @@ export default function Response() {
   const [response] = useAtom(responseAtom);
   const [text] = useAtom(textAtom);
 
-  console.log(response && response.length > 0 && response)
-
   return response && response.length > 0 ? (
     <>
       <div className={styles.wrapper}>

@@ -16,7 +16,7 @@ async function handler(requset: Request): Promise<Response> {
   }
 
   const payload: OpenAIStreamPayload = {
-    model: "gpt-4",
+    model: "gpt-3.5-turbo",
     messages: [
       { role: "user", content: text! },
       {
