@@ -18,6 +18,7 @@ import {
   ParsedEvent,
   ReconnectInterval,
 } from "eventsource-parser";
+import { Fira_Code } from "next/font/google";
 
 import {
   // ImageSvg,
@@ -34,6 +35,10 @@ type Booleans = {
   isButtonDisabled: boolean;
   isTranscoding: boolean;
 };
+
+const faqs: string[] = ["Who's Sher?", "Give some information about Sher"];
+
+const font = Fira_Code({ subsets: ["latin"] });
 
 export default function Conversation() {
   const [_response, setResponse] = useAtom(responseAtom);
@@ -298,6 +303,21 @@ export default function Conversation() {
           <div className={styles.error}>{error}</div>
         </div>
       )}
+
+      <div className={styles.faqs}>
+        {faqs.map((faq, idx) => (
+          <span
+            key={idx}
+            className={styles.faq}
+            style={font.style}
+            onClick={() => {
+              setMessage(faq);
+              editor?.chain().focus().setContent(faq).run();
+            }}>
+            {faq}
+          </span>
+        ))}
+      </div>
 
       <div className={styles.form}>
         <div className={styles.icons}>

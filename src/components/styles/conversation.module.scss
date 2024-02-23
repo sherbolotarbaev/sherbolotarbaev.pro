@@ -9,6 +9,47 @@
   flex-direction: column;
   gap: 1.85rem;
 
+  .faqs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+
+    .faq {
+      cursor: pointer;
+
+      padding: 0.45rem 0.65rem;
+
+      background: var(--accent-1);
+      border: 0.8px solid var(--accent-2);
+      border-radius: 2rem;
+
+      font-size: 1.075rem;
+
+      @media (max-width: 1205px) {
+        font-size: 1.05rem;
+      }
+
+      @media (max-width: 875px) {
+        cursor: default;
+
+        font-size: 0.955rem;
+      }
+
+      @media (max-width: 675px) {
+        font-size: 0.875rem;
+      }
+
+      @media (max-width: 555px) {
+        font-size: 0.825rem;
+      }
+
+      @media (max-width: 475px) {
+        font-size: 0.765rem;
+      }
+    }
+  }
+
   .form {
     width: 100%;
     height: 100%;
