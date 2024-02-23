@@ -36,7 +36,7 @@ type Booleans = {
   isTranscoding: boolean;
 };
 
-const faqs: string[] = ["Who's Sher?", "Give some information about Sher"];
+const faqs: string[] = ["Who's Sher? 🧐", "Give some information about Sher"];
 
 const font = Fira_Code({ subsets: ["latin"] });
 
