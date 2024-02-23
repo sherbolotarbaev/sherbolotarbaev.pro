@@ -1,8 +1,6 @@
 import { OpenAIStream, OpenAIStreamPayload } from "@/lib/utils/openai";
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime = "edge";
 
 async function handler(requset: Request): Promise<Response> {
   if (!process.env.OPEN_AI_SECRET_KEY) {
