@@ -30,7 +30,7 @@ export default function Response() {
           </p>
         </div>
 
-        <Logo alt="AI" src={aiLogo} />
+        <Logo alt="ChatGPT" src={aiLogo} />
 
         <Markdown
           rehypePlugins={[rehypeRaw]}

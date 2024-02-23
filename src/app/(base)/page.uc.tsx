@@ -1,11 +1,15 @@
 "use client";
 
+import React from "react";
 import dynamic from "next/dynamic";
 import { Fira_Code } from "next/font/google";
 import { useViews } from "@/lib/hooks/useViews";
+
+import Logo from "@/components/ui/logo";
+import Button from "@/components/ui/button";
+
+import aiLogo from "@/../public/ai.jpeg";
 import { LoadSvg } from "@/lib/assets/svg";
-import Response from "@/components/ui/response";
-import Conversation from "@/components/ui/conversation";
 import styles from "@/components/styles/page.module.scss";
 
 const font = Fira_Code({ subsets: ["latin"] });
@@ -30,8 +34,20 @@ const Experience = dynamic(() => import("@/components/ui/experience"), {
   loading: () => <div className={styles.load} />,
 });
 
+const Conversation = dynamic(() => import("@/components/ui/conversation"), {
+  ssr: false,
+  loading: () => <div className={styles.load} />,
+});
+
+const Response = dynamic(() => import("@/components/ui/response"), {
+  ssr: false,
+  loading: () => <div className={styles.load} />,
+});
+
 export default function HomeClient() {
   const { views, isLoading } = useViews();
+
+  const [show, setShow] = React.useState<boolean>(false);
 
   return (
     <>
@@ -66,9 +82,18 @@ export default function HomeClient() {
         </div>
 
         <div className={styles.content} style={{ minHeight: "auto" }}>
-          <Response />
+          {!show ? (
+            <Button width={160} style="dark" onClick={() => setShow(!show)}>
+              <Logo alt="ChatGPT" src={aiLogo} width={30} height={30} />
+              Try ChatGPT
+            </Button>
+          ) : (
+            <>
+              <Response />
 
-          <Conversation />
+              <Conversation />
+            </>
+          )}
         </div>
       </div>
     </>

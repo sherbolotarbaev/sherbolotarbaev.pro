@@ -18,7 +18,12 @@ export default function Logo({ src, alt, name, color, width, height }: Props) {
   return (
     <>
       <Link className={styles.logo_wrapper} href="/">
-        <div className={styles.logo_container}>
+        <div
+          className={styles.logo_container}
+          style={{
+            width: width || "40px",
+            height: height || "40px",
+          }}>
           <Image
             src={src}
             alt={alt}
