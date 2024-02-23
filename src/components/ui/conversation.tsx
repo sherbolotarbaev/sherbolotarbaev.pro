@@ -230,7 +230,6 @@ export default function Conversation() {
             isButtonDisabled: false,
           }));
         };
-
         processStream();
       } else {
         setError(await response.text());
