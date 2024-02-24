@@ -1,5 +1,5 @@
 import { SendMessageDto } from "./dto";
-import instance from "../core/axios";
+import instance from "@/../core/axios";
 
 export const sendMessage = async (dto: SendMessageDto) => {
   try {

@@ -1,6 +1,6 @@
 "use client";
 
-import * as API from "@/../_api";
+import * as API from "@/app/lib/_api";
 import { useRouter } from "next/navigation";
 import { errorNotification } from "@/app/lib/utils/notification";
 

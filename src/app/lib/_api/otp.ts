@@ -1,4 +1,4 @@
-import instance from "../core/axios";
+import instance from "@/../core/axios";
 import { SendEmailOtpDto, CheckEmailOtpDto } from "./dto";
 
 export const sendEmailOtp = async (dto: SendEmailOtpDto) => {

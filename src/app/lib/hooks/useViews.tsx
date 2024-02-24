@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import * as API from "@/../_api";
+import * as API from "@/app/lib/_api";
 
 interface ViewsHook {
   views: string;

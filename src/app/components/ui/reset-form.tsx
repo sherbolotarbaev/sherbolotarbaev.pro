@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 import { SubmitHandler, useForm } from "react-hook-form";
-import * as API from "@/../_api";
+import * as API from "@/app/lib/_api";
 import {
   errorNotification,
   successNotification,

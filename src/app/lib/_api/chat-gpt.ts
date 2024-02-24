@@ -1,4 +1,4 @@
-import instance from "../core/axios";
+import instance from "@/../core/axios";
 
 export const transcribeAudio = async (audioBlob: Blob) => {
   const formData = new FormData();

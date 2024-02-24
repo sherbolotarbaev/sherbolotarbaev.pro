@@ -1,4 +1,4 @@
-import instance from "../core/axios";
+import instance from "@/../core/axios";
 
 export const addViews = async () => {
   try {
