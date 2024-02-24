@@ -19,11 +19,19 @@ export default function Message({ message, ...props }: Props) {
   return (
     <>
       <div className={styles.wrapper} {...props}>
-        <span className={styles.logo}>
+        <span
+          className={styles.logo}
+          style={
+            message.role === "assistant"
+              ? {
+                  background: "#fafafa",
+                }
+              : undefined
+          }>
           {message.role === "assistant" ? (
-            <AiSvg style={{ fontSize: "1.55rem", fill: "#fff" }} />
+            <AiSvg style={{ fontSize: "1.45rem" }} />
           ) : (
-            <UserSvg style={{ fontSize: "1.55rem", fill: "#fff" }} />
+            <UserSvg style={{ fontSize: "1.45rem", fill: "#fff" }} />
           )}
         </span>
 

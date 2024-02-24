@@ -81,7 +81,7 @@ export default function HomeClient() {
               style="dark"
               onClick={() => setShow(!show)}
               icon={{
-                svg: <AiSvg style={{ fontSize: "1.35rem" }} />,
+                svg: <AiSvg style={{ fontSize: "1.35rem", fill: "#fff" }} />,
                 position: "right",
               }}>
               Try ChatGPT
