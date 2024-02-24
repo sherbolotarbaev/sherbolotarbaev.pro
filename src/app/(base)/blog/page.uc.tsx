@@ -3,8 +3,8 @@
 import React from "react";
 import { Prompt } from "next/font/google";
 import dynamic from "next/dynamic";
-import { CoffeeSvg } from "@/lib/assets/svg";
-import styles from "@/components/styles/blog.module.scss";
+import { CoffeeSvg } from "@/app/lib/assets/svg";
+import styles from "@/app/components/styles/blog.module.scss";
 
 interface Props {
   posts: MediumApiResponse[];
@@ -12,7 +12,7 @@ interface Props {
 
 const font = Prompt({ subsets: ["latin"], weight: "600" });
 
-const Post = dynamic(() => import("@/components/ui/post"), {
+const Post = dynamic(() => import("@/app/components/ui/post"), {
   ssr: false,
   loading: () => (
     <div className={`${styles.post} ${styles.load}`}>

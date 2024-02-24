@@ -1,8 +1,8 @@
 "use client";
 
-import ContactForm from "@/components/ui/contact-form";
-import StarsCanvas from "@/components/ui/star";
-import styles from "@/components/styles/contact.module.scss";
+import ContactForm from "@/app/components/ui/contact-form";
+import StarsCanvas from "@/app/components/ui/star";
+import styles from "@/app/components/styles/contact.module.scss";
 
 export default function ContactClient() {
   return (

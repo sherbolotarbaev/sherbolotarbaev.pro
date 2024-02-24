@@ -1,11 +1,11 @@
 import { siteConfig } from "@/../config/site";
-import { UserProvider } from "@/lib/providers/UserProvider";
+import { UserProvider } from "@/app/lib/providers/UserProvider";
 
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 
 import RootLayoutClient from "./layout.uc";
-import "@/components/styles/global.scss";
+import "@/app/components/styles/global.scss";
 
 interface Props {
   children: React.ReactNode;

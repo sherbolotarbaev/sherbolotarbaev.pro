@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { LoadSvg } from "@/lib/assets/svg";
-import styles from "@/components/styles/redirect.module.scss";
+import { LoadSvg } from "@/app/lib/assets/svg";
+import styles from "@/app/components/styles/redirect.module.scss";
 
 export default function RedirectClient() {
   React.useEffect(() => {

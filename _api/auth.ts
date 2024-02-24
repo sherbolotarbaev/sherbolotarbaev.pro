@@ -6,7 +6,7 @@ import {
   ResetPasswordDto,
 } from "./dto";
 import instance from "../core/axios";
-import { deleteCookie } from "@/lib/utils/cookie";
+import { deleteCookie } from "@/app/lib/utils/cookie";
 
 type LoginResponse = {
   message: string;

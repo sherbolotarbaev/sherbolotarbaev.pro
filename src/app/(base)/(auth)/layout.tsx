@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import styles from "@/components/styles/auth.module.scss";
+import styles from "@/app/components/styles/auth.module.scss";
 
 interface Props {
   children: React.ReactNode;

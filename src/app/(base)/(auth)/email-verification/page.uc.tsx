@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import VerificationForm from "@/components/ui/verification-form";
-import styles from "@/components/styles/auth.module.scss";
+import VerificationForm from "@/app/components/ui/verification-form";
+import styles from "@/app/components/styles/auth.module.scss";
 
 export default function EmailVerificationClient() {
   React.useEffect(() => {

@@ -1,7 +1,7 @@
 "use client";
 
-import NavBar from "@/components/ui/navbar";
-import Footer from "@/components/ui/footer";
+import NavBar from "@/app/components/ui/navbar";
+import Footer from "@/app/components/ui/footer";
 import { Toaster } from "sonner";
 
 interface Props {

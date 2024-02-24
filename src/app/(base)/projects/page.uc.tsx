@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/components/styles/page.module.scss";
+import styles from "@/app/components/styles/page.module.scss";
 
 export default function ProjectsClient() {
   return (

@@ -3,43 +3,43 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { Fira_Code } from "next/font/google";
-import { useViews } from "@/lib/hooks/useViews";
+import { useViews } from "@/app/lib/hooks/useViews";
 
-import Logo from "@/components/ui/logo";
-import Button from "@/components/ui/button";
+import Logo from "@/app/components/ui/logo";
+import Button from "@/app/components/ui/button";
 
 import aiLogo from "@/../public/ai.jpeg";
-import { LoadSvg } from "@/lib/assets/svg";
-import styles from "@/components/styles/page.module.scss";
+import { LoadSvg } from "@/app/lib/assets/svg";
+import styles from "@/app/components/styles/page.module.scss";
 
 const font = Fira_Code({ subsets: ["latin"] });
 
-const Hero = dynamic(() => import("@/components/ui/hero"), {
+const Hero = dynamic(() => import("@/app/components/ui/hero"), {
   ssr: false,
   loading: () => <div className={styles.load} />,
 });
 
-const Skills = dynamic(() => import("@/components/ui/skills"), {
+const Skills = dynamic(() => import("@/app/components/ui/skills"), {
   ssr: false,
   loading: () => <div className={styles.load} />,
 });
 
-const About = dynamic(() => import("@/components/ui/about"), {
+const About = dynamic(() => import("@/app/components/ui/about"), {
   ssr: false,
   loading: () => <div className={styles.load} />,
 });
 
-const Experience = dynamic(() => import("@/components/ui/experience"), {
+const Experience = dynamic(() => import("@/app/components/ui/experience"), {
   ssr: false,
   loading: () => <div className={styles.load} />,
 });
 
-const Conversation = dynamic(() => import("@/components/ui/conversation"), {
+const Conversation = dynamic(() => import("@/app/components/ui/conversation"), {
   ssr: false,
   loading: () => <div className={styles.load} />,
 });
 
-const Response = dynamic(() => import("@/components/ui/response"), {
+const Response = dynamic(() => import("@/app/components/ui/response"), {
   ssr: false,
   loading: () => <div className={styles.load} />,
 });
