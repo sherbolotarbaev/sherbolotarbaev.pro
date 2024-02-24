@@ -44,3 +44,5 @@ export { default as ImageSvg } from "./image.svg";
 export { default as MickroPhone } from "./mickrophone.svg";
 export { default as StopSvg } from "./stop.svg";
 export { default as SendSvg } from "./send.svg";
+export { default as AiSvg } from "./ai.svg";
+export { default as UserSvg } from "./user.svg";

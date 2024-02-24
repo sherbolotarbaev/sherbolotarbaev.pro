@@ -1,24 +1,26 @@
-import { OpenAIStream, OpenAIStreamPayload } from "@/app/lib/utils/openai";
+import { OpenAIStream, StreamingTextResponse } from "ai";
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+  apiKey: process.env.OPEN_AI_SECRET_KEY ?? "",
+});
 
 export const runtime = "edge";
 
-async function handler(requset: Request): Promise<Response> {
+export async function POST(requset: Request): Promise<Response> {
   if (!process.env.OPEN_AI_SECRET_KEY) {
     return new Response("Missing ENV: OPEN_AI_SECRET_KEY", { status: 400 });
   }
 
-  const { text } = (await requset.json()) as {
-    text?: string;
-  };
+  const { messages } = await requset.json();
 
-  if (!text) {
+  if (!messages && messages.length === 0) {
     return new Response("No text in the request", { status: 400 });
   }
 
-  const payload: OpenAIStreamPayload = {
-    model: "gpt-3.5-turbo",
+  const response = await openai.chat.completions.create({
+    model: "gpt-4",
     messages: [
-      { role: "user", content: text! },
       {
         role: "system",
         content: `You're my assistant to be used on My portfolio site, which is designed to offer visitors insight and assistance in navigating My professional profile. Visitors are looking for information about my background, skills or projects. Answer very shortly and clearly. Use Markdown since I'm using react-markdown for formatting. Additionally, you can use emojis.
@@ -58,18 +60,14 @@ async function handler(requset: Request): Promise<Response> {
         }
         `,
       },
+      ...messages,
     ],
     temperature: 0.7,
     max_tokens: 1000,
     stream: true,
-  };
-
-  const stream = await OpenAIStream(payload);
-  return new Response(stream, {
-    headers: new Headers({
-      "Cache-Control": "no-cache",
-    }),
   });
-}
 
-export { handler as POST };
+  const stream = OpenAIStream(response);
+
+  return new StreamingTextResponse(stream);
+}

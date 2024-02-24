@@ -5,11 +5,9 @@ import dynamic from "next/dynamic";
 import { Fira_Code } from "next/font/google";
 import { useViews } from "@/app/lib/hooks/useViews";
 
-import Logo from "@/app/components/ui/logo";
 import Button from "@/app/components/ui/button";
 
-import aiLogo from "@/../public/ai.jpeg";
-import { LoadSvg } from "@/app/lib/assets/svg";
+import { AiSvg, LoadSvg } from "@/app/lib/assets/svg";
 import styles from "@/app/components/styles/page.module.scss";
 
 const font = Fira_Code({ subsets: ["latin"] });
@@ -35,11 +33,6 @@ const Experience = dynamic(() => import("@/app/components/ui/experience"), {
 });
 
 const Conversation = dynamic(() => import("@/app/components/ui/conversation"), {
-  ssr: false,
-  loading: () => <div className={styles.load} />,
-});
-
-const Response = dynamic(() => import("@/app/components/ui/response"), {
   ssr: false,
   loading: () => <div className={styles.load} />,
 });
@@ -83,16 +76,18 @@ export default function HomeClient() {
 
         <div className={styles.content} style={{ minHeight: "auto" }}>
           {!show ? (
-            <Button width={160} style="dark" onClick={() => setShow(!show)}>
-              <Logo alt="ChatGPT" src={aiLogo} width={30} height={30} />
+            <Button
+              width={160}
+              style="dark"
+              onClick={() => setShow(!show)}
+              icon={{
+                svg: <AiSvg style={{ fontSize: "1.35rem" }} />,
+                position: "right",
+              }}>
               Try ChatGPT
             </Button>
           ) : (
-            <>
-              <Response />
-
-              <Conversation />
-            </>
+            <Conversation />
           )}
         </div>
       </div>

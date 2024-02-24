@@ -2,23 +2,17 @@
 
 import React from "react";
 import * as API from "@/app/lib/_api";
+import { Fira_Code } from "next/font/google";
 
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
 import Image from "@tiptap/extension-image";
 import { EditorContent, useEditor } from "@tiptap/react";
 
-import { filesAtom, responseAtom, textAtom } from "@/app/lib/utils/store";
 import { useRecordVoice } from "@/app/lib/hooks/useRecordVoice";
-import { useAtom } from "jotai";
 import { errorNotification } from "@/app/lib/utils/notification";
-
-import {
-  createParser,
-  ParsedEvent,
-  ReconnectInterval,
-} from "eventsource-parser";
-import { Fira_Code } from "next/font/google";
+import { useChat } from "ai/react";
+import Message from "./message";
 
 import {
   // ImageSvg,
@@ -29,36 +23,22 @@ import {
 } from "@/app/lib/assets/svg";
 import styles from "@/app/components/styles/conversation.module.scss";
 
-type Booleans = {
-  isLoading: boolean;
-  isStreaming: boolean;
-  isButtonDisabled: boolean;
-  isTranscoding: boolean;
-};
-
 const faqs: string[] = ["Who's Sher? 🧐", "Give some information about Sher"];
 
 const font = Fira_Code({ subsets: ["latin"] });
 
 export default function Conversation() {
-  const [_response, setResponse] = useAtom(responseAtom);
-  const [_text, setText] = useAtom(textAtom);
-  // const [_files, setFiles] = useAtom(filesAtom);
-
   const { recording, audioBlob, startRecording, stopRecording } =
     useRecordVoice();
 
-  const [message, setMessage] = React.useState<string>("");
   const [error, setError] = React.useState<string | null>(null);
+  const [disabled, setDisabled] = React.useState<boolean>(false);
+  const [transcoding, setTranscoding] = React.useState<boolean>(false);
 
   // const [images, setImages] = React.useState<File[] | null>(null);
 
-  const [booleans, setBooleans] = React.useState<Booleans>({
-    isLoading: false,
-    isStreaming: false,
-    isButtonDisabled: false,
-    isTranscoding: false,
-  });
+  const { messages, append, reload, stop, isLoading, input, setInput } =
+    useChat();
 
   const editor = useEditor({
     autofocus: true,
@@ -107,7 +87,7 @@ export default function Conversation() {
       // },
     },
     onUpdate: ({ editor }) => {
-      setMessage(editor.getText());
+      setInput(editor.getText());
     },
   });
 
@@ -156,14 +136,6 @@ export default function Conversation() {
   //   [editor]
   // );
 
-  // const handlePlayAudio = (audioUrl: string) => {
-  //   if (audioRef.current) {
-  //     audioRef.current.pause();
-  //     audioRef.current.src = audioUrl;
-  //     audioRef.current.play();
-  //   }
-  // };
-
   const newConversation = async (text: string) => {
     if (!text || text.length < 2 || text.length > 8192) {
       errorNotification(`Invalid text for AI: ${text}`);
@@ -172,123 +144,44 @@ export default function Conversation() {
 
     editor?.commands.clearContent();
 
-    setText(text);
-    setResponse("");
     setError(null);
-    setBooleans((prevState) => ({
-      ...prevState,
-      isLoading: true,
-      isStreaming: true,
-      isButtonDisabled: true,
-    }));
-
-    const onParse = (event: ParsedEvent | ReconnectInterval) => {
-      if (event.type === "event") {
-        const data = event.data;
-        try {
-          const text = JSON.parse(data).text ?? "";
-          setResponse((prev) => prev + text);
-        } catch (e: any) {
-          console.error(e);
-        }
-      }
-    };
-
-    // const formData = new FormData();
-    // formData.append("text", text);
-    // if (images) {
-    //   setFiles(images);
-
-    //   for (const image of images) {
-    //     formData.append("files", image);
-    //   }
-    // }
+    setDisabled(true);
 
     try {
-      const response = await fetch("/api/openai", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text }),
-        credentials: "include",
+      append({
+        role: "user",
+        content: text,
       });
-
-      if (response.ok) {
-        const reader = response.body?.getReader()!;
-        const decoder = new TextDecoder("utf-8");
-        const parser = createParser(onParse);
-
-        const processStream = async () => {
-          let done = false;
-
-          while (!done) {
-            const { done: doneReading, value } = await reader.read();
-            done = doneReading;
-            const chunk = decoder.decode(value);
-            parser.feed(chunk);
-          }
-
-          setBooleans((prevState) => ({
-            ...prevState,
-            isStreaming: false,
-            isButtonDisabled: false,
-          }));
-        };
-        processStream();
-      } else {
-        setError(await response.text());
-        setBooleans((prevState) => ({
-          ...prevState,
-          isStreaming: false,
-          isButtonDisabled: false,
-        }));
-      }
     } catch (e: any) {
       console.error(e);
       setError("Server Temporarily Unavailable");
     } finally {
-      setBooleans((prevState) => ({
-        ...prevState,
-        isLoading: false,
-      }));
+      setDisabled(false);
     }
   };
 
   React.useEffect(() => {
-    if (!message || message.length < 2 || message.length > 8192) {
-      setBooleans((prevState) => ({
-        ...prevState,
-        isButtonDisabled: true,
-      }));
-    } else
-      setBooleans((prevState) => ({
-        ...prevState,
-        isButtonDisabled: false,
-      }));
-  }, [message]);
+    console.log(input);
+    if (!input || input.length < 1 || input.length > 8192) {
+      setDisabled(true);
+    } else setDisabled(false);
+  }, [input]);
 
   React.useEffect(() => {
     if (audioBlob) {
       const speechToText = async () => {
-        setBooleans((prevState) => ({
-          ...prevState,
-          isTranscoding: true,
-        }));
+        setTranscoding(true);
 
         try {
           const transcript = await API.chatGpt.transcribeAudio(audioBlob);
 
-          setMessage(transcript);
+          setInput(transcript);
           editor?.chain().focus().setContent(transcript).run();
         } catch (e: any) {
           console.error(e);
           setError(`Server Temporarily Unavailable: ${e.msg}`);
         } finally {
-          setBooleans((prevState) => ({
-            ...prevState,
-            isTranscoding: false,
-          }));
+          setTranscoding(false);
         }
       };
 
@@ -297,31 +190,36 @@ export default function Conversation() {
   }, [audioBlob]);
 
   return (
-    <div className={styles.conversation}>
-      {error && (
-        <div className={styles.text}>
-          <div className={styles.error}>{error}</div>
+    <>
+      {messages.map((message, idx) => (
+        <Message message={message} key={idx} />
+      ))}
+
+      <div className={styles.conversation}>
+        {error && (
+          <div className={styles.text}>
+            <div className={styles.error}>{error}</div>
+          </div>
+        )}
+
+        <div className={styles.faqs}>
+          {faqs.map((faq, idx) => (
+            <span
+              key={idx}
+              className={styles.faq}
+              style={font.style}
+              onClick={() => {
+                setInput(faq);
+                editor?.chain().focus().setContent(faq).run();
+              }}>
+              {faq}
+            </span>
+          ))}
         </div>
-      )}
 
-      <div className={styles.faqs}>
-        {faqs.map((faq, idx) => (
-          <span
-            key={idx}
-            className={styles.faq}
-            style={font.style}
-            onClick={() => {
-              setMessage(faq);
-              editor?.chain().focus().setContent(faq).run();
-            }}>
-            {faq}
-          </span>
-        ))}
-      </div>
-
-      <div className={styles.form}>
-        <div className={styles.icons}>
-          {/* <input
+        <div className={styles.form}>
+          <div className={styles.icons}>
+            {/* <input
             ref={fileInputRef}
             type="file"
             accept="image/*"
@@ -342,58 +240,55 @@ export default function Conversation() {
             onClick={setFile}
           /> */}
 
-          {!recording && !booleans.isTranscoding ? (
-            <MickroPhone
-              className={styles.icon}
-              onClick={startRecording}
-              style={{ fontSize: "1.55rem", fill: "#444" }}
-            />
-          ) : booleans.isTranscoding ? (
-            <LoadSvg
-              className={`${styles.icon} ${styles.load}`}
-              style={{ fontSize: "1.55rem", fill: "#444" }}
-            />
-          ) : (
-            <StopSvg
-              className={styles.icon}
-              onClick={stopRecording}
-              style={{ fontSize: "1.55rem", fill: "red" }}
-            />
-          )}
-        </div>
+            {!recording && !transcoding ? (
+              <MickroPhone
+                className={styles.icon}
+                onClick={startRecording}
+                style={{ fontSize: "1.55rem", fill: "#444" }}
+              />
+            ) : transcoding ? (
+              <LoadSvg
+                className={`${styles.icon} ${styles.load}`}
+                style={{ fontSize: "1.55rem", fill: "#444" }}
+              />
+            ) : (
+              <StopSvg
+                className={styles.icon}
+                onClick={stopRecording}
+                style={{ fontSize: "1.55rem", fill: "red" }}
+              />
+            )}
+          </div>
 
-        <EditorContent editor={editor} className={styles.editor} />
+          <EditorContent editor={editor} className={styles.editor} />
 
-        <div className={styles.icons}>
-          {booleans.isButtonDisabled && !booleans.isLoading ? (
-            <SendSvg
-              className={`${styles.icon} ${styles.disabled}`}
-              style={{
-                fontSize: "1.55rem",
-                fill: "#444",
-              }}
-            />
-          ) : booleans.isLoading ? (
-            <LoadSvg
-              className={`${styles.icon} ${styles.load}`}
-              style={{ fontSize: "1.55rem", fill: "#444" }}
-            />
-          ) : (
-            <SendSvg
-              className={styles.icon}
-              style={{
-                fontSize: "1.55rem",
-                fill: "#fafafa",
-              }}
-              onClick={() => newConversation(message)}
-            />
-          )}
+          <div className={styles.icons}>
+            {disabled && !isLoading ? (
+              <SendSvg
+                className={`${styles.icon} ${styles.disabled}`}
+                style={{
+                  fontSize: "1.55rem",
+                  fill: "#444",
+                }}
+              />
+            ) : isLoading ? (
+              <LoadSvg
+                className={`${styles.icon} ${styles.load}`}
+                style={{ fontSize: "1.55rem", fill: "#444" }}
+              />
+            ) : (
+              <SendSvg
+                className={styles.icon}
+                style={{
+                  fontSize: "1.55rem",
+                  fill: "#fafafa",
+                }}
+                onClick={() => newConversation(input)}
+              />
+            )}
+          </div>
         </div>
       </div>
-
-      {/* <audio ref={audioRef}>
-        <source type="audio/mpeg" />
-      </audio> */}
-    </div>
+    </>
   );
 }
