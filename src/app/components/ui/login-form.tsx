@@ -73,7 +73,13 @@ export default function LoginForm() {
 
           <div className={styles.inputs_container}>
             <div className={styles.input_container}>
-              <span className={styles.label}>Username or email address</span>
+              {errors.emailOrUsername ? (
+                <span className={styles.error}>
+                  {errors.emailOrUsername.message}
+                </span>
+              ) : (
+                <span className={styles.label}>Username or email address</span>
+              )}
 
               <div className={styles.input_wrapper}>
                 <input
@@ -84,11 +90,11 @@ export default function LoginForm() {
                   }
                   placeholder="Enter your username or email address..."
                   {...register("emailOrUsername", {
-                    required: "This field is required.",
+                    required: "This field is required",
                     pattern: {
                       value:
                         /^(?:[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}|[a-zA-Z0-9_-]+)$/,
-                      message: "Invalid email address or username.",
+                      message: "Invalid username or email address",
                     },
                   })}
                 />
@@ -107,16 +113,14 @@ export default function LoginForm() {
                   <ErrorSvg className={styles.error_icon} />
                 )}
               </div>
-
-              {errors.emailOrUsername && (
-                <span className={styles.error}>
-                  {errors.emailOrUsername.message}
-                </span>
-              )}
             </div>
 
             <div className={styles.input_container}>
-              <span className={styles.label}>Password</span>
+              {errors.password ? (
+                <span className={styles.error}>{errors.password.message}</span>
+              ) : (
+                <span className={styles.label}>Password</span>
+              )}
 
               <div className={styles.input_wrapper}>
                 <input
@@ -130,15 +134,15 @@ export default function LoginForm() {
                   }
                   placeholder="Enter your password..."
                   {...register("password", {
-                    required: "This field is required.",
+                    required: "This field is required",
                     minLength: {
                       value: 8,
-                      message: "Password must contain at least 8 characters.",
+                      message: "Password must contain at least 8 characters",
                     },
                     maxLength: {
                       value: 16,
                       message:
-                        "Password cannot contain more than 16 characters.",
+                        "Password cannot contain more than 16 characters",
                     },
                   })}
                 />
@@ -157,10 +161,6 @@ export default function LoginForm() {
                   <ErrorSvg className={styles.error_icon} />
                 )}
               </div>
-
-              {errors.password && (
-                <span className={styles.error}>{errors.password.message}</span>
-              )}
             </div>
 
             <Button load={isLoading} type="submit" disabled={!isValid}>
