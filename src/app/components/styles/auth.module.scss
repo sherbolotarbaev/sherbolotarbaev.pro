@@ -12,7 +12,9 @@
   display: flex;
   align-items: center;
 
-  background: var(--bg-main);
+  background: var(--bg-main), 0.8;
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
 
   @media (max-width: 1020px) {
     flex-direction: column;
@@ -25,7 +27,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background: var(--bg-main);
   }
 }

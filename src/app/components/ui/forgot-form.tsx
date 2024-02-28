@@ -85,7 +85,11 @@ export default function ForgotForm() {
 
           <div className={styles.inputs_container}>
             <div className={styles.input_container}>
-              <span className={styles.label}>Email address</span>
+              {errors.email ? (
+                <span className={styles.error}>{errors.email.message}</span>
+              ) : (
+                <span className={styles.label}>Email address</span>
+              )}
 
               <div className={styles.input_wrapper}>
                 <input
@@ -96,7 +100,7 @@ export default function ForgotForm() {
                   }
                   placeholder="Enter your email address..."
                   {...register("email", {
-                    required: "Email address required",
+                    required: "This field is required",
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                       message: "Invalid Email",
@@ -118,10 +122,6 @@ export default function ForgotForm() {
                   <ErrorSvg className={styles.error_icon} />
                 )}
               </div>
-
-              {errors.email && (
-                <span className={styles.error}>{errors.email.message}</span>
-              )}
             </div>
 
             <Button type="submit" load={isLoading} disabled={!isValid}>

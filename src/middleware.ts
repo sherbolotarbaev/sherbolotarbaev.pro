@@ -80,6 +80,11 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
+  if (!isAuth && pathname === "/email-verification") {
+    const redirectUrl = new URL("/login", url);
+    return NextResponse.redirect(redirectUrl);
+  }
+
   if (
     isAuth &&
     (pathname.startsWith("/login") ||

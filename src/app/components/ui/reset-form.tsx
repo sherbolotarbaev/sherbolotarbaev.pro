@@ -81,7 +81,11 @@ export default function ResetForm() {
 
           <div className={styles.inputs_container}>
             <div className={styles.input_container}>
-              <span className={styles.label}>Password</span>
+              {errors.password ? (
+                <span className={styles.error}>{errors.password.message}</span>
+              ) : (
+                <span className={styles.label}>Password</span>
+              )}
 
               <div className={styles.input_wrapper}>
                 <input
@@ -92,7 +96,7 @@ export default function ResetForm() {
                   }
                   placeholder="Enter your new password..."
                   {...register("password", {
-                    required: "Password required",
+                    required: "This field is required",
                     minLength: {
                       value: 8,
                       message: "Password must contain at least 8 characters",
@@ -117,14 +121,16 @@ export default function ResetForm() {
 
                 {errors.password && <ErrorSvg className={styles.error_icon} />}
               </div>
-
-              {errors.password && (
-                <span className={styles.error}>{errors.password.message}</span>
-              )}
             </div>
 
             <div className={styles.input_container}>
-              <span className={styles.label}>Confirm Password</span>
+              {errors.confirmPassword ? (
+                <span className={styles.error}>
+                  {errors.confirmPassword.message}
+                </span>
+              ) : (
+                <span className={styles.label}>Confirm Password</span>
+              )}
 
               <div className={styles.input_wrapper}>
                 <input
@@ -162,12 +168,6 @@ export default function ResetForm() {
                   <ErrorSvg className={styles.error_icon} />
                 )}
               </div>
-
-              {errors.confirmPassword && (
-                <span className={styles.error}>
-                  {errors.confirmPassword.message}
-                </span>
-              )}
             </div>
 
             <Button type="submit" load={isLoading}>
