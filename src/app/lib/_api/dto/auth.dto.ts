@@ -3,6 +3,13 @@ export interface LoginDto {
   password: string;
 }
 
+export interface RegisterDto {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
+
 export class EditMeDto {
   firstName?: string;
   lastName?: string;

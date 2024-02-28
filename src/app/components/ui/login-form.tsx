@@ -67,13 +67,13 @@ export default function LoginForm() {
             src={websiteLogo}
             alt={`${siteConfig.name} - Website logo`}
             name={siteConfig.name}
-            width={130}
-            height={130}
+            width={40}
+            height={40}
           />
 
           <div className={styles.inputs_container}>
             <div className={styles.input_container}>
-              {/* <span className={styles.label}>Username or email address</span> */}
+              <span className={styles.label}>Username or email address</span>
 
               <div className={styles.input_wrapper}>
                 <input
@@ -82,7 +82,7 @@ export default function LoginForm() {
                   className={
                     isLoading ? `${styles.input} ${styles.load}` : styles.input
                   }
-                  placeholder="Username or email address"
+                  placeholder="Enter your username or email address..."
                   {...register("emailOrUsername", {
                     required: "This field is required.",
                     pattern: {
@@ -116,7 +116,7 @@ export default function LoginForm() {
             </div>
 
             <div className={styles.input_container}>
-              {/* <span className={styles.label}>Password</span> */}
+              <span className={styles.label}>Password</span>
 
               <div className={styles.input_wrapper}>
                 <input
@@ -128,7 +128,7 @@ export default function LoginForm() {
                       ? `${styles.input} ${styles.load} ${styles.password}`
                       : `${styles.input} ${styles.password}`
                   }
-                  placeholder="Password"
+                  placeholder="Enter your password..."
                   {...register("password", {
                     required: "This field is required.",
                     minLength: {
@@ -188,12 +188,12 @@ export default function LoginForm() {
 // import React from "react";
 // import { useRouter, useSearchParams } from "next/navigation";
 // import { SubmitHandler, useForm } from "react-hook-form";
-// import * as API from "@/../api";
+// import * as API from "@/app/lib/_api";
 
 // import { getCookie, setCookie } from "cookies-next";
 
 // import Button from "./button";
-// import { CloseSvg, ErrorSvg } from "@/lib/assets/svg";
+// import { CloseSvg, ErrorSvg } from "@/app/lib/assets/svg";
 // import styles from "../styles/form.module.scss";
 
 // type FormData = {
@@ -295,7 +295,11 @@ export default function LoginForm() {
 
 //           <div className={styles.inputs_container}>
 //             <div className={styles.input_container}>
-//               <span className={styles.label}>Email address</span>
+//               {errors.email ? (
+//                 <span className={styles.error}>{errors.email.message}</span>
+//               ) : (
+//                 <span className={styles.label}>Email address</span>
+//               )}
 
 //               <div className={styles.input_wrapper}>
 //                 <input
@@ -331,10 +335,6 @@ export default function LoginForm() {
 //                   <ErrorSvg className={styles.error_icon} />
 //                 )}
 //               </div>
-
-//               {errors.email && (
-//                 <span className={styles.error}>{errors.email.message}</span>
-//               )}
 //             </div>
 
 //             {isSent && !hasExpired && !isLoading && (
@@ -346,7 +346,11 @@ export default function LoginForm() {
 
 //             {isSent && (
 //               <div className={styles.input_container}>
-//                 <span className={styles.label}>Verification OTP</span>
+//                 {errors.otp ? (
+//                   <span className={styles.error}>{errors.otp.message}</span>
+//                 ) : (
+//                   <span className={styles.label}>Verification OTP</span>
+//                 )}
 
 //                 <div className={styles.input_wrapper}>
 //                   <input
@@ -389,10 +393,6 @@ export default function LoginForm() {
 //                     <ErrorSvg className={styles.error_icon} />
 //                   )}
 //                 </div>
-
-//                 {errors.otp && (
-//                   <span className={styles.error}>{errors.otp.message}</span>
-//                 )}
 //               </div>
 //             )}
 

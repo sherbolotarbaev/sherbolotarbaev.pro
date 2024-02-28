@@ -81,7 +81,7 @@ export default function ResetForm() {
 
           <div className={styles.inputs_container}>
             <div className={styles.input_container}>
-              {/* <span className={styles.label}>Password</span> */}
+              <span className={styles.label}>Password</span>
 
               <div className={styles.input_wrapper}>
                 <input
@@ -90,7 +90,7 @@ export default function ResetForm() {
                   className={
                     isLoading ? `${styles.input} ${styles.load}` : styles.input
                   }
-                  placeholder="New password"
+                  placeholder="Enter your new password..."
                   {...register("password", {
                     required: "Password required",
                     minLength: {
@@ -124,7 +124,7 @@ export default function ResetForm() {
             </div>
 
             <div className={styles.input_container}>
-              {/* <span className={styles.label}>Confirm Password</span> */}
+              <span className={styles.label}>Confirm Password</span>
 
               <div className={styles.input_wrapper}>
                 <input
@@ -133,7 +133,7 @@ export default function ResetForm() {
                   className={
                     isLoading ? `${styles.input} ${styles.load}` : styles.input
                   }
-                  placeholder="Confirm your new password"
+                  placeholder="Confirm your new password..."
                   {...register("confirmPassword", {
                     required: "Please confirm your password",
                     minLength: {

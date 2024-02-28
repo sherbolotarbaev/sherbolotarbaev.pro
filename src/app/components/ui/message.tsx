@@ -6,6 +6,8 @@ import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
+import { useMe } from "@/app/lib/hooks/useMe";
+
 import { type Message } from "ai";
 
 import { AiSvg, UserSvg } from "@/app/lib/assets/svg";
@@ -16,26 +18,30 @@ interface Props {
 }
 
 export default function Message({ message, ...props }: Props) {
+  const { me, isLoading } = useMe();
+
+  const assistant = message.role === "assistant";
+
   return (
     <>
       <div className={styles.wrapper} {...props}>
         <span
           className={styles.logo}
           style={
-            message.role === "assistant"
+            assistant
               ? {
                   background: "#fafafa",
                 }
               : undefined
           }>
-          {message.role === "assistant" ? (
+          {assistant ? (
             <AiSvg style={{ fontSize: "1.45rem" }} />
           ) : (
             <UserSvg style={{ fontSize: "1.45rem", fill: "#fff" }} />
           )}
         </span>
 
-        {message.role === "assistant" ? (
+        {assistant ? (
           <Markdown
             rehypePlugins={[rehypeRaw]}
             remarkPlugins={[remarkGfm]}
@@ -63,7 +69,10 @@ export default function Message({ message, ...props }: Props) {
           </Markdown>
         ) : (
           <div className={styles.container}>
-            <p>{message.content}</p>
+            <p>
+              <strong>{isLoading || !me ? "unknown" : me.username}: </strong>
+              {message.content}
+            </p>
           </div>
         )}
       </div>

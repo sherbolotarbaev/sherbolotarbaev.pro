@@ -85,7 +85,7 @@ export default function ForgotForm() {
 
           <div className={styles.inputs_container}>
             <div className={styles.input_container}>
-              {/* <span className={styles.label}>Email address</span> */}
+              <span className={styles.label}>Email address</span>
 
               <div className={styles.input_wrapper}>
                 <input
@@ -94,7 +94,7 @@ export default function ForgotForm() {
                   className={
                     isLoading ? `${styles.input} ${styles.load}` : styles.input
                   }
-                  placeholder="Email address"
+                  placeholder="Enter your email address..."
                   {...register("email", {
                     required: "Email address required",
                     pattern: {

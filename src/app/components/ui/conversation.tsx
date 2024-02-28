@@ -31,14 +31,25 @@ export default function Conversation() {
   const { recording, audioBlob, startRecording, stopRecording } =
     useRecordVoice();
 
-  const [error, setError] = React.useState<string | null>(null);
+  const [error, setError] = React.useState<string | JSX.Element | null>(null);
   const [disabled, setDisabled] = React.useState<boolean>(false);
   const [transcoding, setTranscoding] = React.useState<boolean>(false);
-
   // const [images, setImages] = React.useState<File[] | null>(null);
 
   const { messages, append, reload, stop, isLoading, input, setInput } =
-    useChat();
+    useChat({
+      onResponse: async (response) => {
+        if (response.status === 401) {
+          setError(
+            <span
+              dangerouslySetInnerHTML={{
+                __html: `Please <a href='/login'>log in</a> first.`,
+              }}
+            />
+          );
+        }
+      },
+    });
 
   const editor = useEditor({
     autofocus: true,
@@ -92,7 +103,6 @@ export default function Conversation() {
   });
 
   // const fileInputRef = React.useRef<HTMLInputElement>(null);
-  // const audioRef = React.useRef<HTMLAudioElement | null>(null);
 
   // const setFile = React.useCallback(() => {
   //   if (editor) {
@@ -161,7 +171,6 @@ export default function Conversation() {
   };
 
   React.useEffect(() => {
-    console.log(input);
     if (!input || input.length < 1 || input.length > 8192) {
       setDisabled(true);
     } else setDisabled(false);
@@ -191,9 +200,8 @@ export default function Conversation() {
 
   return (
     <>
-      {messages.map((message, idx) => (
-        <Message message={message} key={idx} />
-      ))}
+      {messages.length > 0 &&
+        messages.map((message, idx) => <Message message={message} key={idx} />)}
 
       <div className={styles.conversation}>
         {error && (

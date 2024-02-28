@@ -1,5 +1,6 @@
 import {
   LoginDto,
+  RegisterDto,
   EditMeDto,
   EmailVerificationDto,
   ForgotPasswordDto,
@@ -8,7 +9,7 @@ import {
 import instance from "@/../core/axios";
 import { deleteCookie } from "@/app/lib/utils/cookie";
 
-type LoginResponse = {
+type AuthResponse = {
   message: string;
   token: string;
 };
@@ -17,9 +18,19 @@ type EmailVerificationResponse = {
   success: boolean;
 };
 
-export const logIn = async (dto: LoginDto): Promise<LoginResponse> => {
+export const logIn = async (dto: LoginDto): Promise<AuthResponse> => {
   try {
     return (await instance.post("/login", dto)).data;
+  } catch (e: any) {
+    throw {
+      msg: e.response.data.message,
+    };
+  }
+};
+
+export const register = async (dto: RegisterDto): Promise<AuthResponse> => {
+  try {
+    return (await instance.post("/register", dto)).data;
   } catch (e: any) {
     throw {
       msg: e.response.data.message,

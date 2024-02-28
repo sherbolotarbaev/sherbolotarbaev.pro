@@ -46,7 +46,7 @@
 
       font-size: 0.875rem;
       font-weight: 300;
-      color: rgb(119, 119, 119);
+      color: var(--accent-4);
     }
 
     .info {
@@ -54,7 +54,7 @@
 
       font-size: 0.875rem;
       font-weight: 300;
-      color: rgb(119, 119, 119);
+      color: var(--accent-7);
     }
 
     .error_message {
@@ -97,7 +97,7 @@
 
             padding: 0.85rem 0.75rem;
 
-            background: var(--accent-1);
+            background: var(--accent-bg-1);
             border: 0;
             outline: 2px solid transparent;
             border-radius: 0.675rem;
