@@ -47,12 +47,12 @@
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
     flex-wrap: wrap;
     gap: 0.95rem;
 
     @media (max-width: 555px) {
-      justify-content: start;
+      justify-content: center;
     }
 
     .icon_wrapper {
@@ -70,8 +70,6 @@
       cursor: pointer;
 
       &:hover {
-        transform: scale(1.5);
-
         .name {
           color: var(--accent-8);
         }
