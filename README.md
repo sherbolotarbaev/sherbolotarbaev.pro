@@ -1,11 +1,11 @@
-# sherbolotarbaev.pro
+## sherbolotarbaev.pro
 
 - Framework: [Next.js](https://nextjs.org/)
 - Authentication & API: [Personal API built with Nest.js](https://github.com/sherbolotarbaev/nest)
 - Deployment: [Vercel](https://vercel.com/)
 - Styling: [SCSS](https://sass-lang.com/)
 
-# Running Locally
+## Running Locally
 This application requires Node.js v18.17+.
 
 ```
