@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Prompt } from "next/font/google";
 import { motion } from "framer-motion";
 import Button from "./button";
-import logo from "@/../public/emoji.png";
+import logo from "@/../public/sherbolot.jpg";
 import text from "@/app/lib/data/hero.json";
 import { ArrowSvg, LinkExternalSvg } from "@/app/lib/assets/svg";
 import styles from "@/app/components/styles/hero.module.scss";
