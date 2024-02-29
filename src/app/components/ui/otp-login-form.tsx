@@ -10,6 +10,7 @@ import { errorNotification } from "@/app/lib/utils/notification";
 
 import Button from "./button";
 
+import text from "@/app/lib/data/form.json";
 import { CloseSvg, ErrorSvg } from "@/app/lib/assets/svg";
 import styles from "../styles/form.module.scss";
 
@@ -103,7 +104,7 @@ export default function OTPLoginForm() {
     <>
       <div className={styles.form_wrapper}>
         <form className={styles.form} onSubmit={handleSubmit(handleSubmitForm)}>
-          <h2 className={styles.title}>Welcome Back!</h2>
+          <h2 className={styles.title}>{text.OTPLoginForm.text.title}</h2>
 
           <div className={styles.inputs_container}>
             <div className={styles.input_container}>
@@ -214,7 +215,7 @@ export default function OTPLoginForm() {
 
             {!isSent && (
               <Button type="submit" load={isLoading}>
-                Continue
+                {text.OTPLoginForm.button}
               </Button>
             )}
 

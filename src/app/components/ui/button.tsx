@@ -95,7 +95,7 @@ export default function Button({
   const buttonClassName = [
     style && styles[style],
     disabled && styles.disabled,
-    adaptive && style ? `${styles[style]} ${styles.adaptive}` : styles.adaptive,
+    adaptive && styles.adaptive,
     animation && styles.animated,
   ]
     .filter(Boolean)
