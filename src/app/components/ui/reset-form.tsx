@@ -34,7 +34,7 @@ export default function ResetForm() {
     handleSubmit,
     setValue,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>();
 
   const password = watch("password");
@@ -170,7 +170,7 @@ export default function ResetForm() {
               </div>
             </div>
 
-            <Button type="submit" load={isLoading}>
+            <Button type="submit" load={isLoading} disabled={!isValid}>
               {text.resetPasswordForm.button}
             </Button>
 

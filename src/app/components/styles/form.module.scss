@@ -47,10 +47,6 @@
   background: var(--bg-main);
   border-radius: 0.875rem;
 
-  position: relative;
-
-  @include backlight(0, 0, 45px, 0.9, #f200ff, #4800ff, 5s);
-
   transition: 0.25s;
 
   @media (max-width: 1020px) {
@@ -96,7 +92,7 @@
 
       font-size: 0.875rem;
       font-weight: 300;
-      color: var(--accent-7);
+      color: var(--accent-6);
     }
 
     .devider {

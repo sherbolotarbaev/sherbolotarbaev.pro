@@ -118,13 +118,11 @@ export default function ForgotForm() {
                   }
                 />
 
-                {errors.email && !isValid && (
-                  <ErrorSvg className={styles.error_icon} />
-                )}
+                {errors.email && <ErrorSvg className={styles.error_icon} />}
               </div>
             </div>
 
-            <Button type="submit" load={isLoading} disabled={!isValid}>
+            <Button type="submit" load={isLoading}>
               {text.forgotPasswordForm.button}
             </Button>
 

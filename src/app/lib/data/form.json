@@ -1,6 +1,6 @@
 {
   "loginForm": {
-    "button": "Log In",
+    "button": "Log in",
     "link": "Forgot password?"
   },
 
@@ -26,7 +26,6 @@
       "title": "Email verification",
       "info": "We just sent you a verification code. <br /> Please check your inbox."
     },
-    "button": "Continue",
     "link": "Log in ?"
   }
 }

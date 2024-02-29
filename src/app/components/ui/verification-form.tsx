@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { getCookie } from "cookies-next";
 import * as API from "@/app/lib/_api";
 import {
@@ -10,7 +10,6 @@ import {
   successNotification,
 } from "@/app/lib/utils/notification";
 
-import Button from "./button";
 import text from "@/app/lib/data/form.json";
 import { CloseSvg, ErrorSvg } from "@/app/lib/assets/svg";
 import styles from "@/app/components/styles/form.module.scss";
@@ -28,11 +27,10 @@ export default function VerificationForm() {
 
   const {
     register,
-    handleSubmit,
     setValue,
     watch,
     formState: { errors, isValid },
-  } = useForm<FormData>();
+  } = useForm<FormData>({ mode: "onChange" });
 
   const code = watch("code");
 
@@ -50,23 +48,29 @@ export default function VerificationForm() {
     }
   };
 
-  const handleSubmitForm: SubmitHandler<FormData> = async (formData) => {
-    setIsLoading(true);
+  React.useEffect(() => {
+    const emailVerification = async () => {
+      setIsLoading(true);
 
-    try {
-      const data = await API.auth.emailVerification(formData);
+      try {
+        const data = await API.auth.emailVerification({ code });
 
-      if (data.success) {
-        successNotification("Successfully verified");
-        router.push("/");
+        if (data.success) {
+          successNotification("Successfully verified");
+          router.push("/");
+        }
+      } catch (e: any) {
+        errorNotification(e.msg || "Something went wrong");
+        console.error(e);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (e: any) {
-      errorNotification(e.msg || "Something went wrong");
-      console.error(e);
-    } finally {
-      setIsLoading(false);
+    };
+
+    if (isValid && code && code.length === 6 && !errors.code) {
+      emailVerification();
     }
-  };
+  }, [isValid, code, errors.code]);
 
   React.useEffect(() => {
     const getCookieEmail = async () => {
@@ -83,7 +87,7 @@ export default function VerificationForm() {
   return (
     <>
       <div className={styles.form_wrapper}>
-        <form className={styles.form} onSubmit={handleSubmit(handleSubmitForm)}>
+        <form className={styles.form}>
           <h2 className={styles.title}>{text.verificationForm.text.title}</h2>
 
           <span
@@ -95,7 +99,11 @@ export default function VerificationForm() {
 
           <div className={styles.inputs_container}>
             <div className={styles.input_container}>
-              <span className={styles.label}>Code</span>
+              {errors.code ? (
+                <span className={styles.error}>{errors.code.message}</span>
+              ) : (
+                <span className={styles.label}>Code</span>
+              )}
 
               <div className={styles.input_wrapper}>
                 <input
@@ -109,7 +117,7 @@ export default function VerificationForm() {
                     required: "Code required",
                     pattern: {
                       value: /^\d{6}$/,
-                      message: "Enter a valid six-digit code",
+                      message: "Invalid six-digit code",
                     },
                     minLength: {
                       value: 6,
@@ -132,19 +140,9 @@ export default function VerificationForm() {
                   }
                 />
 
-                {errors.code && !isValid && (
-                  <ErrorSvg className={styles.error_icon} />
-                )}
+                {errors.code && <ErrorSvg className={styles.error_icon} />}
               </div>
-
-              {errors.code && (
-                <span className={styles.error}>{errors.code.message}</span>
-              )}
             </div>
-
-            <Button type="submit" load={isLoading} disabled={!isValid}>
-              {text.verificationForm.button}
-            </Button>
 
             <span className={styles.link} onClick={handleLogout}>
               {text.verificationForm.link}

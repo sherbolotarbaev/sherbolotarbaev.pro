@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useSearchParams } from "next/navigation";
-import { siteConfig } from "@/../config/site";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useLogIn } from "@/app/lib/hooks/useLogIn";
@@ -11,10 +10,8 @@ import { getCookie } from "cookies-next";
 import Link from "next/link";
 import Button from "./button";
 import OTPLoginForm from "./otp-login-form";
-import Logo from "./logo";
 
 import text from "@/app/lib/data/form.json";
-import websiteLogo from "@/../public/logo.png";
 import { CloseSvg, ErrorSvg } from "@/app/lib/assets/svg";
 import styles from "@/app/components/styles/form.module.scss";
 
@@ -71,13 +68,7 @@ export default function LoginForm() {
         className={styles.form_wrapper}
         onSubmit={handleSubmit(handleSubmitForm)}>
         <form className={styles.form}>
-          <Logo
-            src={websiteLogo}
-            alt={`${siteConfig.name} - Website logo`}
-            name={siteConfig.name}
-            width={40}
-            height={40}
-          />
+          <h2 className={styles.title}>Welcome Back!</h2>
 
           <div className={styles.inputs_container}>
             <div className={styles.input_container}>
@@ -117,7 +108,7 @@ export default function LoginForm() {
                   }
                 />
 
-                {errors.emailOrUsername && !isValid && (
+                {errors.emailOrUsername && (
                   <ErrorSvg className={styles.error_icon} />
                 )}
               </div>
@@ -165,9 +156,7 @@ export default function LoginForm() {
                   }
                 />
 
-                {errors.password && !isValid && (
-                  <ErrorSvg className={styles.error_icon} />
-                )}
+                {errors.password && <ErrorSvg className={styles.error_icon} />}
               </div>
             </div>
 
@@ -192,7 +181,7 @@ export default function LoginForm() {
             </div>
 
             <Button style="dark" onClick={handleOtpLogin} disabled={isLoading}>
-              Use Temporary Code
+              Use temporary code
             </Button>
           </div>
         </form>
