@@ -1,54 +1,53 @@
 .skills {
+  width: 100%;
+
+  max-width: 1000px;
+
   padding: 0 1.15rem;
 
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 1.85rem;
+  gap: 1.65rem;
 
   .title {
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-size: 2.245rem;
+    font-weight: 600;
 
     background: var(--text-gradient);
     -webkit-background-clip: text;
     text-fill-color: transparent;
     -webkit-text-fill-color: transparent;
 
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-
     @media (max-width: 1205px) {
-      font-size: 1.175rem;
+      font-size: 2.205rem;
     }
 
     @media (max-width: 875px) {
-      font-size: 1.075rem;
+      font-size: 1.905rem;
     }
 
     @media (max-width: 675px) {
-      font-size: 1.1rem;
+      font-size: 1.845rem;
     }
 
     @media (max-width: 555px) {
-      font-size: 1.05rem;
+      text-align: center;
+
+      font-size: 1.675rem;
     }
 
     @media (max-width: 475px) {
-      font-size: 0.955rem;
+      font-size: 1.505rem;
     }
   }
 
   .icons {
     width: 100%;
 
-    max-width: 1000px;
-
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 0.95rem;
 

@@ -120,7 +120,7 @@
       }
 
       .title {
-        font-size: 2.785rem;
+        font-size: 2.245rem;
         font-weight: 600;
 
         span {
@@ -131,25 +131,23 @@
         }
 
         @media (max-width: 1205px) {
-          font-size: 2.675rem;
-        }
-
-        @media (max-width: 875px) {
-          font-size: 2.475rem;
-        }
-
-        @media (max-width: 675px) {
-          font-size: 2.245rem;
-        }
-
-        @media (max-width: 555px) {
-          text-align: center;
-
           font-size: 2.205rem;
         }
 
-        @media (max-width: 475px) {
+        @media (max-width: 875px) {
           font-size: 1.905rem;
+        }
+
+        @media (max-width: 675px) {
+          font-size: 1.845rem;
+        }
+
+        @media (max-width: 555px) {
+          font-size: 1.675rem;
+        }
+
+        @media (max-width: 475px) {
+          font-size: 1.505rem;
         }
       }
 

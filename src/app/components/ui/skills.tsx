@@ -8,7 +8,6 @@ import text from "@/app/lib/data/skills.json";
 import {
   AwsSvg,
   ChakraUISvg,
-  CodeSvg,
   DockerSvg,
   ExpressSvg,
   FastifySvg,
@@ -30,6 +29,8 @@ import {
   TailwindSvg,
   ThreeJsSvg,
   TypeScriptSvg,
+  VercelSvg,
+  VsCodeSvg,
 } from "@/app/lib/assets/svg";
 import styles from "@/app/components/styles/skills.module.scss";
 
@@ -131,6 +132,14 @@ const skills: Skill[] = [
     name: "Supabase",
     icon: <SupabaseSvg className={styles.icon} />,
   },
+  {
+    name: "VS Code",
+    icon: <VsCodeSvg className={styles.icon} />,
+  },
+  {
+    name: "Vercel",
+    icon: <VercelSvg className={styles.icon} />,
+  },
 ];
 
 const iconsAnimation = {
@@ -166,7 +175,7 @@ export default function Skills() {
         animate={show ? "visible" : "hidden"}
         variants={skillsAnimation}>
         <h2 className={styles.title} style={font.style}>
-          <CodeSvg /> {text.title}
+          {text.title}
         </h2>
 
         <div className={styles.icons}>

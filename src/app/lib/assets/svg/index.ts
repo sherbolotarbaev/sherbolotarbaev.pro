@@ -46,3 +46,5 @@ export { default as StopSvg } from "./stop.svg";
 export { default as SendSvg } from "./send.svg";
 export { default as AiSvg } from "./ai.svg";
 export { default as UserSvg } from "./user.svg";
+export { default as VsCodeSvg } from "./vs-code.svg";
+export { default as VercelSvg } from "./vercel.svg";

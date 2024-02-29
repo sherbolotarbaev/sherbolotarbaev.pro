@@ -62,12 +62,12 @@ export default function HomeClient() {
           <Hero />
         </div>
 
-        <div className={styles.content} style={{ minHeight: "20vh" }}>
-          <Skills />
-        </div>
-
         <div className={styles.content} style={{ minHeight: "40vh" }}>
           <About />
+        </div>
+
+        <div className={styles.content} style={{ minHeight: "20vh" }}>
+          <Skills />
         </div>
 
         <div className={styles.content} style={{ minHeight: "60vh" }}>
