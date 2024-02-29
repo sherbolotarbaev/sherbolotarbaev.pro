@@ -41,7 +41,7 @@
       cursor: pointer;
 
       text-align: center;
-      text-decoration: underline;
+      // text-decoration: underline;
 
       font-size: 0.875rem;
       font-weight: 300;
@@ -152,7 +152,7 @@
             }
 
             &.password {
-              letter-spacing: 0.38rem;
+              letter-spacing: 0.33rem;
 
               &::placeholder {
                 letter-spacing: normal;

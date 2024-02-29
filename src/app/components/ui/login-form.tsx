@@ -174,15 +174,15 @@ export default function LoginForm() {
               {text.loginForm.link}
             </Link>
 
-            <div className={styles.devider}>
+            {/* <div className={styles.devider}>
               <hr />
               <span>or</span>
               <hr />
-            </div>
+            </div> */}
 
-            <Button style="dark" onClick={handleOtpLogin} disabled={isLoading}>
-              Use temporary code
-            </Button>
+            <span onClick={handleOtpLogin} className={styles.link}>
+              Log in with a verification OTP
+            </span>
           </div>
         </form>
       </div>

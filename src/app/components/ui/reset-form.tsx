@@ -77,8 +77,6 @@ export default function ResetForm() {
     <>
       <div className={styles.form_wrapper}>
         <form className={styles.form} onSubmit={handleSubmit(handleSubmitForm)}>
-          <h2 className={styles.title}>{text.resetPasswordForm.text.title}</h2>
-
           <div className={styles.inputs_container}>
             <div className={styles.input_container}>
               {errors.password ? (
@@ -174,7 +172,7 @@ export default function ResetForm() {
               {text.resetPasswordForm.button}
             </Button>
 
-            <Link className={styles.link} href="/password/forgot">
+            <Link className={styles.link} href="/login">
               {text.resetPasswordForm.link}
             </Link>
           </div>

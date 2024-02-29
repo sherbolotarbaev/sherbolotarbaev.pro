@@ -4,7 +4,7 @@
       "title": "Log in ✌️"
     },
     "button": "Log in",
-    "link": "Forgot password?"
+    "link": "Reset password"
   },
 
   "OTPLoginForm": {
@@ -16,19 +16,16 @@
 
   "forgotPasswordForm": {
     "text": {
-      "title": "Forgot Password",
+      "title": "Reset Password",
       "info": "Enter the email address you used when you joined and we will send you a link to reset your password."
     },
-    "button": "Send reset link",
-    "link": "Log in?"
+    "button": "Send reset password email",
+    "link": "Cancel"
   },
 
   "resetPasswordForm": {
-    "text": {
-      "title": "Reset Password"
-    },
-    "button": "Reset",
-    "link": "Send link again?"
+    "button": "Submit",
+    "link": "Back to Log in"
   },
 
   "verificationForm": {
@@ -36,6 +33,6 @@
       "title": "Email verification",
       "info": "We just sent you a verification code. <br /> Please check your inbox."
     },
-    "link": "Log in?"
+    "link": "Back to Log in"
   }
 }

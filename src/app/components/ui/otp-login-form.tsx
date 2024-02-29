@@ -219,18 +219,17 @@ export default function OTPLoginForm() {
               </Button>
             )}
 
-            <div className={styles.devider}>
+            {/* <div className={styles.devider}>
               <hr />
               <span>or</span>
               <hr />
-            </div>
+            </div> */}
 
-            <Button
-              style="dark"
-              onClick={() => window.location.reload()}
-              disabled={isLoading}>
-              Use password
-            </Button>
+            <span
+              className={styles.link}
+              onClick={() => window.location.reload()}>
+              Log in with a password
+            </span>
           </div>
         </form>
       </div>
