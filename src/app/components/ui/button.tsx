@@ -48,7 +48,7 @@ export default function Button({
   onClick,
   redirect,
   open,
-  adaptive,
+  adaptive = false,
   animation,
 }: Props) {
   const router = useRouter();
