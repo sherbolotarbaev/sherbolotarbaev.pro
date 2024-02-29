@@ -12,6 +12,8 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import { useRecordVoice } from "@/app/lib/hooks/useRecordVoice";
 import { errorNotification } from "@/app/lib/utils/notification";
 import { useChat } from "ai/react";
+
+import Account from "./account";
 import Message from "./message";
 
 import {
@@ -200,6 +202,8 @@ export default function Conversation() {
 
   return (
     <>
+      <Account />
+
       {messages.length > 0 &&
         messages.map((message, idx) => <Message message={message} key={idx} />)}
 
