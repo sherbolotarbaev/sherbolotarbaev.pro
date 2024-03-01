@@ -87,9 +87,9 @@ export async function middleware(request: NextRequest) {
 
   if (
     isAuth &&
-    (pathname.startsWith("/login") ||
-      pathname.startsWith("/password/forgot") ||
-      pathname.startsWith("/password/reset"))
+    (pathname === "/login" ||
+      pathname === "/password/forgot" ||
+      pathname === "/password/reset")
   ) {
     const redirectUrl = new URL(`/redirect?to=${next}`, url);
     return NextResponse.redirect(redirectUrl);
