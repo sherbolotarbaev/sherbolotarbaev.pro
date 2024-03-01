@@ -28,12 +28,16 @@ export function useLogIn(next: string): LogInHook {
     setIsLoading(true);
 
     try {
-      const { message, token } = await API.auth.logIn(formData);
+      const user = await API.auth.logIn(formData);
 
-      setCookie("token", token);
-      successNotification(message);
+      if (user) {
+        setCookie("token", user.token);
+        successNotification(
+          `Successfully logged in as ${user.firstName} ${user.lastName}`
+        );
 
-      router.push(`/redirect?to=${next}`);
+        router.push(`/redirect?to=${next}`);
+      }
     } catch (e: any) {
       errorNotification(e.msg || "Something went wrong");
       console.error(e);

@@ -9,16 +9,11 @@ import {
 import instance from "@/../core/axios";
 import { deleteCookie } from "@/app/lib/utils/cookie";
 
-type AuthResponse = {
-  message: string;
-  token: string;
-};
-
 type EmailVerificationResponse = {
   success: boolean;
 };
 
-export const logIn = async (dto: LoginDto): Promise<AuthResponse> => {
+export const logIn = async (dto: LoginDto): Promise<User> => {
   try {
     return (await instance.post("/login", dto)).data;
   } catch (e: any) {
@@ -28,7 +23,7 @@ export const logIn = async (dto: LoginDto): Promise<AuthResponse> => {
   }
 };
 
-export const register = async (dto: RegisterDto): Promise<AuthResponse> => {
+export const register = async (dto: RegisterDto): Promise<User> => {
   try {
     return (await instance.post("/register", dto)).data;
   } catch (e: any) {

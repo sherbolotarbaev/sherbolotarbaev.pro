@@ -15,6 +15,8 @@ type User = {
   isVerified: boolean;
   createdAt: Date;
   updatedAt: Date;
+
+  token?: string;
 };
 
 type MediumApiResponse = {
