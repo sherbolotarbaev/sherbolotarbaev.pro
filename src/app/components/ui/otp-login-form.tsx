@@ -66,14 +66,16 @@ export default function OTPLoginForm() {
       setIsLoading(true);
 
       try {
-        const token = await API.otp.checkEmailOtp({
+        const user = await API.otp.checkEmailOtp({
           email,
           otp,
         });
 
-        setCookie("token", token);
-        router.push(`/redirect?to=${next}`);
-        setIsSent(true);
+        if (user) {
+          setCookie("token", user.token);
+          router.push(`/redirect?to=${next}`);
+          setIsSent(true);
+        }
       } catch (e: any) {
         if (e.msg === "Verification OTP has expired") setHasExpired(true);
         errorNotification(e.msg || "Something went wrong");

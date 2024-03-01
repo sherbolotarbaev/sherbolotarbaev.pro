@@ -9,10 +9,6 @@ import {
 import instance from "@/../core/axios";
 import { deleteCookie } from "@/app/lib/utils/cookie";
 
-type EmailVerificationResponse = {
-  success: boolean;
-};
-
 export const logIn = async (dto: LoginDto): Promise<User> => {
   try {
     return (await instance.post("/login", dto)).data;
@@ -59,7 +55,7 @@ export const editMe = async (dto: EditMeDto): Promise<User> => {
 
 export const emailVerification = async (
   dto: EmailVerificationDto
-): Promise<EmailVerificationResponse> => {
+): Promise<{ success: boolean }> => {
   try {
     return (await instance.post("/email-verification", dto)).data;
   } catch (e: any) {
