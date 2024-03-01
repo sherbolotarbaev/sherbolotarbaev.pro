@@ -72,7 +72,6 @@ export default function OTPLoginForm() {
         });
 
         if (user) {
-          setCookie("token", user.token);
           router.push(`/redirect?to=${next}`);
           setIsSent(true);
         }

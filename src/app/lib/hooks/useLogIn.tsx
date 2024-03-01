@@ -7,7 +7,6 @@ import {
   errorNotification,
   successNotification,
 } from "@/app/lib/utils/notification";
-import { setCookie } from "cookies-next";
 
 type FormData = {
   emailOrUsername: string;
@@ -31,7 +30,6 @@ export function useLogIn(next: string): LogInHook {
       const user = await API.auth.logIn(formData);
 
       if (user) {
-        setCookie("token", user.token);
         successNotification(
           `Successfully logged in as ${user.firstName} ${user.lastName}`
         );
