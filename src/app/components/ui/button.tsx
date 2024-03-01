@@ -17,8 +17,8 @@ interface Props {
   type?: keyof Types;
   load?: boolean | string;
   onClick?: () => void;
-  redirect?: string;
-  open?: string;
+  redirect?: string | URL;
+  open?: string | URL;
   adaptive?: boolean;
   animation?: boolean;
 }
@@ -53,11 +53,15 @@ export default function Button({
 }: Props) {
   const router = useRouter();
 
-  const redirectToPage = (path: string) => {
-    router.push(path);
+  const redirectToPage = (path: string | URL) => {
+    if (typeof path === "string") {
+      router.push(path);
+    } else {
+      window.open(path, "_self");
+    }
   };
 
-  const openTab = (path: string) => {
+  const openTab = (path: string | URL) => {
     window.open(path, "_blank");
   };
 

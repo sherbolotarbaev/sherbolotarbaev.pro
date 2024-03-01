@@ -35,38 +35,35 @@ export async function middleware(request: NextRequest) {
   const token = requestCookies.get("token");
   const xff = `${request.headers.get("x-forwarded-for")?.split(",")[0]}`;
 
+  if (pathname === "/redirect") {
+    return NextResponse.next();
+  }
+
   let user: User | undefined;
 
-  if (token) {
-    try {
-      const headers = new Headers();
+  try {
+    const headers = new Headers();
 
-      headers.append(
-        "Authorization",
-        `Bearer ${encodeURIComponent(token.value)}`
-      );
-      headers.append("baseurl", `${apiUrl}`);
-      headers.append("x-forwarded-for", xff);
+    headers.append("x-forwarded-for", xff);
 
-      const response = await fetch(`${apiUrl}/me`, {
-        method: "GET",
-        headers,
+    const response = await fetch(`${apiUrl}/me`, {
+      method: "GET",
+      headers,
+    });
+
+    const responseData = await response.json();
+
+    if (responseData.statusCode !== 401) {
+      user = responseData;
+      responseCookies.set("email", responseData.email);
+    } else {
+      requestCookies.getAll().map((cookie) => {
+        if (cookie.name !== "email") {
+          responseCookies.delete(cookie.name);
+        }
       });
-
-      const responseData = await response.json();
-
-      if (responseData.statusCode !== 401) {
-        user = responseData;
-        responseCookies.set("email", responseData.email);
-      } else {
-        requestCookies.getAll().map((cookie) => {
-          if (cookie.name !== "email") {
-            responseCookies.delete(cookie.name);
-          }
-        });
-      }
-    } catch (_) {}
-  }
+    }
+  } catch (_) {}
 
   const isAuth = user !== undefined;
 
@@ -102,9 +99,7 @@ export async function middleware(request: NextRequest) {
   //   pathname !== "/password/reset"
   // ) {
   //   const redirectUrl = new URL(
-  //     pathname !== "/" && pathname !== "/redirect"
-  //       ? `/login?next=${pathname}`
-  //       : "/login",
+  //     pathname !== "/" ? `/login?next=${pathname}` : "/login",
   //     url
   //   );
   //   return NextResponse.redirect(redirectUrl);

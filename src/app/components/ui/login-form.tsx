@@ -12,7 +12,7 @@ import Button from "./button";
 import OTPLoginForm from "./otp-login-form";
 
 import text from "@/app/lib/data/form.json";
-import { CloseSvg, ErrorSvg } from "@/app/lib/assets/svg";
+import { CloseSvg, ErrorSvg, GoogleSvg } from "@/app/lib/assets/svg";
 import styles from "@/app/components/styles/form.module.scss";
 
 type FormData = {
@@ -27,6 +27,10 @@ export default function LoginForm() {
   const { logIn, isLoading } = useLogIn(next);
 
   const [otpLogin, setOtpLogin] = React.useState<boolean>(false);
+
+  const OAuthUrl = new URL(
+    `${process.env.NEXT_PUBLIC_API_URL}/google/callback`
+  );
 
   const {
     register,
@@ -174,15 +178,25 @@ export default function LoginForm() {
               {text.loginForm.link}
             </Link>
 
-            {/* <div className={styles.devider}>
-              <hr />
-              <span>or</span>
-              <hr />
-            </div> */}
-
             <span onClick={handleOtpLogin} className={styles.link}>
               Log in with a verification OTP
             </span>
+
+            <div className={styles.devider}>
+              <hr />
+              <span>or</span>
+              <hr />
+            </div>
+
+            <Button
+              redirect={OAuthUrl}
+              style="dark"
+              icon={{
+                svg: <GoogleSvg style={{ fontSize: "1.15rem" }} />,
+                position: "left",
+              }}>
+              Continue with Google
+            </Button>
           </div>
         </form>
       </div>
