@@ -113,7 +113,7 @@
     code {
       font-size: 1rem;
       font-family: "Fira Code", monospace;
-      color: var(--badge-blue-color);
+      color: var(--blue-color);
 
       padding: 0.15rem 0.35rem;
 
@@ -145,28 +145,28 @@
     }
 
     a {
-      font-size: 1rem;
-      color: var(--badge-blue-color);
+      font-size: 1.2rem;
+      color: var(--blue-color);
       text-decoration: underline;
 
       @media (max-width: 1205px) {
-        font-size: 0.985rem;
+        font-size: 1.175rem;
       }
 
       @media (max-width: 875px) {
-        font-size: 0.955rem;
+        font-size: 1.075rem;
       }
 
       @media (max-width: 675px) {
-        font-size: 0.925rem;
+        font-size: 1.1rem;
       }
 
       @media (max-width: 555px) {
-        font-size: 0.875rem;
+        font-size: 1.05rem;
       }
 
       @media (max-width: 475px) {
-        font-size: 0.825rem;
+        font-size: 0.955rem;
       }
     }
   }

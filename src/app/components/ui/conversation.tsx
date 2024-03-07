@@ -253,12 +253,12 @@ export default function Conversation() {
               <MickroPhone
                 className={styles.icon}
                 onClick={startRecording}
-                style={{ fontSize: "1.55rem", fill: "#444" }}
+                style={{ fontSize: "1.55rem", fill: "#353943" }}
               />
             ) : transcoding ? (
               <LoadSvg
                 className={`${styles.icon} ${styles.load}`}
-                style={{ fontSize: "1.55rem", fill: "#444" }}
+                style={{ fontSize: "1.55rem", fill: "#353943" }}
               />
             ) : (
               <StopSvg
@@ -277,13 +277,13 @@ export default function Conversation() {
                 className={`${styles.icon} ${styles.disabled}`}
                 style={{
                   fontSize: "1.55rem",
-                  fill: "#444",
+                  fill: "#353943",
                 }}
               />
             ) : isLoading ? (
               <LoadSvg
                 className={`${styles.icon} ${styles.load}`}
-                style={{ fontSize: "1.55rem", fill: "#444" }}
+                style={{ fontSize: "1.55rem", fill: "#353943" }}
               />
             ) : (
               <SendSvg
