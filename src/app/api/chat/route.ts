@@ -13,18 +13,14 @@ const openai = new OpenAI({
 });
 
 export async function POST(request: NextRequest): Promise<Response> {
-  const requestCookies = request.cookies;
   const xff = `${request.headers.get("x-forwarded-for")?.split(",")[0]}`;
-  const token = requestCookies.get("token");
+  const token = request.cookies.get("token_client")?.value || "";
 
   if (!OPEN_AI_SECRET_KEY) {
     return new Response("Missing ENV: OPEN_AI_SECRET_KEY", { status: 400 });
   }
 
-  let isAuth = false;
-  if (token) {
-    isAuth = await authenticate(token.value, xff);
-  }
+  const isAuth = await authenticate(token, xff);
 
   if (!isAuth) {
     return new Response("Unauthorized", { status: 401 });

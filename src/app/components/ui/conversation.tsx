@@ -13,7 +13,6 @@ import { useRecordVoice } from "@/app/lib/hooks/useRecordVoice";
 import { errorNotification } from "@/app/lib/utils/notification";
 import { useChat } from "ai/react";
 
-import Account from "./account";
 import Message from "./message";
 
 import {
@@ -45,7 +44,7 @@ export default function Conversation() {
           setError(
             <span
               dangerouslySetInnerHTML={{
-                __html: `Please <a href='/login'>log in</a> first.`,
+                __html: `Please <a href='https://sherbolotarbaev.vercel.app/login'>log in</a> first.`,
               }}
             />
           );
@@ -202,8 +201,6 @@ export default function Conversation() {
 
   return (
     <>
-      <Account />
-
       {messages.length > 0 &&
         messages.map((message, idx) => <Message message={message} key={idx} />)}
 

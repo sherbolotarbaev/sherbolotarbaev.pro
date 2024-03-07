@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
+
 import { useRouter } from "next/navigation";
 import { LoadSvg } from "@/app/lib/assets/svg";
+
 import styles from "@/app/components/styles/button.module.scss";
 
 interface Props {
@@ -41,7 +43,7 @@ export default function Button({
   children,
   style,
   icon,
-  disabled,
+  disabled = false,
   width,
   type = "button",
   load = false,
@@ -57,25 +59,23 @@ export default function Button({
     if (typeof path === "string") {
       router.push(path);
     } else {
-      window.open(path, "_self");
+      window.open(path.toString(), "_self");
     }
   };
 
   const openTab = (path: string | URL) => {
-    window.open(path, "_blank");
+    window.open(path.toString(), "_blank");
   };
 
   const renderButtonContent = () => {
-    if (load === true) {
-      return <LoadSvg className={styles.load} style={{ fill: "#1e1e1e69" }} />;
-    }
-
-    if (typeof load === "string") {
-      return (
+    if (load) {
+      return typeof load === "string" ? (
         <>
-          <LoadSvg className={styles.load} style={{ fill: "#1e1e1e69" }} />
+          <LoadSvg className={styles.load} style={{ fill: "#fff2" }} />
           {load}
         </>
+      ) : (
+        <LoadSvg className={styles.load} style={{ fill: "#fff" }} />
       );
     }
 
@@ -96,11 +96,23 @@ export default function Button({
     );
   };
 
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    } else if (redirect) {
+      redirectToPage(redirect);
+    } else if (open) {
+      openTab(open);
+    }
+  };
+
   const buttonClassName = [
+    styles.button,
     style && styles[style],
     disabled && styles.disabled,
     adaptive && styles.adaptive,
     animation && styles.animated,
+    load && styles.button_load,
   ]
     .filter(Boolean)
     .join(" ");
@@ -108,23 +120,10 @@ export default function Button({
   return (
     <button
       type={type}
-      disabled={load === true ? true : disabled}
+      disabled={(typeof load === "boolean" && load === true) || disabled}
       style={width ? { maxWidth: width } : undefined}
-      onClick={
-        onClick
-          ? onClick
-          : () =>
-              redirect
-                ? redirectToPage(redirect)
-                : open
-                ? openTab(open)
-                : undefined
-      }
-      className={
-        load
-          ? `${styles.button_load} ${buttonClassName}`
-          : `${styles.button} ${buttonClassName}`
-      }>
+      onClick={handleClick}
+      className={buttonClassName}>
       {renderButtonContent()}
     </button>
   );

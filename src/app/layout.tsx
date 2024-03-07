@@ -1,5 +1,4 @@
 import { siteConfig } from "@/../config/site";
-import { UserProvider } from "@/app/lib/providers/UserProvider";
 
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
@@ -71,9 +70,7 @@ export default async function RootLayout({ children }: Props) {
       </head>
 
       <body className={font.className}>
-        <UserProvider>
-          <RootLayoutClient>{children}</RootLayoutClient>
-        </UserProvider>
+        <RootLayoutClient>{children}</RootLayoutClient>
       </body>
     </html>
   );

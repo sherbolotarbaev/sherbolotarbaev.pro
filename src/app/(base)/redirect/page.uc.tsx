@@ -1,14 +1,17 @@
 "use client";
 
 import React from "react";
+
 import { LoadSvg } from "@/app/lib/assets/svg";
 import styles from "@/app/components/styles/redirect.module.scss";
 
 export default function RedirectClient() {
   React.useEffect(() => {
-    window?.location?.assign(
-      decodeURIComponent(window?.location?.href?.split("to=")?.[1] || "/")
+    const path = decodeURIComponent(
+      window?.location?.href?.split("to=")?.[1] || "/"
     );
+    
+    window?.location?.assign(path);
   }, []);
 
   return (

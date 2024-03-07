@@ -26,20 +26,25 @@
 }
 
 :root {
-  --swiper-pagination-color: #ffffff;
-  --bg-main: #0c0c0c;
-  --badge-blue-bg: #3b88e925;
-  --badge-blue-color: #3b88e9;
-  --accent-1: #111;
-  --accent-2: #333;
-  --accent-3: #444;
-  --accent-4: #666;
-  --accent-5: #888;
-  --accent-6: #999;
+  --bg-main: #0c0e11;
+  --blue-bg: #669df6;
+  --blue-bg-opacity: #669df61c;
+  --blue-color: #3b88e9;
+  --accent-1: #121418;
+  --accent-1-hover: #15171b;
+  --accent-2: #353943;
+  --accent-3: #3e424c;
+  --accent-4: #4a4d55;
+  --accent-5: #5f6169;
+  --accent-6: #b4b7c4;
   --accent-7: #eaeaea;
-  --accent-8: #fafafa;
-  --br-color: #1d1d1f;
-  --text-gradient: linear-gradient(180deg, #fff, #adadad);
+  --accent-8: rgb(226, 226, 229);
+  --gradient-1: linear-gradient(180deg, #fff, #adadad);
+  --gradient-2: radial-gradient(
+    26.76% 85.52% at 86.73% -12.86%,
+    #c241ff 6.65%,
+    #6b57ff 100%
+  );
 }
 
 html,

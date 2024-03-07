@@ -69,12 +69,12 @@
         transition: 0.25s;
 
         &:hover {
-          color: var(--badge-blue-color);
+          color: var(--blue-color);
         }
 
         &.active {
-          background: var(--badge-blue-bg);
-          color: var(--badge-blue-color);
+          background: var(--blue-bg-opacity);
+          color: var(--blue-color);
         }
 
         @media (max-width: 1205px) {
@@ -213,12 +213,12 @@
 
           &:hover {
             padding-left: 1.15rem;
-            color: var(--badge-blue-color);
+            color: var(--blue-color);
           }
 
           &.active {
-            background: var(--badge-blue-bg);
-            color: var(--badge-blue-color);
+            background: var(--blue-bg-opacity);
+            color: var(--blue-color);
 
             &:hover {
               padding-left: 0.55rem;
@@ -243,7 +243,7 @@
 
 .navbar_active {
   background: var(--bg-main), 0.4;
-  border-bottom-color: var(--br-color);
+  border-bottom-color: var(--accent-2);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
