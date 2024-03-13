@@ -74,7 +74,7 @@ export default function HomeClient() {
           <Experience />
         </div>
 
-        <div className={styles.content} style={{ minHeight: "auto" }}>
+        {/* <div className={styles.content} style={{ minHeight: "auto" }}>
           {!show ? (
             <Button
               width={160}
@@ -89,7 +89,7 @@ export default function HomeClient() {
           ) : (
             <Conversation />
           )}
-        </div>
+        </div> */}
       </div>
     </>
   );
