@@ -4,6 +4,7 @@ import React from "react";
 import { Fira_Code, Prompt } from "next/font/google";
 import { useVisible } from "@/app/lib/hooks/useVisible";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import text from "@/app/lib/data/skills.json";
 import {
   AwsSvg,
@@ -180,19 +181,21 @@ export default function Skills() {
 
         <div className={styles.icons}>
           {skills.map((skill, idx) => (
-            <motion.div
-              key={idx}
-              className={styles.icon_wrapper}
-              variants={iconsAnimation}
-              initial="hidden"
-              animate={show ? "visible" : "hidden"}
-              transition={{ delay: idx * 0.1 }}>
-              {skill.icon}
+            <Link href={`https://www.google.com/search?q=${skill.name}`}>
+              <motion.div
+                key={idx}
+                className={styles.icon_wrapper}
+                variants={iconsAnimation}
+                initial="hidden"
+                animate={show ? "visible" : "hidden"}
+                transition={{ delay: idx * 0.1 }}>
+                {skill.icon}
 
-              <span className={styles.name} style={font2.style}>
-                {skill.name}
-              </span>
-            </motion.div>
+                <span className={styles.name} style={font2.style}>
+                  {skill.name}
+                </span>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </motion.div>
