@@ -181,7 +181,9 @@ export default function Skills() {
 
         <div className={styles.icons}>
           {skills.map((skill, idx) => (
-            <Link href={`https://www.google.com/search?q=${skill.name}`}>
+            <Link
+              href={`https://www.google.com/search?q=${skill.name}`}
+              target="_blank">
               <motion.div
                 key={idx}
                 className={styles.icon_wrapper}
